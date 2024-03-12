@@ -1,7 +1,7 @@
 # Informações do Projeto
 `TÍTULO DO PROJETO`  
 
-> Restaurante da Tia Lili
+> TRABALHO INTERDISCIPLINAR: APLICAÇÕES PARA PROCESSOS DE NEGÓCIOS: Restaurante da Tia Lili
 
 `CURSO` 
 
@@ -54,13 +54,7 @@
 
 ## Problema
 
-> Os métodos convencionais de pedidos de marmitas muitas vezes se mostram 
-> desafiadores tanto para os clientes quanto para os estabelecimentos. Atrasos, 
-> erros de comunicação, pedidos anotados errados são obstáculos frequentes. 
-> Além disso, a falta de personalização nos pedidos pode resultar em experiências 
-> menos satisfatórias para os consumidores. O projeto visa solucionar esses 
-> problemas, tornando o processo de pedir marmitas mais eficiente, personalizado
-> e alinhado às expectativas contemporâneas.
+> Os métodos convencionais de pedidos de marmitas muitas vezes se mostram desafiadores tanto para os clientes quanto para os estabelecimentos. Atrasos, erros de comunicação, pedidos anotados errados são obstáculos frequentes. Além disso, a falta de personalização nos pedidos pode resultar em experiências menos satisfatórias para os consumidores. O projeto visa solucionar esses problemas, tornando o processo de pedir marmitas mais eficiente, personalizado e alinhado às expectativas contemporâneas.
 >
 > **Links Úteis**:
 > - [Objetivos, Problema de pesquisa e Justificativa](https://medium.com/@versioparole/objetivos-problema-de-pesquisa-e-justificativa-c98c8233b9c3)
@@ -69,22 +63,15 @@
 
 ## Objetivos
 
-> O objetivo principal deste projeto é desenvolver um sistema de pedidos de 
-> marmitas que ofereça uma experiência mais ágil, personalizada e eficiente 
-> tanto para os clientes quanto para o restaurante. Pretendemos criar uma 
-> plataforma intuitiva que permita aos usuários explorar um cardápio 
-> diversificado, personalizar seus pedidos e acompanhar o status de seus 
-> pedidos em tempo real. Ao mesmo tempo, o sistema proporcionará aos 
-> estabelecimentos uma gestão mais eficaz dos pedidos, reduzindo erros 
-> e aumentando a eficiência operacional. 
+> O objetivo principal deste projeto é desenvolver um sistema de pedidos de marmitas que ofereça uma experiência mais ágil, personalizada e eficiente tanto para os clientes quanto para o restaurante. Neste projeto, é proposta a criação de uma plataforma intuitiva que permita aos usuários explorar o cardápio, personalizar seus pedidos e acompanhar o status de seus pedidos em tempo real. Ao mesmo tempo, o sistema proporcionará aos estabelecimentos uma gestão mais eficaz dos pedidos, reduzindo erros e aumentando a eficiência operacional.
 > 
 > **Links Úteis**:
 > - [Objetivo geral e objetivo específico: como fazer e quais verbos utilizar](https://blog.mettzer.com/diferenca-entre-objetivo-geral-e-objetivo-especifico/)
 
 ## Justificativa
 
-......  COLOQUE AQUI O SEU TEXTO ......
-
+> A escolha de desenvolver um sistema de pedidos de marmitas é motivada pela necessidade de oferecer uma solução inovadora que facilite o acesso à alimentação de qualidade em um contexto de vida acelerado. Os objetivos específicos foram definidos para abordar desafios comuns enfrentados tanto pelos consumidores, como erros de comunicação e falta de personalização, quanto pelos estabelecimentos, incluindo a gestão de pedidos e a eficiência operacional. Ao priorizar a agilidade, personalização e eficiência, busca-se não apenas atender às demandas imediatas do mercado, mas também impulsionar a inovação e competitividade na indústria alimentícia, alinhando-se com as expectativas contemporâneas.
+>
 > Descreva a importância ou a motivação para trabalhar com esta aplicação
 > que você escolheu. Indique as razões pelas quais você escolheu seus
 > objetivos específicos ou as razões para aprofundar em certos aspectos
