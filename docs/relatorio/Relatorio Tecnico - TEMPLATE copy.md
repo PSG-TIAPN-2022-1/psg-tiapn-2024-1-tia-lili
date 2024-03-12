@@ -1,18 +1,21 @@
 # Informações do Projeto
 `TÍTULO DO PROJETO`  
 
-> Restaurante da Tia Lili
+......  COLOQUE AQUI O SEU TEXTO ......
 
 `CURSO` 
 
-> Sistemas de Informação
+......  COLOQUE AQUI O SEU TEXTO ......
 
 ## Participantes
 
-> - João José Cardoso Ribeiro
-> - Luiz Gustavo Gonçalves Soares Dos Reis
-> - Pedro Henrique Fernandes Domingues
-> - Vitor Ribeiro Lacerda
+......  COLOQUE AQUI O SEU TEXTO ......
+
+> Inclua a lista dos membros da equipe com seus nomes completos.
+>
+> Os membros do grupo são: 
+> - Fulano da Silva
+> - Ciclano Albuquerque
 
 # Estrutura do Documento
 
@@ -50,22 +53,21 @@
 
 
 # Introdução
-> Nos dias de hoje, a comida rápida e fácil é super importante para muita 
-> gente. Por isso, estamos propondo um projeto que vai ajudar as pessoas 
-> a pedirem marmitas de uma maneira mais simples e moderna. Queremos juntar 
-> a tradição da comida gostosa com a praticidade da tecnologia. Com esse  
-> projeto, pretendemos tornar o processo de pedir marmitas mais fácil, 
-> rápido e de acordo com o que cada pessoa gosta.
 
 ## Problema
 
-> Os métodos convencionais de pedidos de marmitas muitas vezes se mostram 
-> desafiadores tanto para os clientes quanto para os estabelecimentos. Atrasos, 
-> erros de comunicação, pedidos anotados errados são obstáculos frequentes. 
-> Além disso, a falta de personalização nos pedidos pode resultar em experiências 
-> menos satisfatórias para os consumidores. O projeto visa solucionar esses 
-> problemas, tornando o processo de pedir marmitas mais eficiente, personalizado
-> e alinhado às expectativas contemporâneas.
+......  COLOQUE AQUI O SEU TEXTO ......
+
+> Nesse momento você deve apresentar o problema que a sua aplicação deve
+> resolver. No entanto, não é a hora de comentar sobre a aplicação.
+> Descreva também o contexto em que essa aplicação será usada, se
+> houver: empresa, tecnologias, etc. Novamente, descreva apenas o que de
+> fato existir, pois ainda não é a hora de apresentar requisitos
+> detalhados ou projetos.
+>
+> Nesse momento, o grupo pode optar por fazer uso
+> de ferramentas como Design Thinking, que permite um olhar de ponta a
+> ponta para o problema.
 >
 > **Links Úteis**:
 > - [Objetivos, Problema de pesquisa e Justificativa](https://medium.com/@versioparole/objetivos-problema-de-pesquisa-e-justificativa-c98c8233b9c3)
@@ -74,14 +76,13 @@
 
 ## Objetivos
 
-> O objetivo principal deste projeto é desenvolver um sistema de pedidos de 
-> marmitas que ofereça uma experiência mais ágil, personalizada e eficiente 
-> tanto para os clientes quanto para o restaurante. Pretendemos criar uma 
-> plataforma intuitiva que permita aos usuários explorar um cardápio 
-> diversificado, personalizar seus pedidos e acompanhar o status de seus 
-> pedidos em tempo real. Ao mesmo tempo, o sistema proporcionará aos 
-> estabelecimentos uma gestão mais eficaz dos pedidos, reduzindo erros 
-> e aumentando a eficiência operacional. 
+......  COLOQUE AQUI O SEU TEXTO ......
+
+> Aqui você deve descrever os objetivos do trabalho indicando que o
+> objetivo geral é desenvolver um software para solucionar o problema
+> apresentado acima. Apresente também alguns (pelo menos 2) objetivos
+> específicos dependendo de onde você vai querer concentrar a sua
+> prática investigativa, ou como você vai aprofundar no seu trabalho.
 > 
 > **Links Úteis**:
 > - [Objetivo geral e objetivo específico: como fazer e quais verbos utilizar](https://blog.mettzer.com/diferenca-entre-objetivo-geral-e-objetivo-especifico/)
