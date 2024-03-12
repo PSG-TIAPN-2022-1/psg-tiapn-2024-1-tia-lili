@@ -72,15 +72,6 @@
 
 > A escolha de desenvolver um sistema de pedidos de marmitas é motivada pela necessidade de oferecer uma solução inovadora que facilite o acesso à alimentação de qualidade em um contexto de vida acelerado. Os objetivos específicos foram definidos para abordar desafios comuns enfrentados tanto pelos consumidores, como erros de comunicação e falta de personalização, quanto pelos estabelecimentos, incluindo a gestão de pedidos e a eficiência operacional. Ao priorizar a agilidade, personalização e eficiência, busca-se não apenas atender às demandas imediatas do mercado, mas também impulsionar a inovação e competitividade na indústria alimentícia, alinhando-se com as expectativas contemporâneas.
 >
-> Descreva a importância ou a motivação para trabalhar com esta aplicação
-> que você escolheu. Indique as razões pelas quais você escolheu seus
-> objetivos específicos ou as razões para aprofundar em certos aspectos
-> do software.
-> 
-> O grupo de trabalho pode fazer uso de questionários, entrevistas e
-> dados estatísticos, que podem ser apresentados, com o objetivo de
-> esclarecer detalhes do problema que será abordado pelo grupo.
->
 > **Links Úteis**:
 > - [Como montar a justificativa](https://guiadamonografia.com.br/como-montar-justificativa-do-tcc/)
 
