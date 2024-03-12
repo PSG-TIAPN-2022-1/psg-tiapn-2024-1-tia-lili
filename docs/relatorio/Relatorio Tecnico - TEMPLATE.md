@@ -50,12 +50,7 @@
 
 
 # Introdução
-> Nos dias de hoje, a comida rápida e fácil é super importante para muita 
-> gente. Por isso, estamos propondo um projeto que vai ajudar as pessoas 
-> a pedirem marmitas de uma maneira mais simples e moderna. Queremos juntar 
-> a tradição da comida gostosa com a praticidade da tecnologia. Com esse  
-> projeto, pretendemos tornar o processo de pedir marmitas mais fácil, 
-> rápido e de acordo com o que cada pessoa gosta.
+> Nos dias de hoje, a comida rápida e fácil é super importante para muita gente. Por isso, propõe-se um projeto que irá ajudar pessoas a pedirem marmitas de uma maneira mais simples e moderna. Neste trabalho, destaca-se a > busca para juntar a tradição da comida caseira com a praticidade da tecnologia. A pretensão deste projeto é tornar o processo de pedir marmitas mais fácil, rápido e de acordo com o que cada pessoa gosta.
 
 ## Problema
 
