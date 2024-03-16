@@ -98,9 +98,7 @@
 
 ......  COLOQUE AQUI O SEU TEXTO ......
 
-> Apresente uma visão geral do que será abordado nesta parte do
-> documento, enumerando as técnicas e/ou ferramentas utilizadas para
-> realizar a especificações do projeto
+> Para estabelecer a definição exata do problema e identificar os principais aspectos a serem abordados no projeto, foi necessário realizar um esforço colaborativo com os usuários. A equipe conduziu um processo imersivo, envolvendo a observação dos usuários em seus ambientes naturais e a realização de entrevistas detalhadas. Os dados e insights obtidos nesse processo foram então cuidadosamente estruturados e categorizados em personas e histórias de usuários. Essas personas e histórias serviram como base sólida para o desenvolvimento do projeto, garantindo que as necessidades e expectativas dos clientes e do restaurante fossem atendidas de forma eficaz e precisa.
 
 ## Personas e Mapas de Empatia
 
