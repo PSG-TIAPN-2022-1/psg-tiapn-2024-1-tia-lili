@@ -242,15 +242,15 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 
 > A distribuição dos componentes do grupo, ficou da seguinte forma:
 
-#Scrum Master:
+### Scrum Master:
 
 * Vitor Ribeiro Lacerda
 
-#Product Owner:
+### Product Owner:
 
 * João José Cardoso Ribeiro
 
-#	Equipe de Desenvolvimento:
+###	Equipe de Desenvolvimento:
 
 * Luiz Gustavo Gonçalves Soares Dos Reis
 
