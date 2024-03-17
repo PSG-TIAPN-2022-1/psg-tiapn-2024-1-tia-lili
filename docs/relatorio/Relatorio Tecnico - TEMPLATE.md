@@ -231,12 +231,6 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 
 > Devido às entregas incrementais, o grupo decidiu dividir tarefas específicas para cada integrante, com reuniões semanais para acompanhar, tirar dúvidas e todos estarem cientes do andamento de cada detalhe do projeto.
 
- 
-> **Links Úteis**:
-> - [Tutorial Trello](https://trello.com/b/8AygzjUA/tutorial-trello)
-> - [Gestão ágil de projetos com o Trello](https://www.youtube.com/watch?v=1o9BOMAKBRE)
-> - [Gerência de projetos - Trello com Scrum](https://www.youtube.com/watch?v=DHLA8X_ujwo)
-> - [Tutorial Slack](https://slack.com/intl/en-br/)
 
 ## Divisão de Papéis
 
