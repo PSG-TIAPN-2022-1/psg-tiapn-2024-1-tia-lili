@@ -144,8 +144,8 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 
 |ID    | Descrição do Requisito  | Prioridade |
 |------|-----------------------------------------|----|
-|RF-001| Permitir que os usuários se cadastrem no sistema fornecendo informações básicas, como nome, endereço, número de telefone e e-mail | ALTA | 
-|RF-002| Permitir que os usuários façam login de forma segura utilizando e-mail/senha ou outras formas de autenticação, como login social.   | ALTA |
+|RF-001| Permitir que os usuários se cadastrem no sistema fornecendo informações básicas, como nome, endereço, número de telefone e e-mail | MÉDIA | 
+|RF-002| Permitir que os usuários façam login de forma segura utilizando e-mail/senha ou outras formas de autenticação, como login social.   | MÉDIA |
 |RF-003| Possibilitar aos usuários visualizar o cardápio completo com todas as opções de marmitas disponíveis, incluindo descrições, preços e imagens.   | ALTA |
 |RF-004| Permitir aos usuários adicionar itens selecionados ao carrinho de compras para posterior compra.   | MÉDIA |
 |RF-005| Possibilitar aos usuários visualizar e editar os itens no carrinho antes de finalizar a compra, incluindo alteração de quantidade e remoção de itens.   | ALTA |
@@ -157,8 +157,12 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 
 |ID     | Descrição do Requisito  |Prioridade |
 |-------|-------------------------|----|
-|RNF-001| O sistema deve ser responsivo para rodar em um dispositivos móvel | MÉDIA | 
-|RNF-002| Deve processar requisições do usuário em no máximo 3s |  BAIXA | 
+|RNF-001| O sistema deve ser capaz de lidar com múltiplos acessos simultâneos sem degradação significativa do desempenho. | ALTA | 
+|RNF-002| Deve garantir a segurança dos dados do usuário, incluindo informações pessoais e dados de pagamento. |  ALTA | 
+|RNF-003| A interface do usuário deve ser intuitiva e de fácil navegação, proporcionando uma experiência agradável ao usuário. | MÉDIA | 
+|RNF-004| O sistema deve ser confiável e estar disponível 24/7, com mínimo tempo de inatividade para manutenção. |  ALTA | 
+|RNF-005| Deve ser compatível com uma variedade de dispositivos e navegadores para garantir acessibilidade a todos os usuários. | ALTA | 
+|RNF-006| Deve oferecer suporte a múltiplos idiomas e moedas, se aplicável, para atender a uma base de usuários diversificada. |  BAIXA | 
 
 > Com base nas Histórias de Usuário, enumere os requisitos da sua
 > solução. Classifique esses requisitos em dois grupos:
@@ -188,8 +192,8 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 
 |ID| Restrição                                             |
 |--|-------------------------------------------------------|
-|01| O projeto deverá ser entregue até o final do semestre |
-|02| Não pode ser desenvolvido um módulo de backend        |
+|01| O sistema deve ser desenvolvido dentro de um prazo definido, levando em consideração as necessidades do negócio. |
+|02| Deve cumprir todas as regulamentações e leis locais relacionadas à segurança de dados e comércio eletrônico.        |
 
 
 > Enumere as restrições à sua solução. Lembre-se de que as restrições
