@@ -68,7 +68,7 @@
 
 ## Público-Alvo
 
-O público alvo deste projeto são profissionais com rotinas ocupadas, como trabalhadores de escritório, autônomos e estudantes, famílias que buscam praticidade e variedade na alimentação e entusiastas da alimentação saudável interessados em opções frescas e equilibradas, pessoas em trânsito, como viajantes e motoristas de aplicativos e também empresas em busca de soluções de alimentação para eventos corporativos, outros públicos também podem ser alcançados.
+>O público alvo deste projeto são profissionais com rotinas ocupadas, como trabalhadores de escritório, autônomos e estudantes, famílias que buscam praticidade e variedade na alimentação e entusiastas da alimentação saudável interessados em opções frescas e equilibradas, pessoas em trânsito, como viajantes e motoristas de aplicativos e também empresas em busca de soluções de alimentação para eventos corporativos, outros públicos também podem ser alcançados.
 > 
  
 # Especificações do Projeto
