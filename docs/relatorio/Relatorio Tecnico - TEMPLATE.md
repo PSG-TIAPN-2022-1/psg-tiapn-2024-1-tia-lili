@@ -95,7 +95,8 @@
 > 
 > **Exemplo de Persona**
 > 
-> ![Exemplo de Persona](/docs/relatorio/images/PErsona1.jpg)
+> ![Persona1](/docs/relatorio/images/PErsona1.jpg)
+> ![Persona2](/docs/relatorio/images/PErsona2.jpg)
 > 
 > Fonte: [Como criar uma persona para o seu negócio](https://raissaviegas.com.br/como-criar-uma-persona/)
 
