@@ -144,8 +144,13 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 
 |ID    | Descrição do Requisito  | Prioridade |
 |------|-----------------------------------------|----|
-|RF-001| Permitir que o usuário cadastre tarefas | ALTA | 
-|RF-002| Emitir um relatório de tarefas no mês   | MÉDIA |
+|RF-001| Permitir que os usuários se cadastrem no sistema fornecendo informações básicas, como nome, endereço, número de telefone e e-mail | ALTA | 
+|RF-002| Permitir que os usuários façam login de forma segura utilizando e-mail/senha ou outras formas de autenticação, como login social.   | ALTA |
+|RF-003| Possibilitar aos usuários visualizar o cardápio completo com todas as opções de marmitas disponíveis, incluindo descrições, preços e imagens.   | ALTA |
+|RF-004| Permitir aos usuários adicionar itens selecionados ao carrinho de compras para posterior compra.   | MÉDIA |
+|RF-005| Possibilitar aos usuários visualizar e editar os itens no carrinho antes de finalizar a compra, incluindo alteração de quantidade e remoção de itens.   | ALTA |
+|RF-006| Disponibilizar uma interface de administração para gerenciar o cardápio, pedidos, usuários, relatórios de vendas, entre outras funcionalidades.   | ALTA |
+|RF-007| Permitir que os usuários personalizem seus pedidos, como escolher acompanhamentos, alterar ingredientes, etc., conforme suas preferências.   | ALTA |
 
 
 ### Requisitos não Funcionais
