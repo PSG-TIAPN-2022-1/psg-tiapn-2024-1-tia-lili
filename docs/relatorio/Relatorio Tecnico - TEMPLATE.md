@@ -242,21 +242,21 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 
 > A distribuição dos componentes do grupo, ficou da seguinte forma:
 
-* Scrum Master:
+#Scrum Master:
 
-** Vitor Ribeiro Lacerda
+* Vitor Ribeiro Lacerda
 
-*	Product Owner:
+#Product Owner:
 
-**João José Cardoso Ribeiro
+* João José Cardoso Ribeiro
 
-*	Equipe de Desenvolvimento:
+#	Equipe de Desenvolvimento:
 
-**Luiz Gustavo Gonçalves Soares Dos Reis
+* Luiz Gustavo Gonçalves Soares Dos Reis
 
-**Pedro Henrique Fernandes Domingues
+* Pedro Henrique Fernandes Domingues
 
-O acompanhamento das tarefas ocorre por meio de reuniões semanais, durante as quais as tarefas em andamento são revisadas. Após a conclusão de cada etapa, verifica-se se todos os interessados estão informados sobre o progresso. Em seguida, novas tarefas são definidas e distribuídas conforme necessário.
+> O acompanhamento das tarefas ocorre por meio de reuniões semanais, durante as quais as tarefas em andamento são revisadas. Após a conclusão de cada etapa, verifica-se se todos os interessados estão informados sobre o progresso. Em seguida, novas tarefas são definidas e distribuídas conforme necessário.
 
 > **Links Úteis**:
 > - [11 Passos Essenciais para Implantar Scrum no seu Projeto](https://mindmaster.com.br/scrum-11-passos/)
