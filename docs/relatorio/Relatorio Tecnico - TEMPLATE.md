@@ -56,17 +56,11 @@
 
 > Os métodos convencionais de pedidos de marmitas muitas vezes se mostram desafiadores tanto para os clientes quanto para os estabelecimentos. Atrasos, erros de comunicação, pedidos anotados errados são obstáculos frequentes. Além disso, a falta de personalização nos pedidos pode resultar em experiências menos satisfatórias para os consumidores. O projeto visa solucionar esses problemas, tornando o processo de pedir marmitas mais eficiente, personalizado e alinhado às expectativas contemporâneas.
 >
-> **Links Úteis**:
-> - [Objetivos, Problema de pesquisa e Justificativa](https://medium.com/@versioparole/objetivos-problema-de-pesquisa-e-justificativa-c98c8233b9c3)
-> - [Matriz Certezas, Suposições e Dúvidas](https://medium.com/educa%C3%A7%C3%A3o-fora-da-caixa/matriz-certezas-suposi%C3%A7%C3%B5es-e-d%C3%BAvidas-fa2263633655)
-> - [Brainstorming](https://www.euax.com.br/2018/09/brainstorming/)
 
 ## Objetivos
 
 > O objetivo principal deste projeto é desenvolver um sistema de pedidos de marmitas que ofereça uma experiência mais ágil, personalizada e eficiente tanto para os clientes quanto para o restaurante. Neste projeto, é proposta a criação de uma plataforma intuitiva que permita aos usuários explorar o cardápio, personalizar seus pedidos e acompanhar o status de seus pedidos em tempo real. Ao mesmo tempo, o sistema proporcionará aos estabelecimentos uma gestão mais eficaz dos pedidos, reduzindo erros e aumentando a eficiência operacional.
 > 
-> **Links Úteis**:
-> - [Objetivo geral e objetivo específico: como fazer e quais verbos utilizar](https://blog.mettzer.com/diferenca-entre-objetivo-geral-e-objetivo-especifico/)
 
 ## Justificativa
 
@@ -74,11 +68,8 @@
 
 ## Público-Alvo
 
-Profissionais com rotinas ocupadas, como trabalhadores de escritório, autônomos e estudantes. Famílias que buscam praticidade e variedade na alimentação. Entusiastas da alimentação saudável interessados em opções frescas e equilibradas. Pessoas em trânsito, como viajantes e motoristas de aplicativos. Empresas em busca de soluções de alimentação para eventos corporativos.
+O público alvo deste projeto são profissionais com rotinas ocupadas, como trabalhadores de escritório, autônomos e estudantes, famílias que buscam praticidade e variedade na alimentação e entusiastas da alimentação saudável interessados em opções frescas e equilibradas, pessoas em trânsito, como viajantes e motoristas de aplicativos e também empresas em busca de soluções de alimentação para eventos corporativos, outros públicos também podem ser alcançados.
 > 
-> **Links Úteis**:
-> - [Público-alvo: o que é, tipos, como definir seu público e exemplos](https://klickpages.com.br/blog/publico-alvo-o-que-e/)
-> - [Qual a diferença entre público-alvo e persona?](https://rockcontent.com/blog/diferenca-publico-alvo-e-persona/)
  
 # Especificações do Projeto
 
