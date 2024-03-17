@@ -238,18 +238,9 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 
 # Metodologia
 
-......  COLOQUE AQUI O SEU TEXTO ......
+> Devido às entregas incrementais, o grupo decidiu dividir tarefas específicas para cada integrante, com reuniões semanais para acompanhar, tirar dúvidas e todos estarem cientes do andamento de cada detalhe do projeto.
 
-> Nesta parte do documento, você deve apresentar a metodologia 
-> adotada pelo grupo, descrevendo o processo de trabalho baseado nas metodologias ágeis, 
-> a divisão de papéis e tarefas, as ferramentas empregadas e como foi realizada a
-> gestão de configuração do projeto via GitHub.
->
-> Coloque detalhes sobre o processo de Design Thinking e a implementação do Framework Scrum seguido
-> pelo grupo. O grupo poderá fazer uso de ferramentas on-line para acompanhar
-> o andamento do projeto, a execução das tarefas e o status de desenvolvimento
-> da solução.
-> 
+ 
 > **Links Úteis**:
 > - [Tutorial Trello](https://trello.com/b/8AygzjUA/tutorial-trello)
 > - [Gestão ágil de projetos com o Trello](https://www.youtube.com/watch?v=1o9BOMAKBRE)
@@ -258,10 +249,24 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 
 ## Divisão de Papéis
 
-......  COLOQUE AQUI O SEU TEXTO ......
+> A distribuição dos componentes do grupo, ficou da seguinte forma:
 
-> Apresente a divisão de papéis e tarefas entre os membros do grupo.
->
+* Scrum Master:
+
+** Vitor Ribeiro Lacerda
+
+*	Product Owner:
+
+**João José Cardoso Ribeiro
+
+*	Equipe de Desenvolvimento:
+
+**Luiz Gustavo Gonçalves Soares Dos Reis
+
+**Pedro Henrique Fernandes Domingues
+
+O acompanhamento das tarefas ocorre por meio de reuniões semanais, durante as quais as tarefas em andamento são revisadas. Após a conclusão de cada etapa, verifica-se se todos os interessados estão informados sobre o progresso. Em seguida, novas tarefas são definidas e distribuídas conforme necessário.
+
 > **Links Úteis**:
 > - [11 Passos Essenciais para Implantar Scrum no seu Projeto](https://mindmaster.com.br/scrum-11-passos/)
 > - [Scrum em 9 minutos](https://www.youtube.com/watch?v=XfvQWnRgxG0)
@@ -269,14 +274,10 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 
 ## Ferramentas
 
-......  COLOQUE AQUI O SEU TEXTO - SIGA O EXEMPLO DA TABELA ABAIXO  ......
-
 | Ambiente  | Plataforma              |Link de Acesso |
 |-----------|-------------------------|---------------|
-|Processo de Design Thinkgin  | Miro |  https://miro.com/XXXXXXX | 
-|Repositório de código | GitHub | https://github.com/XXXXXXX | 
-|Hospedagem do site | Heroku |  https://XXXXXXX.herokuapp.com | 
-|Protótipo Interativo | MavelApp ou Figma | https://figma.com/XXXXXXX | 
+|Repositório de código | GitHub | https://github.com/PSG-TIAPN-2022-1/psg-tiapn-2024-1-tia-lili.git | 
+|Protótipo Interativo |  Figma | https://www.figma.com/proto/4Qa01m3nE1qLc1lNoUSFKz/Tia-Lili-wireframes?type=design&node-id=12-3&t=h8HIzxR1aQ7VEhhE-1&scaling=scale-down&page-id=0%3A1&starting-point-node-id=46%3A175&mode=design | 
 
 >
 > Liste as ferramentas empregadas no desenvolvimento do
