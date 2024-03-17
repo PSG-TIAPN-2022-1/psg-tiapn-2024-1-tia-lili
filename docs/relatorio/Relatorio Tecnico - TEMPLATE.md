@@ -74,18 +74,7 @@
 
 ## Público-Alvo
 
-......  COLOQUE AQUI O SEU TEXTO ......
-
-> Descreva quem serão as pessoas que usarão a sua aplicação indicando os
-> diferentes perfis. O objetivo aqui não é definir quem serão os
-> clientes ou quais serão os papéis dos usuários na aplicação. A ideia
-> é, dentro do possível, conhecer um pouco mais sobre o perfil dos
-> usuários: conhecimentos prévios, relação com a tecnologia, relações
-> hierárquicas, etc.
->
-> Adicione informações sobre o público-alvo por meio de uma descrição
-> textual, ou diagramas de personas, mapa de stakeholders, ou como o
-> grupo achar mais conveniente.
+Profissionais com rotinas ocupadas, como trabalhadores de escritório, autônomos e estudantes. Famílias que buscam praticidade e variedade na alimentação. Entusiastas da alimentação saudável interessados em opções frescas e equilibradas. Pessoas em trânsito, como viajantes e motoristas de aplicativos. Empresas em busca de soluções de alimentação para eventos corporativos.
 > 
 > **Links Úteis**:
 > - [Público-alvo: o que é, tipos, como definir seu público e exemplos](https://klickpages.com.br/blog/publico-alvo-o-que-e/)
@@ -93,14 +82,9 @@
  
 # Especificações do Projeto
 
-......  COLOQUE AQUI O SEU TEXTO ......
-
 > Para estabelecer a definição exata do problema e identificar os principais aspectos a serem abordados no projeto, foi necessário realizar um esforço colaborativo com os usuários. A equipe conduziu um processo imersivo, envolvendo a observação dos usuários em seus ambientes naturais e a realização de entrevistas detalhadas. Os dados e insights obtidos nesse processo foram então cuidadosamente estruturados e categorizados em personas e histórias de usuários. Essas personas e histórias serviram como base sólida para o desenvolvimento do projeto, garantindo que as necessidades e expectativas dos clientes e do restaurante fossem atendidas de forma eficaz e precisa.
 
 ## Personas e Mapas de Empatia
-
-......  COLOQUE AQUI O SEU TEXTO ......
-
 
 > Relacione as personas identificadas no seu projeto e os respectivos mapas de empatia. Lembre-se que 
 > você deve ser enumerar e descrever precisamente e de forma
