@@ -258,10 +258,6 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 
 > O acompanhamento das tarefas ocorre por meio de reuniões semanais, durante as quais as tarefas em andamento são revisadas. Após a conclusão de cada etapa, verifica-se se todos os interessados estão informados sobre o progresso. Em seguida, novas tarefas são definidas e distribuídas conforme necessário.
 
-> **Links Úteis**:
-> - [11 Passos Essenciais para Implantar Scrum no seu Projeto](https://mindmaster.com.br/scrum-11-passos/)
-> - [Scrum em 9 minutos](https://www.youtube.com/watch?v=XfvQWnRgxG0)
-
 
 ## Ferramentas
 
