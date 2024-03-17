@@ -97,7 +97,18 @@
 > 
 > ![Persona1](/docs/relatorio/images/PErsona1.jpg)
 > ![Persona2](/docs/relatorio/images/PErsona2.jpg)
+> ![Persona3](/docs/relatorio/images/PErsona3.jpg)
+> ![Persona4](/docs/relatorio/images/PErsona4.jpg)
 > 
+>
+> **mapa de empatia**
+>
+> ![MapaEmpatia1](/docs/relatorio/images/mapa1.jpg)
+> ![MapaEmpatia2](/docs/relatorio/images/mapa2.jpg)
+> ![MapaEmpatia3](/docs/relatorio/images/mapa3.jpg)
+> ![MapaEmpatia4](/docs/relatorio/images/mapa4.jpg)
+>
+>
 > Fonte: [Como criar uma persona para o seu negócio](https://raissaviegas.com.br/como-criar-uma-persona/)
 
 
