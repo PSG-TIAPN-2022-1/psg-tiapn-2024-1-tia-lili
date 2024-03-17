@@ -181,12 +181,7 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 
 # Projeto de Interface
 
-......  COLOQUE AQUI O SEU TEXTO DE INTRODUÇÃO ......
-
-> Apresente as principais interfaces da solução. Discuta como 
-> foram elaboradas de forma a atender os requisitos funcionais, não
-> funcionais e histórias de usuário abordados nas [Especificações do
-> Projeto](#especificações-do-projeto).
+> Para solucionar os problemas em evidência, foi elaborado uma interface simples e objetiva para cumprir os requisitos do projeto.
 
 ## User Flow
 
@@ -204,7 +199,7 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 >
 > **Exemplo**:
 > 
-> ![Exemplo de UserFlow](images/userflow.jpg)
+> ![Exemplo de UserFlow](images/userflow.png)
 
 
 ## Wireframes
@@ -266,17 +261,12 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 > 
 > As ferramentas empregadas no projeto são:
 > 
-> - Editor de código.
-> - Ferramentas de comunicação
-> - Ferramentas de diagramação
-> - Plataforma de hospedagem
+> - Visual Studio Code
+> - Whatsapp e Discord
 > 
-> O editor de código foi escolhido porque ele possui uma integração com o
-> sistema de versão. As ferramentas de comunicação utilizadas possuem
-> integração semelhante e por isso foram selecionadas. Por fim, para criar
-> diagramas utilizamos essa ferramenta por melhor captar as
-> necessidades da nossa solução.
-> 
+> O editor de código foi escolhido porque ele possui uma boa integração com o sistema de versão. As ferramentas de comunicação utilizadas são versáteis. O Whatsapp sendo usado para comunicação durante a semana, tanto para dúvidas e sugestões, enquanto o Discord é utilizado para reuniões, possibilitando fácil compartilhamento de tela, chat de texto e voz. 
+
+
 > **Links Úteis - Hospedagem**:
 > - [Getting Started with Heroku](https://devcenter.heroku.com/start)
 > - [Crie seu Site com o HostGator](https://www.hostgator.com.br/como-publicar-seu-site)
