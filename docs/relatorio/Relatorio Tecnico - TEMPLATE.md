@@ -116,6 +116,10 @@
 
 Com base na análise das personas forma identificadas as seguintes histórias de usuários:
 
+>
+> ![HistóriadeUsúario](/docs/relatorio/images/desejos%20persona.jpg)
+>
+
 |EU COMO... `PERSONA`| QUERO/PRECISO ... `FUNCIONALIDADE` |PARA ... `MOTIVO/VALOR`                 |
 |--------------------|------------------------------------|----------------------------------------|
 |Usuário do sistema  | Registrar minhas tarefas           | Não esquecer de fazê-las               |
