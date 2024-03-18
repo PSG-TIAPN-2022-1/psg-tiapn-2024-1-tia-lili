@@ -266,9 +266,13 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 
 ###	Equipe de Desenvolvimento:
 
+* João José Cardoso Ribeiro
+
 * Luiz Gustavo Gonçalves Soares Dos Reis
 
 * Pedro Henrique Fernandes Domingues
+
+* Vitor Ribeiro Lacerda
 
 > O acompanhamento das tarefas ocorre por meio de reuniões semanais, durante as quais as tarefas em andamento são revisadas. Após a conclusão de cada etapa, verifica-se se todos os interessados estão informados sobre o progresso. Em seguida, novas tarefas são definidas e distribuídas conforme necessário.
 
