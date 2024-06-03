@@ -13,3 +13,7 @@ Se necessário, descreva neste arquivo aspectos relevantes da estrutura de diret
 ### npm install --save sequelize
 
 ### npm install --save mysql2
+
+### npm install --save dotenv
+
+### npx sequelize-cli migration:generate --name create-tipo_carnes
