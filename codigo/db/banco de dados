@@ -25,11 +25,12 @@ SENHA int(6) not null,
 primary key (CADASTRO)
 );
 
-CREATE TABLE BEBIDA(
+CREATE TABLE BEBIDAS(
 ID int not null auto_increment,
 NOME varchar(30) not null,
 DESCRICAO varchar(50),
 VALOR DOUBLE not null,
+IMG varchar(80),
 primary key (ID)
 );
 
@@ -44,6 +45,7 @@ CREATE TABLE TIPO_CARNES(
 ID INT NOT NULL auto_increment,
 NOME VARCHAR(30) not null,
 VALOR DOUBLE not null,
+IMG varchar(80),
 primary key (ID)
 );
 
@@ -54,6 +56,7 @@ ENDERECO varchar(50) not null,
 PAGAMENTO varchar(15) not null,
 CARNE int not null,
 OBS varchar(80),
+
 primary key (ID),
 FOREIGN KEY (CARNE) REFERENCES TIPO_CARNES(ID)
 );
