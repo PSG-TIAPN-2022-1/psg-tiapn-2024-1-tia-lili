@@ -34,7 +34,7 @@ IMG varchar(80),
 primary key (ID)
 );
 
-CREATE TABLE ACOMPANHAMENTO(
+CREATE TABLE ACOMPANHAMENTOS(
 ID int not null auto_increment,
 NOME varchar(40) not null,
 DESCRICAO varchar(50),
@@ -89,7 +89,7 @@ INSERT INTO BEBIDA (NOME, DESCRICAO, VALOR) VALUES
 ('Guaraná Antártica 1L', 'Garrafa 1L', 10.00),
 ('Coca-Cola 600mL', 'Garrafa 600mL', 10.00);
 
-INSERT INTO ACOMPANHAMENTO (NOME, DESCRICAO) VALUES 
+INSERT INTO ACOMPANHAMENTOS (NOME, DESCRICAO) VALUES 
 
 ('Arroz Branco', 'Arroz'),
 ('Tutu','Tutu'),

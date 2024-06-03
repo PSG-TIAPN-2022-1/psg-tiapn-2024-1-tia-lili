@@ -65,7 +65,7 @@
         
         <div> 
             <hr class="sep-2" />
-            <h4 class="display-5 text-center" id="tipo_carnes_nome">Tipo de carne</h4>
+            <h4 class="display-5 text-center" id="tipo_carnes_nome"></h4>
             <h5 class="text-center" id="section_especiais">Escolha o tamanho e os acompanhamentos disponíveis do dia</h5>
             <hr class="sep-2" />
         </div>
@@ -76,8 +76,12 @@
             </div>
             <section id="tamanho" class="radio">
                 <div class="radio-list row">
-                    <div class="radio-item col-12 col-lg-6"><input name="radio" id="radio1" type="radio"><label class="d-flex flex-row justify-content-between" for="radio1"><h6>Pequena</h6><h6 class="valor" id="valorP" >R$16,00</h6> </label></div>
-                    <div class="radio-item col-12 col-lg-6"><input name="radio" id="radio2" type="radio"><label class="d-flex flex-row justify-content-between" for="radio2"><h6>Grande</h6> <h6 class="valor" id="valorP" >R$18,00</h6></label></div>
+                    <div class="radio-item col-12 col-lg-6" id="valor_p">
+                        
+                    </div>
+                    <div class="radio-item col-12 col-lg-6" id="valor_g">
+                        
+                    </div>
                 </div>
             </section>
             
@@ -87,21 +91,8 @@
             </div>
 
             <section id="acompanhamentos" class="checkbox">
-                <div class="checkbox-list row">
-                    <div class="checkbox-item col-12"><input name="checkbox" id="checkbox1" type="checkbox"><label for="checkbox1">Acompanhamento tal</label></div>
-                    <div class="checkbox-item col-12"><input name="checkbox" id="checkbox2" type="checkbox"><label for="checkbox2">Acompanhamento tal</label></div>
-                    <div class="checkbox-item col-12"><input name="checkbox" id="checkbox3" type="checkbox"><label for="checkbox3">Acompanhamento tal</label></div>
-                    <div class="checkbox-item col-12"><input name="checkbox" id="checkbox4" type="checkbox"><label for="checkbox4">Acompanhamento tal</label></div>
-                    <div class="checkbox-item col-12"><input name="checkbox" id="checkbox5" type="checkbox"><label for="checkbox5">Acompanhamento tal</label></div>
-                    <div class="checkbox-item col-12"><input name="checkbox" id="checkbox6" type="checkbox"><label for="checkbox6">Acompanhamento tal</label></div>
-                    <div class="checkbox-item col-12"><input name="checkbox" id="checkbox7" type="checkbox"><label for="checkbox7">Acompanhamento tal</label></div>
-                    <div class="checkbox-item col-12"><input name="checkbox" id="checkbox8" type="checkbox"><label for="checkbox8">Acompanhamento tal</label></div>
-                    <div class="checkbox-item col-12"><input name="checkbox" id="checkbox9" type="checkbox"><label for="checkbox9">Acompanhamento tal</label></div>
-                    <div class="checkbox-item col-12"><input name="checkbox" id="checkbox10" type="checkbox"><label for="checkbox10">Acompanhamento tal</label></div>
-                    <div class="checkbox-item col-12"><input name="checkbox" id="checkbox11" type="checkbox"><label for="checkbox11">Acompanhamento tal</label></div>
-                    <div class="checkbox-item col-12"><input name="checkbox" id="checkbox12" type="checkbox"><label for="checkbox12">Acompanhamento tal</label></div>
-                    <div class="checkbox-item col-12"><input name="checkbox" id="checkbox13" type="checkbox"><label for="checkbox13">Acompanhamento tal</label></div>
-                    <div class="checkbox-item col-12"><input name="checkbox" id="checkbox14" type="checkbox"><label for="checkbox14">Acompanhamento tal</label></div>
+                <div class="checkbox-list row" id="acompanhamentos_DB">
+                    
                 </div>
             </section>
 
@@ -116,7 +107,7 @@
 
             <a href="carrinho.html" class="col-12 primary avancar flex-row " style="--bg-color: #1095F3; --bg-color-hover: #33B7FE; --bg-color-active: #1581E0; --border-color: #1095F3; --border-color-hover: #33B7FE; --border-color-active: #1581E0; --text-color: #FFFFFF; --text-color-hover: #FFFFFF; --text-color-active: #FFFFFF;">
                 <p>Avançar</p>
-                <div data-v-0947ae0f="" class="btndata">R$16,00
+                <div data-v-0947ae0f="" class="btndata" id="valor_marmita" >R$00,00
 
                 </div>
             </a>
@@ -147,6 +138,16 @@
         </div>
             
     </footer>    
+
+    <script>
+        exibe_um_tipo_carne(1);
+        exibe_acompanhamentos();
+        function calcular_valor(val){
+            
+            document.querySelector('#valor_marmita').innerHTML="R$"+val+",00";
+        }
+    
+    </script>
 
 </body>
 </html>

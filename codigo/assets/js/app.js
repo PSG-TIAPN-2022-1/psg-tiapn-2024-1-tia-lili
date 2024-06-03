@@ -182,3 +182,53 @@ function exibe_bebidas(){
             console.error('Erro ao enviar dados:', error);
         });
 }
+
+function exibe_um_tipo_carne(id){
+  
+    str=''
+
+    fetch('http://localhost:3000/tipo_carnes')
+        .then(response => response.json())
+        .then(data => {      
+
+            const carnes = Object.values(data)
+            //console.log(carnes[0][id]);
+            document.querySelector('#tipo_carnes_nome').innerHTML=`${carnes[0][id].nome}`
+            
+            document.querySelector('#valor_p').innerHTML=`<input name="radio" id="radio1" type="radio" onclick="calcular_valor(${carnes[0][id].valor_p}.00)"><label class="d-flex flex-row justify-content-between" for="radio1"><h6>Pequena</h6><h6 class="valor" >R$${carnes[0][id].valor_p},00</h6> </label>`
+            document.querySelector('#valor_g').innerHTML=`<input name="radio" id="radio2" type="radio" onclick="calcular_valor(${carnes[0][id].valor_g}.00)"><label class="d-flex flex-row justify-content-between" for="radio2"><h6>Pequena</h6><h6 class="valor" >R$${carnes[0][id].valor_g},00</h6> </label>`
+            
+            
+            
+            
+        }).catch(error => {
+            console.error('Erro ao enviar dados:', error);
+        });
+        
+}
+
+function exibe_acompanhamentos(){
+    str3=''
+    fetch('http://localhost:3000/acompanhamentos')
+        .then(response => response.json())
+        .then(data => {      
+
+            const acomps = Object.values(data)
+            //console.log(acomps);
+            for (let i = 0; i < acomps[0].length; i++) {
+                let acomp = acomps[0][i];
+                //console.log(bebida);
+          
+                str3+=`<div class="checkbox-item col-12"><input name="checkbox" id="checkbox${i+1}" type="checkbox"><label for="checkbox${i+1}">${acomp.nome}</label></div>`
+                
+                
+            }
+            document.querySelector('#acompanhamentos_DB').innerHTML=str3
+        
+        }).catch(error => {
+            console.error('Erro ao enviar dados:', error);
+        });
+
+
+}
+

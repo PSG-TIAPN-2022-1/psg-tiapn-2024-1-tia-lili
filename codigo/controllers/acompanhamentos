@@ -1,0 +1,70 @@
+// Incluir as bibliotecas
+// Gerencia as requisições, rotas e URLs, entre outra funcionalidades
+const express = require("express");
+// Chamar a função express
+const router = express.Router();
+// Incluir o arquivo que possui a conexão com banco de dados
+const db = require('./../db/models');
+
+// Criar a rota listar 
+// Endereço para acessar através da aplicação externa: http://localhost:8080/users
+router.get("/acompanhamentos", async (req, res) => {
+    // Recuperar todos os acompanhamentos do banco de dados
+    const acompanhamentos = await db.ACOMPANHAMENTOS.findAll({
+
+        // Indicar quais colunas recuperar
+        attributes: ['id', 'nome', 'descricao'],
+
+        // Ordenar os registros pela coluna id na forma decrescente
+        order: [['id', 'ASC']]
+    });
+
+    // Acessa o IF se encontrar o registro no banco de dados
+    if (acompanhamentos) {
+        // Pausar o processamento e retornar os dados em formato de objeto
+        return res.json({
+            acompanhamentos
+        });
+    } else {
+        // Pausar o processamento e retornar a mensagem de erro
+        return res.status(400).json({
+            mensagem: "Erro: Nenhuma acompanhamento encontrada!"
+        });
+    }
+});
+
+// Criar a rota cadastrar
+// Endereço para acessar através da aplicação externa: http://localhost:8080/users
+/*
+// A aplicação externa deve indicar que está enviado os dados em formato de objeto
+Content-Type: application/json
+
+// Dados em formato de objeto
+{
+    "name": "Cesar",
+    "email": "cesar@celke.com.br"
+}
+
+router.post("/users", async (req, res) => {
+
+    // Receber os dados enviados no corpo da requisição
+    var dados = req.body;
+    console.log(dados);
+
+    // Salvar no banco de dados
+    await db.Users.create(dados).then((dadosUsuario) => {
+        // Pausar o processamento e retornar os dados em formato de objeto
+        return res.json({
+            mensagem: "Usuário cadastrado com sucesso!",
+            dadosUsuario
+        });
+    }).catch(() => {
+        // Pausar o processamento e retornar a mensagem de erro
+        return res.json({
+            mensagem: "Erro: Usuário não cadastrado com sucesso!"
+        });
+    });
+});
+*/
+// Exportar a instrução que está dentro da constante router 
+module.exports = router;

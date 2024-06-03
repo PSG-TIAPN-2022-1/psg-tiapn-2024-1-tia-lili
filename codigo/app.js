@@ -18,10 +18,12 @@ const tipo_carnes = require("./controllers/tipo_carnes");
 
 const bebidas = require("./controllers/bebidas");
 
+const acompanhamentos = require("./controllers/acompanhamentos");
+
 // Criar as rotas
 app.use('/', tipo_carnes);
 app.use('/', bebidas);
-
+app.use('/', acompanhamentos);
 
 
 // Iniciar o servidor na porta 8080, criar a função utilizando modelo Arrow function para retornar a mensagem de sucesso
