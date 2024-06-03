@@ -1,0 +1,107 @@
+create database tialili;
+USE tialili; 
+
+
+CREATE TABLE CLIENTE(
+ID int not null auto_increment,
+NOME VARCHAR(50) not null,
+ENDERECO varchar(50) not null,
+TELEFONE VARCHAR(11),
+primary key (ID)
+);
+
+CREATE TABLE USUARIO(
+ID int not null auto_increment,
+NOME VARCHAR(50) not null,
+TELEFONE VARCHAR(11),
+SENHA int(6) not null,
+primary key (ID)
+);
+
+CREATE TABLE ADM(
+NOME varchar(50) not null,
+CADASTRO varchar(20) not null,
+SENHA int(6) not null,
+primary key (CADASTRO)
+);
+
+CREATE TABLE BEBIDA(
+ID int not null auto_increment,
+NOME varchar(30) not null,
+DESCRICAO varchar(50),
+VALOR DOUBLE not null,
+primary key (ID)
+);
+
+CREATE TABLE ACOMPANHAMENTO(
+ID int not null auto_increment,
+NOME varchar(40) not null,
+DESCRICAO varchar(50),
+primary key (ID)
+);
+
+CREATE TABLE TIPO_CARNES(
+ID INT NOT NULL auto_increment,
+NOME VARCHAR(30) not null,
+VALOR DOUBLE not null,
+primary key (ID)
+);
+
+
+CREATE TABLE PEDIDOS(
+ID int not null auto_increment,
+ENDERECO varchar(50) not null,
+PAGAMENTO varchar(15) not null,
+CARNE int not null,
+OBS varchar(80),
+primary key (ID),
+FOREIGN KEY (CARNE) REFERENCES TIPO_CARNES(ID)
+);
+
+ALTER TABLE PEDIDOS
+ADD COLUMN ID_Bebida INT,
+ADD FOREIGN KEY (ID_Bebida) REFERENCES BEBIDA(ID);
+
+ALTER TABLE PEDIDOS
+ADD COLUMN ID_Acompanhamento INT,
+ADD FOREIGN KEY (ID_Acompanhamento) REFERENCES ACOMPANHAMENTO(ID);
+
+ALTER TABLE PEDIDOS
+ADD COLUMN ID_Usuario INT,
+ADD FOREIGN KEY (ID_Usuario) REFERENCES USUARIO(ID)
+
+
+INSERT INTO TIPO_CARNES (NOME, VALOR_P, VALOR_G) VALUES
+('Filé de Peixe', 16.00, 20.00),
+('Parmegiana de Frango', 20.00, 22.00),
+('Bife de Frango Empanado', 16.00, 20.00),
+('Bife de Fígado', 20.00, 22.00),
+('Bife de Pernil', 16.00, 20.00),
+('Bife de Boi', 22.00, 25.00),
+('Filé de Tilapia', 22.00, 25.00),
+('Carne Cozida com Mandioca', 16.00, 20.00),
+('Omelete Recheado', 16.00, 20.00);
+
+INSERT INTO BEBIDA (NOME, DESCRICAO, VALOR) VALUES
+('Guaraná Antártica 1L', 'Garrafa 1L', 10.00),
+('Coca-Cola 600mL', 'Garrafa 600mL', 10.00);
+
+INSERT INTO ACOMPANHAMENTO (NOME, DESCRICAO) VALUES 
+
+('Arroz Branco', 'Arroz'),
+('Tutu','Tutu'),
+('Feijão','Feijão'),
+('Farofa com Cebola','Farofa com Cebola'),
+('Espaguete Alho e Óleo','Espaguete Alho e Óleo'),
+('Purê de Batata','Purê de Batata'),
+('Batata Doce','Batata Doce'),
+('Jiló Empanado','Jiló Empanado'),
+('Penne ao Creme de Bacon e Milho','Penne ao Creme de Bacon e Milho'),
+('Brócolis','Brócolis'),
+('Couve Flor','Couve Flor'),
+('Macarronese','Macarronese'),
+('Batata Doce','Batata Doce'),
+('Cenoura com Vagem','Cenoura com Vagem'),
+('Cenoura','Cenoura'),
+('Beterraba','Beterraba'),
+('Tomate com Alface','Tomate com Alface');
