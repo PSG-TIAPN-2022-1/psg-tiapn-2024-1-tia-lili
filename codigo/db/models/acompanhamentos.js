@@ -14,8 +14,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   ACOMPANHAMENTOS.init({
-    nome: DataTypes.STRING(30),
-    descricao: DataTypes.STRING(50),
+    nome: DataTypes.STRING(45),
+    
   }, {
     sequelize,
     modelName: 'ACOMPANHAMENTOS',

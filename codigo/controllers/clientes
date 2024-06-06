@@ -7,8 +7,8 @@ const router = express.Router();
 const db = require('./../db/models');
 
 // Criar a rota listar 
-// Endereço para acessar através da aplicação externa: http://localhost:8080/tipo_carnes?page=3
-router.get("/tipo_carnes", async (req, res) => {
+// Endereço para acessar através da aplicação externa: http://localhost:8080/clientes?page=3
+router.get("/clientes", async (req, res) => {
 
     // Receber o número da página, quando não é enviado o número da página é atribuido página 1
     const { page = 1 } = req.query;
@@ -21,27 +21,27 @@ router.get("/tipo_carnes", async (req, res) => {
     var lastPage = 1;
 
     // Contar a quantidade de registro no banco de dados
-    const countTipo_carne = await db.TIPO_CARNES.count();
-    //console.log(countTipo_carne);
+    const countCliente = await db.CLIENTES.count();
+    //console.log(countCliente);
 
     // Acessa o IF quando encontrar registro no banco de dados
-    if (countTipo_carne !== 0) {
+    if (countCliente !== 0) {
         // Calcular a última página
-        lastPage = Math.ceil(countTipo_carne / limit);
+        lastPage = Math.ceil(countCliente / limit);
         //console.log(lastPage);
     } else {
         // Pausar o processamento e retornar a mensagem de erro
         return res.status(400).json({
-            mensagem: "Erro: Nenhum tipo_carne encontrado!"
+            mensagem: "Erro: Nenhum cliente encontrado!"
         });
     }
 
     //console.log((page * limit) - limit); // 3 * 10 - 10 = 20
-    // Recuperar todos os tipo_carne do banco de dados
-    const tipo_carnes = await db.TIPO_CARNES.findAll({
+    // Recuperar todos os cliente do banco de dados
+    const clientes = await db.CLIENTES.findAll({
 
         // Indicar quais colunas recuperar
-        attributes: ['id', 'nome', 'disponivel'],
+        attributes: ['id', 'nome','endereco','telefone','usuarios_id','createdAt', 'updatedAt'],
 
         // Ordenar os registros pela coluna id na forma decrescente
         order: [['id', 'ASC']],
@@ -52,11 +52,11 @@ router.get("/tipo_carnes", async (req, res) => {
     });
 
     // Acessa o IF se encontrar o registro no banco de dados
-    if (tipo_carnes) {
+    if (clientes) {
         // Criar objeto com as informações para paginação
         var pagination = {
             // Caminho
-            path: '/tipo_carnes',
+            path: '/clientes',
             // Página atual
             page,
             // URL da página anterior
@@ -66,116 +66,116 @@ router.get("/tipo_carnes", async (req, res) => {
             // Última página
             lastPage,
             // Quantidade de registros
-            total: countTipo_carne
+            total: countCliente
         }
 
         // Pausar o processamento e retornar os dados em formato de objeto
         return res.json({
-            tipo_carnes,
+            clientes,
             pagination
         });
     } else {
         // Pausar o processamento e retornar a mensagem de erro
         return res.status(400).json({
-            mensagem: "Erro: Nenhum tipo_carne encontrado!"
+            mensagem: "Erro: Nenhum cliente encontrado!"
         });
     }
 });
 
 // Criar a rota visualizar e receber o parâmentro id enviado na URL 
-// Endereço para acessar através da aplicação externa: http://localhost:8080/tipo_carnes/7
-router.get("/tipo_carnes/:id", async (req, res) => {
+// Endereço para acessar através da aplicação externa: http://localhost:8080/clientes/7
+router.get("/clientes/:id", async (req, res) => {
 
     // Receber o parâmetro enviado na URL
     const { id } = req.params;
     //console.log(id);
 
     // Recuperar o registro do banco de dados
-    const tipo_carne = await db.TIPO_CARNES.findOne({
+    const cliente = await db.CLIENTES.findOne({
         // Indicar quais colunas recuperar
-        attributes: ['id', 'nome', 'disponivel','createdAt', 'updatedAt'],
+        attributes: ['id', 'nome','endereco','telefone','usuarios_id','createdAt', 'updatedAt'],
 
         // Acrescentado condição para indicar qual registro deve ser retornado do banco de dados
         where: { id },
     });
-    //console.log(tipo_carne);
+    //console.log(cliente);
 
     // Acessa o IF se encontrar o registro no banco de dados
-    if (tipo_carne) {
+    if (cliente) {
         // Pausar o processamento e retornar os dados
         return res.json({
-            tipo_carne: tipo_carne.dataValues
+            cliente: cliente.dataValues
         });
     } else {
         // Pausar o processamento e retornar a mensagem de erro
         return res.status(400).json({
-            mensagem: "Erro: Tipo_carne não encontrado!"
+            mensagem: "Erro: Cliente não encontrado!"
         });
     }
 });
 
 
-router.post("/tipo_carnes", async (req, res) => {
+router.post("/clientes", async (req, res) => {
 
     // Receber os dados enviados no corpo da requisição
     var dados = req.body;
     //console.log(dados);
 
     // Salvar no banco de dados
-    await db.TIPO_CARNES.create(dados).then((dadosUsuario) => {
+    await db.CLIENTES.create(dados).then((dadosUsuario) => {
         // Pausar o processamento e retornar os dados em formato de objeto
         return res.json({
-            mensagem: "Tipo_carne cadastrado com sucesso!",
+            mensagem: "Cliente cadastrado com sucesso!",
             dadosUsuario
         });
     }).catch(() => {
         // Pausar o processamento e retornar a mensagem de erro
         return res.json({
-            mensagem: "Erro: Tipo_carne não cadastrado com sucesso!"
+            mensagem: "Erro: Cliente não cadastrado com sucesso!"
         });
     });
 });
 
 
-router.put("/tipo_carnes", async (req, res) => {
+router.put("/clientes", async (req, res) => {
 
     // Receber os dados enviados no corpo da requisição
     var dados = req.body;
     // Editar no banco de dados
-    await db.TIPO_CARNES.update(dados, { where: { id: dados.id } })
+    await db.CLIENTES.update(dados, { where: { id: dados.id } })
         .then(() => {
             // Pausar o processamento e retornar a mensagem
             return res.json({
-                mensagem: "Tipo_carne editado com sucesso!"
+                mensagem: "Cliente editado com sucesso!"
             });
         }).catch(() => {
             // Pausar o processamento e retornar a mensagem
             return res.status(400).json({
-                mensagem: "Erro: Tipo_carne não editado com sucesso!"
+                mensagem: "Erro: Cliente não editado com sucesso!"
             });
         });
 });
 
 // Criar a rota apagar e receber o parâmentro id enviado na URL 
-// Endereço para acessar através da aplicação externa: http://localhost:8080/tipo_carnes/3
-router.delete("/tipo_carnes/:id", async (req, res) => {
+// Endereço para acessar através da aplicação externa: http://localhost:8080/clientes/3
+router.delete("/clientes/:id", async (req, res) => {
 
     // Receber o parâmetro enviado na URL
     const { id } = req.params;
     console.log(req.params)
-    // Apagar tipo_carne no banco de dados utilizando a MODELS tipo_carnes
-    await db.TIPO_CARNES.destroy({
+    // Apagar cliente no banco de dados utilizando a MODELS clientes
+    await db.CLIENTES.destroy({
         // Acrescentar o WHERE na instrução SQL indicando qual registro excluir no BD
         where: {id} 
     }).then(() => {
         // Pausar o processamento e retornar a mensagem
         return res.json({
-            mensagem: "Tipo_carne apagado com sucesso!"
+            mensagem: "Cliente apagado com sucesso!"
         });
     }).catch(() => {
         // Pausar o processamento e retornar a mensagem
         return res.status(400).json({
-            mensagem: "Erro: Tipo_carne não apagado com sucesso!"
+            mensagem: "Erro: Cliente não apagado com sucesso!"
         });
     });
 });

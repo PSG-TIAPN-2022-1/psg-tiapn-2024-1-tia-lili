@@ -7,64 +7,179 @@ const router = express.Router();
 const db = require('./../db/models');
 
 // Criar a rota listar 
-// Endereço para acessar através da aplicação externa: http://localhost:8080/users
+// Endereço para acessar através da aplicação externa: http://localhost:8080/bebidas?page=3
 router.get("/bebidas", async (req, res) => {
-    // Recuperar todos os usuário do banco de dados
+
+    // Receber o número da página, quando não é enviado o número da página é atribuido página 1
+    const { page = 1 } = req.query;
+    //console.log(page);
+
+    // Limite de registros em cada página
+    const limit = 20;
+
+    // Variável com o número da última página
+    var lastPage = 1;
+
+    // Contar a quantidade de registro no banco de dados
+    const countBebida = await db.BEBIDAS.count();
+    //console.log(countBebida);
+
+    // Acessa o IF quando encontrar registro no banco de dados
+    if (countBebida !== 0) {
+        // Calcular a última página
+        lastPage = Math.ceil(countBebida / limit);
+        //console.log(lastPage);
+    } else {
+        // Pausar o processamento e retornar a mensagem de erro
+        return res.status(400).json({
+            mensagem: "Erro: Nenhum bebida encontrado!"
+        });
+    }
+
+    //console.log((page * limit) - limit); // 3 * 10 - 10 = 20
+    // Recuperar todos os bebida do banco de dados
     const bebidas = await db.BEBIDAS.findAll({
 
         // Indicar quais colunas recuperar
-        attributes: ['id', 'nome', 'descricao','valor'],
+        attributes: ['id', 'nome','valor','disponivel'],
 
         // Ordenar os registros pela coluna id na forma decrescente
-        order: [['id', 'ASC']]
+        order: [['id', 'ASC']],
+
+        // Calcular a partir de qual registro deve retornar e o limite de registros
+        offset: Number((page * limit) - limit),
+        limit: limit
     });
 
     // Acessa o IF se encontrar o registro no banco de dados
     if (bebidas) {
+        // Criar objeto com as informações para paginação
+        var pagination = {
+            // Caminho
+            path: '/bebidas',
+            // Página atual
+            page,
+            // URL da página anterior
+            prev_page_url: page - 1 >= 1 ? page - 1 : false,
+            // URL da próxima página
+            next_page_url: Number(page) + Number(1) > lastPage ? false : Number(page) + Number(1),
+            // Última página
+            lastPage,
+            // Quantidade de registros
+            total: countBebida
+        }
+
         // Pausar o processamento e retornar os dados em formato de objeto
         return res.json({
-            bebidas
+            bebidas,
+            pagination
         });
     } else {
         // Pausar o processamento e retornar a mensagem de erro
         return res.status(400).json({
-            mensagem: "Erro: Nenhuma bebida encontrada!"
+            mensagem: "Erro: Nenhum bebida encontrado!"
         });
     }
 });
 
-// Criar a rota cadastrar
-// Endereço para acessar através da aplicação externa: http://localhost:8080/users
-/*
-// A aplicação externa deve indicar que está enviado os dados em formato de objeto
-Content-Type: application/json
+// Criar a rota visualizar e receber o parâmentro id enviado na URL 
+// Endereço para acessar através da aplicação externa: http://localhost:8080/bebidas/7
+router.get("/bebidas/:id", async (req, res) => {
 
-// Dados em formato de objeto
-{
-    "name": "Cesar",
-    "email": "cesar@celke.com.br"
-}
+    // Receber o parâmetro enviado na URL
+    const { id } = req.params;
+    //console.log(id);
 
-router.post("/users", async (req, res) => {
+    // Recuperar o registro do banco de dados
+    const bebida = await db.BEBIDAS.findOne({
+        // Indicar quais colunas recuperar
+        attributes: ['id', 'nome','valor','disponivel','createdAt', 'updatedAt'],
+
+        // Acrescentado condição para indicar qual registro deve ser retornado do banco de dados
+        where: { id },
+    });
+    //console.log(bebida);
+
+    // Acessa o IF se encontrar o registro no banco de dados
+    if (bebida) {
+        // Pausar o processamento e retornar os dados
+        return res.json({
+            bebida: bebida.dataValues
+        });
+    } else {
+        // Pausar o processamento e retornar a mensagem de erro
+        return res.status(400).json({
+            mensagem: "Erro: Bebida não encontrado!"
+        });
+    }
+});
+
+
+router.post("/bebidas", async (req, res) => {
 
     // Receber os dados enviados no corpo da requisição
     var dados = req.body;
-    console.log(dados);
+    //console.log(dados);
 
     // Salvar no banco de dados
-    await db.Users.create(dados).then((dadosUsuario) => {
+    await db.BEBIDAS.create(dados).then((dadosBebida) => {
         // Pausar o processamento e retornar os dados em formato de objeto
         return res.json({
-            mensagem: "Usuário cadastrado com sucesso!",
-            dadosUsuario
+            mensagem: "Bebida cadastrado com sucesso!",
+            dadosBebida
         });
     }).catch(() => {
         // Pausar o processamento e retornar a mensagem de erro
         return res.json({
-            mensagem: "Erro: Usuário não cadastrado com sucesso!"
+            mensagem: "Erro: Bebida não cadastrado com sucesso!"
         });
     });
 });
-*/
+
+
+router.put("/bebidas", async (req, res) => {
+
+    // Receber os dados enviados no corpo da requisição
+    var dados = req.body;
+
+    // Editar no banco de dados
+    await db.BEBIDAS.update(dados, { where: { id: dados.id } })
+        .then(() => {
+            // Pausar o processamento e retornar a mensagem
+            return res.json({
+                mensagem: "Bebida editado com sucesso!"
+            });
+        }).catch(() => {
+            // Pausar o processamento e retornar a mensagem
+            return res.status(400).json({
+                mensagem: "Erro: Bebida não editado com sucesso!"
+            });
+        });
+});
+
+// Criar a rota apagar e receber o parâmentro id enviado na URL 
+// Endereço para acessar através da aplicação externa: http://localhost:8080/bebidas/3
+router.delete("/bebidas/:id", async (req, res) => {
+
+    // Receber o parâmetro enviado na URL
+    const { id } = req.params;
+    console.log(req.params)
+    // Apagar bebida no banco de dados utilizando a MODELS bebidas
+    await db.BEBIDAS.destroy({
+        // Acrescentar o WHERE na instrução SQL indicando qual registro excluir no BD
+        where: {id} 
+    }).then(() => {
+        // Pausar o processamento e retornar a mensagem
+        return res.json({
+            mensagem: "Bebida apagado com sucesso!"
+        });
+    }).catch(() => {
+        // Pausar o processamento e retornar a mensagem
+        return res.status(400).json({
+            mensagem: "Erro: Bebida não apagado com sucesso!"
+        });
+    });
+});
+
 // Exportar a instrução que está dentro da constante router 
 module.exports = router;

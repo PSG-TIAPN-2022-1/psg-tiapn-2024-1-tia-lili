@@ -7,8 +7,8 @@ const router = express.Router();
 const db = require('./../db/models');
 
 // Criar a rota listar 
-// Endereço para acessar através da aplicação externa: http://localhost:8080/tipo_carnes?page=3
-router.get("/tipo_carnes", async (req, res) => {
+// Endereço para acessar através da aplicação externa: http://localhost:8080/marmita_acompanhamentos?page=3
+router.get("/marmita_acompanhamentos", async (req, res) => {
 
     // Receber o número da página, quando não é enviado o número da página é atribuido página 1
     const { page = 1 } = req.query;
@@ -21,30 +21,30 @@ router.get("/tipo_carnes", async (req, res) => {
     var lastPage = 1;
 
     // Contar a quantidade de registro no banco de dados
-    const countTipo_carne = await db.TIPO_CARNES.count();
-    //console.log(countTipo_carne);
+    const countMarmita_acompanhamento = await db.MARMITA_ACOMPANHAMENTOS.count();
+    //console.log(countMarmita_acompanhamento);
 
     // Acessa o IF quando encontrar registro no banco de dados
-    if (countTipo_carne !== 0) {
+    if (countMarmita_acompanhamento !== 0) {
         // Calcular a última página
-        lastPage = Math.ceil(countTipo_carne / limit);
+        lastPage = Math.ceil(countMarmita_acompanhamento / limit);
         //console.log(lastPage);
     } else {
         // Pausar o processamento e retornar a mensagem de erro
         return res.status(400).json({
-            mensagem: "Erro: Nenhum tipo_carne encontrado!"
+            mensagem: "Erro: Nenhum marmita_acompanhamento encontrado!"
         });
     }
 
     //console.log((page * limit) - limit); // 3 * 10 - 10 = 20
-    // Recuperar todos os tipo_carne do banco de dados
-    const tipo_carnes = await db.TIPO_CARNES.findAll({
+    // Recuperar todos os marmita_acompanhamento do banco de dados
+    const marmita_acompanhamentos = await db.MARMITA_ACOMPANHAMENTOS.findAll({
 
         // Indicar quais colunas recuperar
-        attributes: ['id', 'nome', 'disponivel'],
+        attributes: [`marmita_id1` ,`acompanhamentos_id`],
 
         // Ordenar os registros pela coluna id na forma decrescente
-        order: [['id', 'ASC']],
+        order: [['marmita_id1', 'ASC']],
 
         // Calcular a partir de qual registro deve retornar e o limite de registros
         offset: Number((page * limit) - limit),
@@ -52,11 +52,11 @@ router.get("/tipo_carnes", async (req, res) => {
     });
 
     // Acessa o IF se encontrar o registro no banco de dados
-    if (tipo_carnes) {
+    if (marmita_acompanhamentos) {
         // Criar objeto com as informações para paginação
         var pagination = {
             // Caminho
-            path: '/tipo_carnes',
+            path: '/marmita_acompanhamentos',
             // Página atual
             page,
             // URL da página anterior
@@ -66,116 +66,123 @@ router.get("/tipo_carnes", async (req, res) => {
             // Última página
             lastPage,
             // Quantidade de registros
-            total: countTipo_carne
+            total: countMarmita_acompanhamento
         }
 
         // Pausar o processamento e retornar os dados em formato de objeto
         return res.json({
-            tipo_carnes,
+            marmita_acompanhamentos,
             pagination
         });
     } else {
         // Pausar o processamento e retornar a mensagem de erro
         return res.status(400).json({
-            mensagem: "Erro: Nenhum tipo_carne encontrado!"
+            mensagem: "Erro: Nenhum marmita_acompanhamento encontrado!"
         });
     }
 });
 
 // Criar a rota visualizar e receber o parâmentro id enviado na URL 
-// Endereço para acessar através da aplicação externa: http://localhost:8080/tipo_carnes/7
-router.get("/tipo_carnes/:id", async (req, res) => {
+// Endereço para acessar através da aplicação externa: http://localhost:8080/marmita_acompanhamentos/7
+router.get("/marmita_acompanhamentos/:id", async (req, res) => {
 
     // Receber o parâmetro enviado na URL
     const { id } = req.params;
     //console.log(id);
 
     // Recuperar o registro do banco de dados
-    const tipo_carne = await db.TIPO_CARNES.findOne({
+    const marmita_acompanhamento = await db.MARMITA_ACOMPANHAMENTOS.findOne({
         // Indicar quais colunas recuperar
-        attributes: ['id', 'nome', 'disponivel','createdAt', 'updatedAt'],
+        attributes: [`marmita_id1` ,`acompanhamentos_id`,'createdAt', 'updatedAt'],
 
         // Acrescentado condição para indicar qual registro deve ser retornado do banco de dados
         where: { id },
     });
-    //console.log(tipo_carne);
+    //console.log(marmita_acompanhamento);
 
     // Acessa o IF se encontrar o registro no banco de dados
-    if (tipo_carne) {
+    if (marmita_acompanhamento) {
         // Pausar o processamento e retornar os dados
         return res.json({
-            tipo_carne: tipo_carne.dataValues
+            marmita_acompanhamento: marmita_acompanhamento.dataValues
         });
     } else {
         // Pausar o processamento e retornar a mensagem de erro
         return res.status(400).json({
-            mensagem: "Erro: Tipo_carne não encontrado!"
+            mensagem: "Erro: Marmita_acompanhamento não encontrado!"
         });
     }
 });
 
 
-router.post("/tipo_carnes", async (req, res) => {
+router.post("/marmita_acompanhamentos", async (req, res) => {
 
     // Receber os dados enviados no corpo da requisição
     var dados = req.body;
     //console.log(dados);
 
     // Salvar no banco de dados
-    await db.TIPO_CARNES.create(dados).then((dadosUsuario) => {
+    await db.MARMITA_ACOMPANHAMENTOS.create(dados).then((dadosUsuario) => {
         // Pausar o processamento e retornar os dados em formato de objeto
         return res.json({
-            mensagem: "Tipo_carne cadastrado com sucesso!",
+            mensagem: "Marmita_acompanhamento cadastrado com sucesso!",
             dadosUsuario
         });
     }).catch(() => {
         // Pausar o processamento e retornar a mensagem de erro
         return res.json({
-            mensagem: "Erro: Tipo_carne não cadastrado com sucesso!"
+            mensagem: "Erro: Marmita_acompanhamento não cadastrado com sucesso!"
         });
     });
 });
 
 
-router.put("/tipo_carnes", async (req, res) => {
+router.put("/marmita_acompanhamentos", async (req, res) => {
 
     // Receber os dados enviados no corpo da requisição
     var dados = req.body;
     // Editar no banco de dados
-    await db.TIPO_CARNES.update(dados, { where: { id: dados.id } })
+    await db.MARMITA_ACOMPANHAMENTOS.update(dados, { where: { id: dados.id } })
         .then(() => {
             // Pausar o processamento e retornar a mensagem
             return res.json({
-                mensagem: "Tipo_carne editado com sucesso!"
+                mensagem: "Marmita_acompanhamento editado com sucesso!"
             });
         }).catch(() => {
             // Pausar o processamento e retornar a mensagem
             return res.status(400).json({
-                mensagem: "Erro: Tipo_carne não editado com sucesso!"
+                mensagem: "Erro: Marmita_acompanhamento não editado com sucesso!"
             });
         });
 });
 
 // Criar a rota apagar e receber o parâmentro id enviado na URL 
-// Endereço para acessar através da aplicação externa: http://localhost:8080/tipo_carnes/3
-router.delete("/tipo_carnes/:id", async (req, res) => {
+// Endereço para acessar através da aplicação externa: http://localhost:8080/marmita_acompanhamentos/3
+router.delete("/marmita_acompanhamentos/:marmita_id1/:acompanhamentos_id", async (req, res) => {
 
+    
     // Receber o parâmetro enviado na URL
-    const { id } = req.params;
+    const { marmita_id1, acompanhamentos_id } = req.params;
+    const parsedMarmitaId = parseInt(marmita_id1);
+    const parsedAcompanhamentosId = parseInt(acompanhamentos_id);
     console.log(req.params)
-    // Apagar tipo_carne no banco de dados utilizando a MODELS tipo_carnes
-    await db.TIPO_CARNES.destroy({
+    // Apagar marmita_acompanhamento no banco de dados utilizando a MODELS marmita_acompanhamentos
+    await db.MARMITA_ACOMPANHAMENTOS.destroy({
         // Acrescentar o WHERE na instrução SQL indicando qual registro excluir no BD
-        where: {id} 
+        where: {
+            marmita_id1: parsedMarmitaId,
+            acompanhamentos_id: parsedAcompanhamentosId
+          }
     }).then(() => {
         // Pausar o processamento e retornar a mensagem
         return res.json({
-            mensagem: "Tipo_carne apagado com sucesso!"
+            mensagem: "Marmita_acompanhamento apagado com sucesso!"
         });
-    }).catch(() => {
+    }).catch((erro) => {
         // Pausar o processamento e retornar a mensagem
         return res.status(400).json({
-            mensagem: "Erro: Tipo_carne não apagado com sucesso!"
+            erro:erro.message,
+            mensagem: "Erro: Marmita_acompanhamento não apagado com sucesso!"
         });
     });
 });

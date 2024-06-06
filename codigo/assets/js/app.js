@@ -140,42 +140,43 @@ function exibe_bebidas(){
         .then(data => {      
 
             const bebidas = Object.values(data)
-            //console.log(bebidas);
+            console.log(bebidas);
             for (let i = 0; i < bebidas[0].length; i++) {
                 let bebida = bebidas[0][i];
                 //console.log(bebida);
-          
-                str2 += `
-                <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card">
-                    <div class="d-none d-md-block">
-                        <!-- Imagem para telas grandes -->
-                        <img src="https://source.unsplash.com/random/287x190" alt="" class="card-img-top ">
-                        
-                        <div class="card-body ">
-                            <h5 class="card-title">${bebida.nome}</h5>
-                            <p class="card-text">R$${bebida.valor},00</p>
-                            <a href="pages/marmita.html" class="btn btn-outline-success btn-sm">Adicionar</a>
-                        </div>
-
-                    </div>
-                    <div class=" d-flex d-md-block flex-row flex-md-column d-md-none">
-                        <!-- Imagem para telas pequenas -->
-                        <img src="https://source.unsplash.com/random/287x190" alt="" class="card-img-top d-md-none" style="width: 50%;">
-            
-                        <div class="card-body d-md-none" style="width: 50%;">
-                            <h5 class="card-title">${bebida.nome}</h5>
-                            <p class="card-text">R$${bebida.valor},00</p>
-                            <a href="pages/marmita.html" class="btn btn-outline-success btn-sm">Adicionar</a>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
                 
-                `
-                document.querySelector('#bebidas_list').innerHTML=str2
-                
+                if(bebida.disponivel==1){
+                    str2 += `
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card">
+                            <div class="d-none d-md-block">
+                                <!-- Imagem para telas grandes -->
+                                <img src="https://source.unsplash.com/random/287x190" alt="" class="card-img-top ">
+                                
+                                <div class="card-body ">
+                                    <h5 class="card-title">${bebida.nome}</h5>
+                                    <p class="card-text">R$${bebida.valor},00</p>
+                                    <a href="pages/marmita.html" class="btn btn-outline-success btn-sm">Adicionar</a>
+                                </div>
+
+                            </div>
+                            <div class=" d-flex d-md-block flex-row flex-md-column d-md-none">
+                                <!-- Imagem para telas pequenas -->
+                                <img src="https://source.unsplash.com/random/287x190" alt="" class="card-img-top d-md-none" style="width: 50%;">
+                    
+                                <div class="card-body d-md-none" style="width: 50%;">
+                                    <h5 class="card-title">${bebida.nome}</h5>
+                                    <p class="card-text">R$${bebida.valor},00</p>
+                                    <a href="pages/marmita.html" class="btn btn-outline-success btn-sm">Adicionar</a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    
+                    `
+                    document.querySelector('#bebidas_list').innerHTML=str2
+                }
             }
         
         }).catch(error => {
@@ -214,12 +215,13 @@ function exibe_acompanhamentos(){
         .then(data => {      
 
             const acomps = Object.values(data)
-            //console.log(acomps);
+            console.log(acomps);
             for (let i = 0; i < acomps[0].length; i++) {
                 let acomp = acomps[0][i];
                 //console.log(bebida);
-          
-                str3+=`<div class="checkbox-item col-12"><input name="checkbox" id="checkbox${i+1}" type="checkbox"><label for="checkbox${i+1}">${acomp.nome}</label></div>`
+                if(acomp.disponivel==1){
+                    str3+=`<div class="checkbox-item col-12"><input name="checkbox" id="checkbox${i+1}" type="checkbox"><label for="checkbox${i+1}">${acomp.nome}</label></div>`
+                }
                 
                 
             }

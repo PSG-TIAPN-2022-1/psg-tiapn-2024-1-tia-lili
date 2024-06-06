@@ -14,13 +14,14 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   TIPO_CARNES.init({
-    nome: DataTypes.STRING(30),
+    nome: DataTypes.STRING(45),
     valor_p: DataTypes.DOUBLE,
     valor_g: DataTypes.DOUBLE,
-    image: DataTypes.STRING(80)
+    img: DataTypes.STRING(100)
   }, {
     sequelize,
     modelName: 'TIPO_CARNES',
+    timestamps: false
   });
   return TIPO_CARNES;
 };

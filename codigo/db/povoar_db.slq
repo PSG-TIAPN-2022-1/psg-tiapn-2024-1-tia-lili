@@ -1,0 +1,77 @@
+use tia_lili;
+
+INSERT INTO TIPO_CARNES (NOME, VALOR_P, VALOR_G) VALUES
+('Filé de Peixe', 16.00, 20.00),
+('Parmegiana de Frango', 20.00, 22.00),
+('Bife de Frango Empanado', 16.00, 20.00),
+('Bife de Fígado', 20.00, 22.00),
+('Bife de Pernil', 16.00, 20.00),
+('Bife de Boi', 22.00, 25.00),
+('Filé de Tilapia', 22.00, 25.00),
+('Carne Cozida com Mandioca', 16.00, 20.00),
+('Omelete Recheado', 16.00, 20.00);
+
+INSERT INTO BEBIDAS (NOME, VALOR) VALUES
+('Guaraná Antártica 1L', 10.00),
+('Coca-Cola 600mL', 10.00);
+
+INSERT INTO ACOMPANHAMENTOS (NOME) VALUES 
+
+('Arroz Branco'),
+('Tutu'),
+('Feijão'),
+('Farofa com Cebola'),
+('Espaguete Alho e Óleo'),
+('Purê de Batata'),
+('Batata Doce'),
+('Jiló Empanado'),
+('Penne ao Creme de Bacon e Milho'),
+('Brócolis'),
+('Couve Flor'),
+('Macarronese'),
+('Batata Doce'),
+('Cenoura com Vagem'),
+('Cenoura'),
+('Beterraba'),
+('Tomate com Alface');
+
+
+
+ALTER TABLE `tia_lili`.`Usuarios`
+ADD COLUMN `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ADD COLUMN `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
+
+-- Clientes table
+ALTER TABLE `tia_lili`.`Clientes`
+ADD COLUMN `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ADD COLUMN `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
+
+-- Bebidas table
+ALTER TABLE `tia_lili`.`Bebidas`
+ADD COLUMN `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ADD COLUMN `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
+
+-- tipo_carnes table
+ALTER TABLE `tia_lili`.`tipo_carnes`
+ADD COLUMN `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ADD COLUMN `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
+
+-- acompanhamentos table
+ALTER TABLE `tia_lili`.`acompanhamentos`
+ADD COLUMN `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ADD COLUMN `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
+
+-- marmitas table
+ALTER TABLE `tia_lili`.`marmitas`
+ADD COLUMN `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ADD COLUMN `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
+
+-- pedidos table
+ALTER TABLE `tia_lili`.`pedidos`
+ADD COLUMN `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ADD COLUMN `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
+
+-- Usuarios_adm table
+ALTER TABLE `tia_lili`.`Usuarios_adm`
+ADD COLUMN `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ADD COLUMN `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;

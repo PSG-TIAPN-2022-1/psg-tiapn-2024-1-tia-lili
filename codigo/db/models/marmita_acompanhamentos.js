@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class BEBIDAS extends Model {
+  class MARMITA_ACOMPANHAMENTOS extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -13,16 +13,21 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  BEBIDAS.init({
-    nome: DataTypes.STRING(45),
-    valor: DataTypes.DECIMAL,
-    img: DataTypes.STRING(100)
-
+  MARMITA_ACOMPANHAMENTOS.init({
+    marmita_id1:{
+        type: DataTypes.INTEGER,
+        primaryKey: true // Definir como chave primária
+      },
+    acompanhamentos_id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true // Definir como chave primária
+      },
+    
   }, {
     sequelize,
-    modelName: 'BEBIDAS',
+    modelName: 'MARMITA_ACOMPANHAMENTOS',
     timestamps: false
   });
-  return BEBIDAS;
+  return MARMITA_ACOMPANHAMENTOS;
 };
 
