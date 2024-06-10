@@ -7,11 +7,46 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 </head>
 <body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-success text-white">
+            <div class="container" id="navbar">
+                <a class="navbar-brand text-white" href="../index.html"><img src="../assets/img/tia lili.jpg" style="width: 120px;"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação"><span class="navbar-toggler-icon"></span></button>
+            
+                <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+                    <form class="form-inline my-2 my-lg-0 d-none">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
+                        <button class="btn btn-outline my-2 my-sm-0" type="submit">Pesquisar</button>
+                    </form>
+                    
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#section_marmitas">Marmitas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#section_bebidas">Bebidas</a>
+                        </li>
+                        <li class="nav-item dropdown" style="display: none;">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                ADM
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">Ação</a>
+                                <a class="dropdown-item" href="#">Outra ação</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Algo mais aqui</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled text-white" href="#section_especiais">Especiais</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
     <div class="container mt-5">
-        <div class="header mb-3">
-            <img src="/codigo/assets/img/tia lili.jpg" alt="Logo">
-            <h1>Tia Lili Marmitex</h1>
-        </div>
         <form>
             <div class="form-group">
                 <label for="nome">Nome:</label>
@@ -41,26 +76,3 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </body>
 </html>
-
-<style>
-    .header {
-        background-color: #4CAF50;
-        padding: 10px;
-        color: white;
-        text-align: center;
-        border-top-left-radius: 8px;
-        border-top-right-radius: 8px;
-    }
-    .header img {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        vertical-align: middle;
-    }
-    .header h1 {
-        display: inline;
-        font-size: 20px;
-        margin: 0;
-        vertical-align: middle;
-    }
-</style>
