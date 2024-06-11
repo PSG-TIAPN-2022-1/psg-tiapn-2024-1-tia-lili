@@ -93,13 +93,15 @@ function exibe_tipo_carnes(){
             for (let i = 0; i < carnes[0].length; i++) {
                 let carne = carnes[0][i];
                 //console.log(carne);
-          
+                
+                // tamanho das imagens 287x190
+
                 str += `
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="card" >
                         <div class="d-none d-md-block">
                             <!-- Imagem para telas grandes -->
-                            <img src="https://source.unsplash.com/random/287x190" alt="" class="card-img-top ">
+                            <img src="db/imagens/tipo_carnes/${carne.id}.jpg" alt="" class="card-img-top ">
                             
                             <div class="card-body ">
                                 <h5 class="card-title">${carne.nome}</h5>
@@ -108,9 +110,9 @@ function exibe_tipo_carnes(){
                             </div>
 
                         </div>
-                        <div class=" d-flex d-md-block flex-row flex-md-column d-md-none">
+                        <div class=" d-flex d-md-block flex-row flex-md-column d-md-none image-container">
                             <!-- Imagem para telas pequenas -->
-                            <img src="https://source.unsplash.com/random/287x190" alt="" class="card-img-top d-md-none" style="width: 50%;">
+                            <img src="db/imagens/tipo_carnes/${carne.id}.jpg" alt="" class="card-img-top d-md-none" style="width: 50%;">
                 
                             <div class="card-body d-md-none" style="width: 50%;">
                                 <h5 class="card-title">${carne.nome}</h5>
@@ -151,7 +153,7 @@ function exibe_bebidas(){
                         <div class="card">
                             <div class="d-none d-md-block">
                                 <!-- Imagem para telas grandes -->
-                                <img src="https://source.unsplash.com/random/287x190" alt="" class="card-img-top ">
+                                <img src="db/imagens/bebidas/${bebida.id}.jpg" alt="" class="card-img-top ">
                                 
                                 <div class="card-body ">
                                     <h5 class="card-title">${bebida.nome}</h5>
@@ -162,7 +164,7 @@ function exibe_bebidas(){
                             </div>
                             <div class=" d-flex d-md-block flex-row flex-md-column d-md-none">
                                 <!-- Imagem para telas pequenas -->
-                                <img src="https://source.unsplash.com/random/287x190" alt="" class="card-img-top d-md-none" style="width: 50%;">
+                                <img src="db/imagens/bebidas/${bebida.id}.jpg" alt="" class="card-img-top d-md-none" style="width: 50%;">
                     
                                 <div class="card-body d-md-none" style="width: 50%;">
                                     <h5 class="card-title">${bebida.nome}</h5>
