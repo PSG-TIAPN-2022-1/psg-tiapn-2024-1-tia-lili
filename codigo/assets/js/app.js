@@ -115,7 +115,7 @@ function exibe_tipo_carnes(){
                             <div class="card-body d-md-none" style="width: 50%;">
                                 <h5 class="card-title">${carne.nome}</h5>
                                 <p class="card-text">Selecione acompanhamentos</p>
-                                <a href="pages/marmita.html" class="btn btn-outline-success btn-sm">Adicionar</a>
+                                <a href="pages/marmita.html?id=${carne.id}" class="btn btn-outline-success btn-sm">Adicionar</a>
                             </div>
 
                         </div>
@@ -188,16 +188,16 @@ function exibe_um_tipo_carne(id){
   
     str=''
 
-    fetch('http://localhost:3000/tipo_carnes')
+    fetch('http://localhost:3000/tipo_carnes/'+id)
         .then(response => response.json())
         .then(data => {      
-
-            const carnes = Object.values(data)
-            //console.log(carnes[0][id]);
-            document.querySelector('#tipo_carnes_nome').innerHTML=`${carnes[0][id].nome}`
             
-            document.querySelector('#valor_p').innerHTML=`<input name="radio" id="radio1" type="radio" onclick="calcular_valor(${carnes[0][id].valor_p}.00)"><label class="d-flex flex-row justify-content-between" for="radio1"><h6>Pequena</h6><h6 class="valor" >R$${carnes[0][id].valor_p},00</h6> </label>`
-            document.querySelector('#valor_g').innerHTML=`<input name="radio" id="radio2" type="radio" onclick="calcular_valor(${carnes[0][id].valor_g}.00)"><label class="d-flex flex-row justify-content-between" for="radio2"><h6>Pequena</h6><h6 class="valor" >R$${carnes[0][id].valor_g},00</h6> </label>`
+            const carnes = data.tipo_carne;
+            //console.log(carnes.valor_p);
+            document.querySelector('#tipo_carnes_nome').innerHTML=`${carnes.nome}`
+            
+            document.querySelector('#valor_p').innerHTML=`<input name="radio" id="radio1" type="radio" onclick="calcular_valor(${carnes.valor_p}.00)"><label class="d-flex flex-row justify-content-between" for="radio1"><h6>Pequena</h6><h6 class="valor" >R$${carnes.valor_p},00</h6> </label>`
+            document.querySelector('#valor_g').innerHTML=`<input name="radio" id="radio2" type="radio" onclick="calcular_valor(${carnes.valor_g}.00)"><label class="d-flex flex-row justify-content-between" for="radio2"><h6>Pequena</h6><h6 class="valor" >R$${carnes.valor_g},00</h6> </label>`
             
             
             
@@ -215,7 +215,7 @@ function exibe_acompanhamentos(){
         .then(data => {      
 
             const acomps = Object.values(data)
-            console.log(acomps);
+            //console.log(acomps);
             for (let i = 0; i < acomps[0].length; i++) {
                 let acomp = acomps[0][i];
                 //console.log(bebida);

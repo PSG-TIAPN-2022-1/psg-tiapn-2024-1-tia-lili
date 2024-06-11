@@ -140,7 +140,9 @@
     </footer>    
 
     <script>
-        exibe_um_tipo_carne(1);
+        const urlParams = new URLSearchParams(location.search);
+        let id = urlParams.get('id');
+        exibe_um_tipo_carne(id);
         exibe_acompanhamentos();
         function calcular_valor(val){
             
