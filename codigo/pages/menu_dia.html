@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tia Lili Marmitex</title>
+    
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="../assets/css/dropdown_menu.css">
+    <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> -->
+    
+
+    <script src="../assets/js/app.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</head>
+<body onload="show_menu_dia()">
+
+    <header>
+        <nav  class="navbar navbar-expand-lg navbar-light bg-success text-white">
+            <div class="container" id="navbar">
+
+                <a class="navbar-brand text-white" href="../index.html"><img src="../assets/img/tia lili.jpg" style="width: 120px;"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação"><span class="navbar-toggler-icon"></span></button>
+            
+                <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+                    <form class="form-inline my-2 my-lg-0 d-none">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
+                        <button class="btn btn-outline my-2 my-sm-0" type="submit">Pesquisar</button>
+                    </form>
+                    
+                    <ul class="navbar-nav mr-auto ">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#section_marmitas">Marmitas</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link  text-white" href="#section_bebidas">Bebidas</a>
+                        </li>
+
+                        <li class="nav-item dropdown" style="display: none;">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            ADM
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Ação</a>
+                            <a class="dropdown-item" href="#">Outra ação</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Algo mais aqui</a>
+                        </div>
+                        </li>
+
+                        <li class="nav-item">
+                        <a class="nav-link disabled  text-white" href="#section_especiais">Especiais</a>
+                        </li>
+
+                    </ul>
+                    
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+    
+    <main class="container">
+        
+        
+        <!-- CARNES -->
+        <section class="checkbox container mt-5">
+            
+            <a class="dropdown-item" href="#" onclick="mostrarListaCarnes()"><h2>Tipos de carnes 
+                <svg id="my-svg1" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="32" height="10" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 512 298.04"><path fill-rule="nonzero" d="M70.94 285.81c-16.17 16.24-42.46 16.32-58.71.15-16.24-16.16-16.32-42.46-.15-58.7L226.57 12.23c16.16-16.24 42.46-16.32 58.7-.15l214.65 215.18c16.17 16.24 16.09 42.54-.15 58.7-16.25 16.17-42.54 16.09-58.71-.15L256 100.29 70.94 285.81z"/></svg>
+            </h2></a>
+            <div class="checkbox-list" id="tipo_carnes_list">
+                
+    
+                
+                
+            </div>
+        </section>
+        <!-- ACOMPANHAMENTOS -->
+        <section class="checkbox2 container mt-5">
+            
+            <a class="dropdown-item" href="#" onclick="mostrarListaAcompanhamentos()"><h2>Acompanhamentos 
+                <svg id="my-svg2" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="32" height="10" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 512 298.04"><path fill-rule="nonzero" d="M70.94 285.81c-16.17 16.24-42.46 16.32-58.71.15-16.24-16.16-16.32-42.46-.15-58.7L226.57 12.23c16.16-16.24 42.46-16.32 58.7-.15l214.65 215.18c16.17 16.24 16.09 42.54-.15 58.7-16.25 16.17-42.54 16.09-58.71-.15L256 100.29 70.94 285.81z"/></svg>
+                
+            </h2></a>
+            <div class="checkbox-list2" id="acompanhamentos_list">
+                
+                
+                
+                
+            </div>
+        </section>
+
+       <!-- BEBIDAS -->
+       <section class="checkbox3 container mt-5">
+            
+            <a class="dropdown-item" href="#" onclick="mostrarListaBebidas()"><h2>Bebidas 
+                <svg id="my-svg3" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="32" height="10" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 512 298.04"><path fill-rule="nonzero" d="M70.94 285.81c-16.17 16.24-42.46 16.32-58.71.15-16.24-16.16-16.32-42.46-.15-58.7L226.57 12.23c16.16-16.24 42.46-16.32 58.7-.15l214.65 215.18c16.17 16.24 16.09 42.54-.15 58.7-16.25 16.17-42.54 16.09-58.71-.15L256 100.29 70.94 285.81z"/></svg>
+            </h2></a>
+            <div class="checkbox-list3" id="bebidas_list">
+                
+
+                
+            </div>
+    </section>
+    </main>
+
+    <footer class="container-fluid  justify-content-center text-light bg-dark">
+            
+        <div class="row my-5 justify-content-center py-5">
+            <div class="col-11">
+                <div class="row ">
+                    <div class="col-xl-8 col-md-4 col-sm-4 col-12   my-auto mx-auto a"><h3 class="text-muted mb-md-0 mb-5 bold-text">Tia Lili Marmitex.</h3></div>
+                    <div class="col-xl-2 col-md-4 col-sm-4 col-12"><h6 class="mb-3 mb-lg-4 bold-text "><b>MENU</b></h6><ul class="list-unstyled"><li>Marmitas</li><li>Bebidas</li><li>Especiais</li><li>Carrinho</li><li>Pedidos</li><li>Login</li></ul></div>
+                    <div class="col-xl-2 col-md-4 col-sm-4 col-12"><h6 class="mb-3 mb-lg-4 text-muted bold-text mt-sm-0 mt-5"><b>Endereço</b></h6><p class="mb-1">Rua Anori 175, São Gabriel</p><p>Belo Horizonte - MG</p> </div>
+                </div>
+                <div class="row ">
+                    <div class="col-xl-8 col-md-4 col-sm-4 col-auto  my-md-0 mt-5 order-sm-1 order-3 align-self-end"><p class="social text-muted mb-0 pb-0 bold-text"> <span  class="mx-2"><i class="fa fa-facebook" aria-hidden="true"></i></span> <span class="mx-2"><i class="fa fa-linkedin-square" aria-hidden="true"></i></span> <span class="mx-2"><i class="fa fa-twitter" aria-hidden="true"></i></span> <span class="mx-2"><i class="fa fa-instagram" aria-hidden="true"></i></span> </p><small class="rights"><span>&#174;</span> Tia Lili Marmitex All Rights Reserved.</small></div>
+                    <div class="col-xl-2 col-md-4 col-sm-4 col-auto order-1 align-self-end "><h6 class="mt-55 mt-2 text-muted bold-text"><b>Contato</b></h6><small> <span><i class="fa fa-envelope" aria-hidden="true"></i></span> <a href="https://api.whatsapp.com/send/?phone=%2B5531971141408&text&type=phone_number&app_absent=0" class="text-light bold-text" target="_blank">+55 31 97114-1408</a></small></div>
+                    </div>
+            </div>
+        </div>
+            
+    </footer>    
+
+
+    <script>
+        function mostrarListaCarnes() {
+            var listaCarnes = document.getElementById('tipo_carnes_list');
+            if (listaCarnes) {
+                var display = listaCarnes.style.display;
+                var svg = document.getElementById('my-svg1');
+
+                // Inverte a escala vertical do SVG
+                if (display === 'none') {
+                    listaCarnes.style.display = 'block';
+                    svg.style.transform = 'scaleY(1)';
+                } else {
+                    listaCarnes.style.display = 'none';
+                    svg.style.transform = 'scaleY(-1)';
+                }
+            }
+        }
+
+            function mostrarListaAcompanhamentos() {
+            var listaAcompanhamentos = document.getElementById('acompanhamentos_list');
+            if (listaAcompanhamentos) {
+                var display = listaAcompanhamentos.style.display;
+                var svg = document.getElementById('my-svg2');
+
+                // Inverte a escala vertical do SVG
+                if (display === 'none') {
+                    svg.style.transform = 'scaleY(1)';
+                    listaAcompanhamentos.style.display = 'block';
+                    
+                } else {
+                    svg.style.transform = 'scaleY(-1)';
+                    listaAcompanhamentos.style.display = 'none';
+                }
+            }
+        }
+
+        function mostrarListaBebidas() {
+            var listaBebidas = document.getElementById('bebidas_list');
+            if (listaBebidas) {
+                var display = listaBebidas.style.display;
+                var svg = document.getElementById('my-svg3');
+
+                // Inverte a escala vertical do SVG
+                if (display === 'none') {
+                    svg.style.transform = 'scaleY(1)';
+                    listaBebidas.style.display = 'block';
+                } else {
+                    svg.style.transform = 'scaleY(-1)';
+                    listaBebidas.style.display = 'none';
+                }
+            }
+        }
+        
+    </script>
+
+    
+
+</body>
+</html>

@@ -16,7 +16,8 @@ module.exports = (sequelize, DataTypes) => {
   BEBIDAS.init({
     nome: DataTypes.STRING(45),
     valor: DataTypes.DECIMAL,
-    img: DataTypes.STRING(100)
+    img: DataTypes.STRING(100),
+    disponivel:DataTypes.TINYINT
 
   }, {
     sequelize,

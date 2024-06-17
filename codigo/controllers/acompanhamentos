@@ -137,12 +137,13 @@ router.post("/acompanhamentos", async (req, res) => {
 });
 
 
-router.put("/acompanhamentos", async (req, res) => {
+router.put("/acompanhamentos/:id", async (req, res) => {
 
     // Receber os dados enviados no corpo da requisição
     var dados = req.body;
+    const { id } = req.params;
     // Editar no banco de dados
-    await db.ACOMPANHAMENTOS.update(dados, { where: { id: dados.id } })
+    await db.ACOMPANHAMENTOS.update(dados, { where: { id: id } })
         .then(() => {
             // Pausar o processamento e retornar a mensagem
             return res.json({

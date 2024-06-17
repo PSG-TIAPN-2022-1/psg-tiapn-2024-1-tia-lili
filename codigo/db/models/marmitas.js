@@ -15,7 +15,8 @@ module.exports = (sequelize, DataTypes) => {
   }
   MARMITAS.init({
     tipo_carnes_id1: DataTypes.INTEGER,
-    
+    tamanho:DataTypes.INTEGER,
+    obs: DataTypes.STRING(45),
   }, {
     sequelize,
     modelName: 'MARMITAS',

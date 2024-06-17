@@ -17,7 +17,8 @@ module.exports = (sequelize, DataTypes) => {
     nome: DataTypes.STRING(45),
     valor_p: DataTypes.DOUBLE,
     valor_g: DataTypes.DOUBLE,
-    img: DataTypes.STRING(100)
+    img: DataTypes.STRING(100),
+    disponivel:DataTypes.TINYINT
   }, {
     sequelize,
     modelName: 'TIPO_CARNES',

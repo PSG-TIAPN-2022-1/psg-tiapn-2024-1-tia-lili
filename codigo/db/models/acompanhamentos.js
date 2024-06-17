@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   ACOMPANHAMENTOS.init({
     nome: DataTypes.STRING(45),
+    disponivel:DataTypes.TINYINT,
     
   }, {
     sequelize,

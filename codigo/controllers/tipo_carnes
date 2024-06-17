@@ -137,16 +137,18 @@ router.post("/tipo_carnes", async (req, res) => {
 });
 
 
-router.put("/tipo_carnes", async (req, res) => {
+router.put("/tipo_carnes/:id", async (req, res) => {
 
     // Receber os dados enviados no corpo da requisição
     var dados = req.body;
     // Editar no banco de dados
-    await db.TIPO_CARNES.update(dados, { where: { id: dados.id } })
+    const { id } = req.params;
+    
+    await db.TIPO_CARNES.update(dados, { where: { id: id } })
         .then(() => {
             // Pausar o processamento e retornar a mensagem
             return res.json({
-                mensagem: "Tipo_carne editado com sucesso!"
+                mensagem: "Tipo_carne editado com sucessoaa!"
             });
         }).catch(() => {
             // Pausar o processamento e retornar a mensagem

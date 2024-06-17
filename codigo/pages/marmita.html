@@ -15,6 +15,12 @@
 </head>
 <body>
 
+    <script>
+        let tamanho = 0;
+        const urlParams = new URLSearchParams(location.search);
+        let tipo_carne_id1 = urlParams.get('id');
+    </script>
+
     <header>
         <nav  class="navbar navbar-expand-lg navbar-light bg-success text-white">
             <div class="container" id="navbar">
@@ -105,7 +111,7 @@
             </div>      
 
 
-            <a href="carrinho.html" class="col-12 primary avancar flex-row " style="--bg-color: #1095F3; --bg-color-hover: #33B7FE; --bg-color-active: #1581E0; --border-color: #1095F3; --border-color-hover: #33B7FE; --border-color-active: #1581E0; --text-color: #FFFFFF; --text-color-hover: #FFFFFF; --text-color-active: #FFFFFF;">
+            <a onclick="const obs = document.getElementById('obs').value; getSelectedCheckboxes(tamanho,tipo_carne_id1,obs)" class="col-12 primary avancar flex-row " style="--bg-color: #1095F3; --bg-color-hover: #33B7FE; --bg-color-active: #1581E0; --border-color: #1095F3; --border-color-hover: #33B7FE; --border-color-active: #1581E0; --text-color: #FFFFFF; --text-color-hover: #FFFFFF; --text-color-active: #FFFFFF;">
                 <p>Avançar</p>
                 <div data-v-0947ae0f="" class="btndata" id="valor_marmita" >R$00,00
 
@@ -121,6 +127,7 @@
 
     </main>
 
+    
     <footer class="container-fluid  justify-content-center text-light bg-dark">
             
         <div class="row my-5 justify-content-center py-5">
@@ -139,15 +146,17 @@
             
     </footer>    
     <script>
-        const urlParams = new URLSearchParams(location.search);
-        let id = urlParams.get('id');
-        exibe_um_tipo_carne(id);
+        
+        exibe_um_tipo_carne(tipo_carne_id1);
         exibe_acompanhamentos();
-        function calcular_valor(val){
-            
+        
+        function calcular_valor(val,tam){
+            tamanho=tam;
             document.querySelector('#valor_marmita').innerHTML="R$"+val+",00";
         }
-    
+        
+        
+
     </script>
 
 </body>

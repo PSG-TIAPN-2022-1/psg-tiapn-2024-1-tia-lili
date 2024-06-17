@@ -122,11 +122,11 @@ router.post("/marmitas", async (req, res) => {
     //console.log(dados);
 
     // Salvar no banco de dados
-    await db.MARMITAS.create(dados).then((dadosUsuario) => {
+    await db.MARMITAS.create(dados).then((dados) => {
         // Pausar o processamento e retornar os dados em formato de objeto
         return res.json({
             mensagem: "Marmita cadastrado com sucesso!",
-            dadosUsuario
+            dados
         });
     }).catch(() => {
         // Pausar o processamento e retornar a mensagem de erro

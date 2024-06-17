@@ -108,6 +108,7 @@ DROP TABLE IF EXISTS `tia_lili`.`marmitas` ;
 CREATE TABLE IF NOT EXISTS `tia_lili`.`marmitas` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `tipo_carnes_id1` INT NOT NULL,
+  `tamanho` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_marmita_tipo_carnes_idx` (`tipo_carnes_id1` ASC) VISIBLE,
   CONSTRAINT `fk_marmita_tipo_carnes`
