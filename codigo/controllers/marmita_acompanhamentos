@@ -84,19 +84,19 @@ router.get("/marmita_acompanhamentos", async (req, res) => {
 
 // Criar a rota visualizar e receber o parâmentro id enviado na URL 
 // Endereço para acessar através da aplicação externa: http://localhost:8080/marmita_acompanhamentos/7
-router.get("/marmita_acompanhamentos/:id", async (req, res) => {
+router.get("/marmita_acompanhamentos/:marmita_id1", async (req, res) => {
 
     // Receber o parâmetro enviado na URL
-    const { id } = req.params;
+    const { marmita_id1 } = req.params;
     //console.log(id);
 
     // Recuperar o registro do banco de dados
-    const marmita_acompanhamento = await db.MARMITA_ACOMPANHAMENTOS.findOne({
+    const marmita_acompanhamento = await db.MARMITA_ACOMPANHAMENTOS.findAll({
         // Indicar quais colunas recuperar
-        attributes: [`marmita_id1` ,`acompanhamentos_id`,'createdAt', 'updatedAt'],
+        attributes: [`marmita_id1` ,`acompanhamentos_id`],
 
         // Acrescentado condição para indicar qual registro deve ser retornado do banco de dados
-        where: { id },
+        where: { marmita_id1 },
     });
     //console.log(marmita_acompanhamento);
 
@@ -104,7 +104,7 @@ router.get("/marmita_acompanhamentos/:id", async (req, res) => {
     if (marmita_acompanhamento) {
         // Pausar o processamento e retornar os dados
         return res.json({
-            marmita_acompanhamento: marmita_acompanhamento.dataValues
+            marmita_acompanhamento,
         });
     } else {
         // Pausar o processamento e retornar a mensagem de erro

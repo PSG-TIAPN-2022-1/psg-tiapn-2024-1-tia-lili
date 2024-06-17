@@ -137,7 +137,7 @@ CREATE TABLE IF NOT EXISTS `tia_lili`.`pedidos` (
   INDEX `fk_pedidos_Clientes1_idx` (`clientes_id` ASC) VISIBLE,
   CONSTRAINT `fk_pedidos_Clientes1`
     FOREIGN KEY (`clientes_id`)
-    REFERENCES `mydb`.`Clientes` (`id`)
+    REFERENCES `tia_lili`.`Clientes` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

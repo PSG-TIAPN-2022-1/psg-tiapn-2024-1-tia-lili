@@ -85,31 +85,75 @@ router.get("/pedidos", async (req, res) => {
 // Criar a rota visualizar e receber o parâmentro id enviado na URL 
 // Endereço para acessar através da aplicação externa: http://localhost:8080/pedidos/7
 router.get("/pedidos/:id", async (req, res) => {
-
     // Receber o parâmetro enviado na URL
     const { id } = req.params;
-    //console.log(id);
 
-    // Recuperar o registro do banco de dados
-    const pedido = await db.PEDIDOS.findOne({
-        // Indicar quais colunas recuperar
-        attributes: ['id', 'clientes_id', 'data','total', 'status','pagamento','entrega','taxa_entrega'],
+    try {
+        // Recuperar todos os registros do banco de dados que correspondem ao clientes_id
+        const pedidos = await db.PEDIDOS.findAll({
+            // Indicar quais colunas recuperar
+            attributes: ['id', 'clientes_id', 'data', 'total', 'status', 'pagamento', 'entrega', 'taxa_entrega'],
 
-        // Acrescentado condição para indicar qual registro deve ser retornado do banco de dados
-        where: { id },
-    });
-    //console.log(pedido);
-
-    // Acessa o IF se encontrar o registro no banco de dados
-    if (pedido) {
-        // Pausar o processamento e retornar os dados
-        return res.json({
-            pedido: pedido.dataValues
+            // Condição para indicar quais registros devem ser retornados do banco de dados
+            where: { clientes_id: id },
+            // Não há necessidade de definir limit ou offset aqui
         });
-    } else {
-        // Pausar o processamento e retornar a mensagem de erro
-        return res.status(400).json({
-            mensagem: "Erro: Pedido não encontrado!"
+
+        // Verifica se há pedidos encontrados
+        if (pedidos.length > 0) {
+            // Retorna os dados dos pedidos encontrados
+            return res.json({
+                pedidos: pedidos
+            });
+        } else {
+            // Retorna uma mensagem se nenhum pedido foi encontrado
+            return res.status(404).json({
+                mensagem: "Nenhum pedido encontrado para este cliente."
+            });
+        }
+    } catch (error) {
+        // Captura erros de consulta ao banco de dados
+        console.error("Erro ao consultar pedidos:", error);
+        return res.status(500).json({
+            mensagem: "Erro ao buscar pedidos."
+        });
+    }
+});
+
+router.get("/pedidos/:id/:status", async (req, res) => {
+    // Receber parâmetros enviados na URL
+    const { id, status } = req.params;
+
+    try {
+        // Recuperar todos os registros do banco de dados que correspondem aos critérios
+        const pedidos = await db.PEDIDOS.findAll({
+            // Indicar quais colunas recuperar
+            attributes: ['id', 'clientes_id', 'data', 'total', 'status', 'pagamento', 'entrega', 'taxa_entrega'],
+
+            // Condição para indicar quais registros devem ser retornados do banco de dados
+            where: {
+                clientes_id: id,
+                status: status // Adiciona o critério de status
+            },
+        });
+
+        // Verifica se há pedidos encontrados
+        if (pedidos.length > 0) {
+            // Retorna os dados dos pedidos encontrados
+            return res.json({
+                pedidos: pedidos
+            });
+        } else {
+            // Retorna uma mensagem se nenhum pedido foi encontrado
+            return res.status(404).json({
+                mensagem: `Nenhum pedido encontrado para o cliente ${id} com o status ${status}.`
+            });
+        }
+    } catch (error) {
+        // Captura erros de consulta ao banco de dados
+        console.error("Erro ao consultar pedidos:", error);
+        return res.status(500).json({
+            mensagem: "Erro ao buscar pedidos."
         });
     }
 });
@@ -122,11 +166,11 @@ router.post("/pedidos", async (req, res) => {
     //console.log(dados);
 
     // Salvar no banco de dados
-    await db.PEDIDOS.create(dados).then((dadosUsuario) => {
+    await db.PEDIDOS.create(dados).then((dados) => {
         // Pausar o processamento e retornar os dados em formato de objeto
         return res.json({
             mensagem: "Pedido cadastrado com sucesso!",
-            dadosUsuario
+            dados
         });
     }).catch((erro) => {
         // Pausar o processamento e retornar a mensagem de erro

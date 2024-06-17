@@ -93,7 +93,7 @@ router.get("/marmitas/:id", async (req, res) => {
     // Recuperar o registro do banco de dados
     const marmita = await db.MARMITAS.findOne({
         // Indicar quais colunas recuperar
-        attributes: ['id', 'tipo_carnes_id1','createdAt', 'updatedAt'],
+        attributes: ['id', 'tipo_carnes_id1','tamanho','createdAt', 'updatedAt'],
 
         // Acrescentado condição para indicar qual registro deve ser retornado do banco de dados
         where: { id },
