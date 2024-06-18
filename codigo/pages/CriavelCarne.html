@@ -46,12 +46,12 @@
         </nav>
     </header>
 
-<main class="container">  
+    <main class="container">
     <div class="container mt-5">
         <form>
             <div class="form-group">
                 <label for="nome">Nome:</label>
-                <input type="text" class="form-control" id="nome" name="nome" readonly>
+                <input type="text" class="form-control" id="nome" name="nome">
             </div>
             <div class="form-group">
                 <label for="descricao">Descrição:</label>
@@ -59,7 +59,9 @@
             </div>
             <div class="form-group">
                 <label for="foto">Foto:</label>
-                <input type="file" class="form-control-file" id="foto" name="foto">
+                <input type="file" class="form-control-file" id="foto" name="foto" accept="image/*" onchange="previewImage(event)" style="display: none;">
+                <button type="button" class="btn btn-primary" onclick="document.getElementById('foto').click()">Escolher Imagem</button>
+                <img id="preview" src="#" alt="Preview da imagem" style="display: none; width: 287px; height: 201px; object-fit: cover; margin-top: 10px;">
             </div>
             <div class="form-group">
                 <label>Valor:</label>
@@ -88,11 +90,25 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-
-</main>
+    
+    <script>
+        
+        function previewImage(event) {
+            var input = event.target;
+            var reader = new FileReader();
+            reader.onload = function(){
+                var dataURL = reader.result;
+                var output = document.getElementById('preview');
+                output.src = dataURL;
+                output.style.display = 'block';
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    </script>
+    </main>
 
     <footer class="container-fluid  justify-content-center text-light bg-dark">
-            
+        
         <div class="row my-5 justify-content-center py-5">
             <div class="col-11">
                 <div class="row ">
