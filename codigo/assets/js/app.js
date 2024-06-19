@@ -1167,7 +1167,6 @@ $(document).ready(function() {
         $("#bairro").val("");
         $("#cidade").val("");
         $("#uf").val("");
-        $("#ibge").val("");
     }
     
     //Quando o campo cep perde o foco.
@@ -1185,7 +1184,6 @@ $(document).ready(function() {
                 $("#bairro").val("...");
                 $("#cidade").val("...");
                 $("#uf").val("...");
-                $("#ibge").val("...");
 
                 //Consulta o webservice viacep.com.br/
                 $.getJSON("https://viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
@@ -1196,7 +1194,6 @@ $(document).ready(function() {
                         $("#bairro").val(dados.bairro);
                         $("#cidade").val(dados.localidade);
                         $("#uf").val(dados.uf);
-                        $("#ibge").val(dados.ibge);
                     } //end if.
                     else {                       
                         limpa_formulário_cep();
