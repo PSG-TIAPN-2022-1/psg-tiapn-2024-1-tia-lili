@@ -132,12 +132,20 @@
                             <hr class="sep-2" />
 
                             <div class="row justify-content-between text-left">
-
-                                <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Endereço<span class="text-danger"> *</span></label> <input type="text" id="lname" name="lname" placeholder="Enter your last name" onblur="validate(2)"> </div>
-                                <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Bairro<span class="text-danger"> *</span></label> <input type="text" id="email" name="email" placeholder="" onblur="validate(3)"> </div>
-                            </div>
-                            <div class="row justify-content-between text-left">
-                                <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Complemento<span class="text-danger"> *</span></label> <input type="text" id="job" name="job" placeholder="" onblur="validate(5)"> </div>
+                                <div class="form-group col-sm-6 flex-column d-flex">
+                                    <form method="get" action=".">
+                                        <label>Cep:
+                                        <input name="cep" type="text" id="cep" value="" size="10" maxlength="9" /></label><br />
+                                        <label>Rua:
+                                        <input name="rua" type="text" id="rua" size="60" /></label><br />
+                                        <label>Bairro:
+                                        <input name="bairro" type="text" id="bairro" size="40" /></label><br />
+                                        <label>Cidade:
+                                        <input name="cidade" type="text" id="cidade" size="40" /></label><br />
+                                        <label>Estado:
+                                        <input name="uf" type="text" id="uf" size="2" /></label><br />
+                                      </form>
+                                </div>
                             </div>
                             
                             <div class="row justify-content-end">
