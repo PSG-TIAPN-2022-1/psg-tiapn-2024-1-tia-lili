@@ -123,11 +123,11 @@ router.post("/usuarios", async (req, res) => {
     //console.log(dados);
 
     // Salvar no banco de dados
-    await db.USUARIOS.create(dados).then((dadosUsuario) => {
+    await db.USUARIOS.create(dados).then((dados) => {
         // Pausar o processamento e retornar os dados em formato de objeto
         return res.json({
             mensagem: "Usuario cadastrado com sucesso!",
-            dadosUsuario
+            dados
         });
     }).catch((erro) => {
         // Pausar o processamento e retornar a mensagem de erro

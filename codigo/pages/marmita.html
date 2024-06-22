@@ -111,7 +111,7 @@
             </div>      
 
 
-            <a onclick="const obs = document.getElementById('obs').value; getSelectedCheckboxes(tamanho,tipo_carne_id1,obs)" class="col-12 primary avancar flex-row " style="--bg-color: #1095F3; --bg-color-hover: #33B7FE; --bg-color-active: #1581E0; --border-color: #1095F3; --border-color-hover: #33B7FE; --border-color-active: #1581E0; --text-color: #FFFFFF; --text-color-hover: #FFFFFF; --text-color-active: #FFFFFF;">
+            <a onclick="const obs = document.getElementById('obs').value; const usuario_id = JSON.parse(localStorage.getItem('usuario')).id; getSelectedCheckboxes(tamanho,tipo_carne_id1,obs,usuario_id)" class="col-12 primary avancar flex-row " style="--bg-color: #1095F3; --bg-color-hover: #33B7FE; --bg-color-active: #1581E0; --border-color: #1095F3; --border-color-hover: #33B7FE; --border-color-active: #1581E0; --text-color: #FFFFFF; --text-color-hover: #FFFFFF; --text-color-active: #FFFFFF;">
                 <p>Avançar</p>
                 <div data-v-0947ae0f="" class="btndata" id="valor_marmita" >R$00,00
 

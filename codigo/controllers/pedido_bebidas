@@ -41,7 +41,7 @@ router.get("/pedido_bebidas", async (req, res) => {
     const pedido_bebidas = await db.PEDIDO_BEBIDAS.findAll({
 
         // Indicar quais colunas recuperar
-        attributes: ['pedidos_id', 'bebidas_id'],
+        attributes: ['id','pedidos_id', 'bebidas_id'],
 
         // Ordenar os registros pela coluna id na forma decrescente
         order: [['pedidos_id', 'ASC']],
@@ -125,11 +125,11 @@ router.post("/pedido_bebidas", async (req, res) => {
     //console.log(dados);
 
     // Salvar no banco de dados
-    await db.PEDIDO_BEBIDAS.create(dados).then((dadosUsuario) => {
+    await db.PEDIDO_BEBIDAS.create(dados).then((dados) => {
         // Pausar o processamento e retornar os dados em formato de objeto
         return res.json({
             mensagem: "Pedido_bebidas cadastrado com sucesso!",
-            dadosUsuario
+            dados
         });
     }).catch((erro) => {
         // Pausar o processamento e retornar a mensagem de erro

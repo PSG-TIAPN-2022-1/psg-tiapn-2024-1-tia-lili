@@ -80,56 +80,112 @@ function validate(val) {
     return flag;
 }
 
+function verif_login(){
+    // Verifica se há um usuário logado no localStorage
+    if (localStorage.getItem('usuario')) {
+        // Obtém os dados do usuário
+        var usuario = JSON.parse(localStorage.getItem('usuario'));
+        var nome = usuario.nome;
+
+        // Cria o novo conteúdo do link
+        var linkHTML = `<a class="nav-link text-white" href="#" onclick="deslogar()"><spam>${nome}</spam> (sair)</a>`;
+        
+        // Atualiza a div com id "login_verif"
+        document.getElementById('login_verif').innerHTML = linkHTML;
+    } else {
+        // Caso não haja usuário logado, mantém o link original
+        // Neste caso, não é necessário fazer nada, pois o HTML inicial já contém o link "login"
+    }
+}
+    
+// Função para deslogar o usuário
+function deslogar() {
+    // Aqui você pode limpar o localStorage, redirecionar para a página de login, etc.
+    localStorage.removeItem('usuario');
+    // Exemplo de redirecionamento para a página de login
+    window.location.href = 'pages/login.html';
+}
+    
+
+
+
+function show_fechado(){
+    alert("Restaurante fechado no momento, volte mais tarde ou entre em contato pelo whatsapp em +55 31 7114-1408")
+
+}
+
 function exibe_tipo_carnes(){
   
     str=''
+
+    str_status=''
 
     fetch('http://localhost:3000/tipo_carnes')
         .then(response => response.json())
         .then(data => {      
 
-            const carnes = Object.values(data)
-            console.log(carnes);
-            for (let i = 0; i < carnes[0].length; i++) {
-                let carne = carnes[0][i];
-                //console.log(carne);
+
+            fetch('http://localhost:3000/restaurantes')
+            .then(response => response.json())
+            .then(data_restaurante => {      
+
+                const rests = Object.values(data_restaurante)
+                //console.log(rest);
+                
+                let rest = rests[0][0];
                 
                 // tamanho das imagens 287x190
+                
+                const carnes = Object.values(data)
+                console.log(carnes);
+                for (let i = 0; i < carnes[0].length; i++) {
+                    let carne = carnes[0][i];
+                    //console.log(carne);
+                    
+                    // tamanho das imagens 287x190
 
-                if(carne.disponivel){
-                    str += `
-                            <div class="col-lg-4 col-md-6 mb-4">
-                                <div class="card" >
-                                    <div class="d-none d-md-block">
-                                        <!-- Imagem para telas grandes -->
-                                        <img src="db/imagens/tipo_carnes/${carne.id}.jpg" alt="" class="card-img-top ">
-                                        
-                                        <div class="card-body ">
-                                            <h5 class="card-title">${carne.nome}</h5>
-                                            <p class="card-text">Selecione acompanhamentos</p>
-                                            <a href="pages/marmita.html?id=${carne.id}" class="btn btn-outline-success btn-sm">Adicionar</a>
+                    if(carne.disponivel){
+                        if(rest.status==0){
+                            //console.log(rest);
+                            str_status += `onclick="show_fechado()"`
+                        } else {
+                            str_status += `href="pages/marmita.html?id=${carne.id}"`
+                        }
+                        str += `
+                                <div class="col-lg-4 col-md-6 mb-4">
+                                    <div class="card" >
+                                        <div class="d-none d-md-block">
+                                            <!-- Imagem para telas grandes -->
+                                            <img src="db/imagens/tipo_carnes/${carne.id}.jpg" alt="" class="card-img-top ">
+                                            
+                                            <div class="card-body ">
+                                                <h5 class="card-title">${carne.nome}</h5>
+                                                <p class="card-text">Selecione acompanhamentos</p>
+                                                <a ${str_status} class="btn btn-outline-success btn-sm">Adicionar</a>
+                                            </div>
+
                                         </div>
+                                        <div class=" d-flex d-md-block flex-row flex-md-column d-md-none image-container">
+                                            <!-- Imagem para telas pequenas -->
+                                            <img src="db/imagens/tipo_carnes/${carne.id}.jpg" alt="" class="card-img-top d-md-none" style="width: 50%;">
+                                
+                                            <div class="card-body d-md-none" style="width: 50%;">
+                                                <h5 class="card-title">${carne.nome}</h5>
+                                                <p class="card-text">Selecione acompanhamentos</p>
+                                                <a ${str_status} class="btn btn-outline-success btn-sm">Adicionar</a>
+                                            </div>
 
-                                    </div>
-                                    <div class=" d-flex d-md-block flex-row flex-md-column d-md-none image-container">
-                                        <!-- Imagem para telas pequenas -->
-                                        <img src="db/imagens/tipo_carnes/${carne.id}.jpg" alt="" class="card-img-top d-md-none" style="width: 50%;">
-                            
-                                        <div class="card-body d-md-none" style="width: 50%;">
-                                            <h5 class="card-title">${carne.nome}</h5>
-                                            <p class="card-text">Selecione acompanhamentos</p>
-                                            <a href="pages/marmita.html?id=${carne.id}" class="btn btn-outline-success btn-sm">Adicionar</a>
                                         </div>
-
                                     </div>
                                 </div>
-                            </div>
-                            `
-                            document.querySelector('#marmitas_carnes').innerHTML=str
+                                `
+                                document.querySelector('#marmitas_carnes').innerHTML=str
+                    }
+    
                 }
-  
-            }
-        
+            }).catch(error => {
+                console.error('Erro ao enviar dados:', error);
+            });
         }).catch(error => {
             console.error('Erro ao enviar dados:', error);
         });
@@ -148,6 +204,7 @@ function exibe_bebidas(){
             for (let i = 0; i < bebidas[0].length; i++) {
                 let bebida = bebidas[0][i];
                 //console.log(bebida);
+                //
                 
                 if(bebida.disponivel==1){
                     str2 += `
@@ -160,7 +217,7 @@ function exibe_bebidas(){
                                 <div class="card-body ">
                                     <h5 class="card-title">${bebida.nome}</h5>
                                     <p class="card-text">R$${bebida.valor},00</p>
-                                    <a onclick="add_bebida(${bebida.id})" href="pages/carrinho.html" class="btn btn-outline-success btn-sm">Adicionar</a>
+                                    <a onclick="const usuario_id = JSON.parse(localStorage.getItem('usuario')).id; add_bebida(${bebida.id},usuario_id)" href="pages/carrinho.html" class="btn btn-outline-success btn-sm">Adicionar</a>
                                 </div>
 
                             </div>
@@ -171,7 +228,7 @@ function exibe_bebidas(){
                                 <div class="card-body d-md-none" style="width: 50%;">
                                     <h5 class="card-title">${bebida.nome}</h5>
                                     <p class="card-text">R$${bebida.valor},00</p>
-                                    <a onclick="add_bebida(${bebida.id})" href="pages/carrinho.html" class="btn btn-outline-success btn-sm">Adicionar</a>
+                                    <a onclick="const usuario_id = JSON.parse(localStorage.getItem('usuario')).id; add_bebida(${bebida.id},usuario_id)" href="pages/carrinho.html" class="btn btn-outline-success btn-sm">Adicionar</a>
                                 </div>
 
                             </div>
@@ -341,8 +398,8 @@ function exibe_acompanhamentos(){
 
 }
 
-async function getSelectedCheckboxes(tamanho, tipo_carnes_id1, obs) {
-   
+async function getSelectedCheckboxes(tamanho, tipo_carnes_id1, obs, user_id) {
+    
     // Seleciona todos os checkboxes dentro da div com id 'acompanhamentos_DB'
     const checkboxes = document.querySelectorAll('#acompanhamentos_DB input[type="checkbox"]');
     const selected = [];
@@ -367,13 +424,12 @@ async function getSelectedCheckboxes(tamanho, tipo_carnes_id1, obs) {
             selected.forEach(element => {
                 add_acomps(marmita_id,element);
             });
-            
-            pedidos_id = await read_pedido();
+            pedidos_id = await read_pedido(user_id);
             
             
             create_pedido_marmitas(pedidos_id,marmita_id)
             
-            
+            //alert("pause2");
 
             window.location.href = "carrinho.html"  ;
         } catch (error) {
@@ -431,6 +487,31 @@ async function read_marmitas(marmita_id) {
     }
 }
 
+async function del_pedido_marmita(marmita_id) {
+    console.log("Função del_pedido_marmita");
+
+    try {
+        const response = await fetch(`http://localhost:3000/marmitas/${marmita_id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error('Erro ao deletar dados!');
+        }
+
+        const data = await response.json();
+        console.log('Marmita deletada com sucesso:', data);
+        window.location.reload();
+        return data.mensagem;
+    } catch (error) {
+        console.error('Erro ao deletar dados:', error);
+        throw error;
+    }
+
+}
 
 
 // CRUD TIPO_CARNES
@@ -474,7 +555,26 @@ async function read_acompanhamento(id){
     }
 }
 
+// CRUD BEBIDAS
 
+async function read_bebidas(id){
+    //console.log("Função read_tipo_carnes");
+    
+
+    try {
+        const response = await fetch('http://localhost:3000/bebidas/' + id );
+        const data = await response.json();
+        
+        const bebida = Object.values(data)[0];
+        //console.log(bebida);
+        
+        return bebida;
+        
+    } catch (error) {
+        console.error('Bebidas não encontrado:', error);
+        return false
+    }
+}
 
 
 
@@ -502,22 +602,6 @@ async function read_acompanhamento_marmitas(id){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function add_acomps(marmita_id1,acompanhamentos_id){
     console.log("Função add_acomps");
     let acomp = {
@@ -538,7 +622,7 @@ function add_acomps(marmita_id1,acompanhamentos_id){
             console.log('Dados enviados com sucesso:', data);
             
 
-            const newMarmitaId = data.id; // Certifique-se de que o ID está na propriedade "id"
+            //const newMarmitaId = data.id; // Certifique-se de que o ID está na propriedade "id"
 
         }).catch(error => {
             console.error('Erro ao enviar dados:', error);
@@ -546,14 +630,16 @@ function add_acomps(marmita_id1,acompanhamentos_id){
         
 }
 
-async function create_pedido(){
-    console.log("Função crete_pedido");
+async function create_pedido(user_id){
+    console.log("Função create_pedido "+user_id);
+    //alert("Criar pedido "+user_id);
+
     let pedido ={
-
-
-
-    };
-
+        'Usuarios_id':user_id
+        };
+    
+    console.log("Pedido: ")
+    console.log(pedido);
     try {
         const response = await fetch('http://localhost:3000/pedidos', {
             method: 'POST',
@@ -566,9 +652,9 @@ async function create_pedido(){
         if (!response.ok) {
             throw new Error('Erro ao enviar dados');
         }
-
         const data = await response.json();
         console.log('Dados enviados com sucesso:', data);
+        //alert("Pause1");
         const newPedidoId = data.dados.id;
         console.log('ID do novo pedido:', newPedidoId);
         return newPedidoId;
@@ -580,12 +666,12 @@ async function create_pedido(){
 
 }
 
-async function read_pedido() {
-    //console.log("Função read_pedido");
-    const clientes_id = 1;
+async function read_pedido(user_id) {
+    console.log("Função read_pedido "+ user_id);
+
 
     try {
-        const response = await fetch('http://localhost:3000/pedidos/' + clientes_id + "/carrinho");
+        const response = await fetch('http://localhost:3000/pedidos/' + user_id + "/carrinho");
         const data = await response.json();
         
         const pedidos = Object.values(data)[0];
@@ -596,13 +682,14 @@ async function read_pedido() {
         } else {
             // Aqui pode ser tratado o caso onde há mais de um pedido, se necessário
             console.log("Nenhum pedido existente encontrado, criando um novo pedido...");
-            const novoPedidoId = await create_pedido();
+            const novoPedidoId = await create_pedido(user_id);
+            alert("Novo pedido ID " + novoPedidoId);
             return novoPedidoId;
         }
     } catch (error) {
         console.error('Erro ao enviar dados:', error);
-        const novoPedidoId = await create_pedido();
-        return novoPedidoId;
+        // const novoPedidoId = await create_pedido();
+        // return novoPedidoId;
     }
 }
 
@@ -654,11 +741,11 @@ async function create_pedido_marmitas(pedidos_id, marmita_id) {
 
 // FUNÇÕES PARA ADD UMA BEBIDA AO PEDIDO
 
-async function add_bebida(bebida_id){
+async function add_bebida(bebida_id, user_id){
     
-    pedidos_id = await read_pedido();
+    pedidos_id = await read_pedido(user_id);
 
-    //alert("pedido bebida add")
+   
     await create_pedido_bebidas(pedidos_id,bebida_id);
 
 }
@@ -678,33 +765,69 @@ async function read_pedido_bebidas(pedido_id) {
 }
 
 async function create_pedido_bebidas(pedidos_id, bebida_id) {
+    
+    console.log("Função create_pedido_bebidas");
+    //console.log(" bebida pedido add " + bebida_id +"  -   " + pedidos_id);
+
     let bebida = {
         "pedidos_id":pedidos_id,
-	    "bebida_id":bebida_id
+	    "Bebidas_id":bebida_id
     };
+    
+    console.log(bebida);
+
+    fetch('http://localhost:3000/pedido_bebidas', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(bebida),
+    })
+    .then(response => response.json())
+    .then(data => {      
+
+        console.log('Dados enviados com sucesso:', data);
+        
+
+        
+
+    }).catch(error => {
+        console.error('Erro ao enviar dados:', error);
+    });
+
+        
+    
+}
+
+
+async function del_pedido_bebida(bebida_id) {
+    console.log("Função del_pedido_bebida");
+
     try {
-        console.log("Função create_pedido_bebidas");
-        const response = await fetch('http://localhost:3000/pedido_bebidas', {
-            method: 'POST',
+        const response = await fetch(`http://localhost:3000/pedido_bebidas/${bebida_id}`, {
+            method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(bebida),
         });
-        alert("crear bebida");
 
         if (!response.ok) {
-            alert("erro ao add bebida")
-            throw new Error('Erro ao enviar dados');
+            throw new Error('Erro ao deletar dados!');
         }
 
-        
+        const data = await response.json();
+        console.log('Pedido de bebida deletado com sucesso:', data);
+
+        // Atualiza a página após a exclusão bem-sucedida
+        window.location.reload();
+
+        return data.mensagem;
     } catch (error) {
-        console.error('Erro ao enviar dados:', error);
-        alert("erro ao add bebida")
+        console.error('Erro ao deletar dados:', error);
         throw error;
     }
 }
+
 
 // FUNÇÕES PARA EDITAR CARDAPIO DO DIA
 
@@ -715,7 +838,95 @@ function show_menu_dia(){
     show_menu_dia_acompanhamentos();
 
     show_menu_dia_bebidas();
+
+
+    show_menu_status();
+
+
 }
+
+function show_menu_status(){
+    let str_status = ``
+
+    fetch('http://localhost:3000/restaurantes')
+        .then(response => response.json())
+        .then(data => {      
+
+            const rests = Object.values(data)
+            //console.log(rest);
+            
+            let rest = rests[0][0];
+            
+            // tamanho das imagens 287x190
+            if(rest.status==1){
+                //console.log(rest);
+                str_status += `<button onclick="alterar_status_restaurante(1)" style="width: 70%; margin-left: 15% ; margin-top: 12px;" class="btn btn-outline-success btn-sm">Aberto</button>`
+            } else {
+                str_status += `<button onclick="alterar_status_restaurante(0)" style="width: 70%; margin-left: 15%; margin-top: 12px;" class="btn btn-outline-danger btn-sm">Fechado</button>`
+            }
+            
+            document.querySelector('#statusRestaurante').innerHTML=str_status;
+        }).catch(error => {
+            console.error('Erro ao enviar dados:', error);
+        });
+
+}
+
+function show_menu_status_not_edit(){
+    let str_status = ``
+
+    fetch('http://localhost:3000/restaurantes')
+        .then(response => response.json())
+        .then(data => {      
+
+            const rests = Object.values(data)
+            //console.log(rest);
+            
+            let rest = rests[0][0];
+            
+            // tamanho das imagens 287x190
+            if(rest.status==1){
+                //console.log(rest);
+                str_status += `<div  style="width: 70%; margin-left: 15% ; margin-top: 12px;" class="btn btn-outline-success btn-sm">Aberto</div>`
+            } else {
+                str_status += `<div  style="width: 70%; margin-left: 15%; margin-top: 12px;" class="btn btn-outline-danger btn-sm">Fechado</div>`
+            }
+            
+            document.querySelector('#statusRestaurante').innerHTML=str_status;
+        }).catch(error => {
+            console.error('Erro ao enviar dados:', error);
+        });
+
+}
+
+function alterar_status_restaurante( status) {
+    // Determinar o novo status
+    let novoStatus = status === 1 ? 0 : 1;
+    
+    // Criar o objeto que será enviado na requisição
+    let updateData = {
+        status: novoStatus
+    };
+
+    // Enviar a requisição PUT para atualizar o atributo 'status'
+    fetch('http://localhost:3000/restaurantes', {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updateData),
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Status do restaurante alterado com sucesso:');
+        // Atualizar a interface para refletir o novo status
+        show_menu_status();
+    })
+    .catch(error => {
+        console.error('Erro ao enviar dados:', error);
+    });
+}
+
 
 function show_menu_dia_carnes(){
     //console.log("Teste");
@@ -1085,19 +1296,23 @@ async function exibe_carrinho2(){
 }
 
 
-async function exibe_carrinho() {
+async function exibe_carrinho(user_id) {
     console.log("Função exibe_carrinho");
-    pedidos_id = await read_pedido();
+
+    let valor = 0;
+    pedidos_id = await read_pedido(user_id);
     console.log(pedidos_id);
 
     pedido_marmitas_existentes = await read_pedido_marmitas(pedidos_id);
     
     for (const pm of pedido_marmitas_existentes) {
+
         const marmita = await read_marmitas(pm.marmita_id);
         //console.log("marmita:");
         //console.log(marmita);
-    
+        
         let str_marmita = '';
+        
         let str_aux='';
         const tipo_carne = await read_tipo_carnes(marmita.tipo_carnes_id1);
         
@@ -1122,12 +1337,16 @@ async function exibe_carrinho() {
 
 
         if(marmita.tamanho==1){
+            valor+=parseInt(tipo_carne.valor_p);
             str_aux += `<h4 id="valor" value="${tipo_carne.valor_p}" >R$${tipo_carne.valor_p},00</h4>`
         } else {
+            valor+=  parseInt(tipo_carne.valor_g);
             str_aux += `<h4  id="valor" value="${tipo_carne.valor_g}">R$${tipo_carne.valor_g},00</h4>`
         }
-
+        console.log("Valor "+valor)
         str_marmita+=str_aux;
+
+        str_marmita+=`<a onclick="del_pedido_marmita(${marmita.id})" class="btn btn-outline-danger btn-sm">Remover</a>`
         str_marmita += `
                         </div>
                     </div>
@@ -1138,8 +1357,9 @@ async function exibe_carrinho() {
                             <h5 class="card-title">${tipo_carne.nome}</h5>
                             
                             `
-        str_marmita+=str_aux;                    
-                            `
+        str_marmita+=str_aux;     
+        str_marmita+=`<a onclick="del_pedido_marmita(${marmita.id})" class="btn btn-outline-danger btn-sm">Remover</a>`
+        str_marmita+=`
                         </div>
                     </div>
                 </div>
@@ -1150,17 +1370,81 @@ async function exibe_carrinho() {
     }
 
     pedido_bebidas_existentes = await read_pedido_bebidas(pedidos_id);
-
+    console.log("Pedido_bebidas_existentes")
+    console.log(pedido_bebidas_existentes);
     for (const pb of pedido_bebidas_existentes){
-
+        let str_bebida = '';
+        
+        const bebida = await read_bebidas(pb.bebidas_id);
+        
+        valor+= parseInt(bebida.valor);
+        
+        str_bebida += `
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card">
+                    <div class="d-none d-md-block">
+                        <!-- Imagem para telas grandes -->
+                        <img src="../db/imagens/bebidas/${bebida.id}.jpg" alt="" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">${bebida.nome}</h5>
+                            <h4  id="valor" value="${bebida.valor}">R$${bebida.valor},00</h4>
+                            <a onclick="del_pedido_bebida(${pb.id})" class="btn btn-outline-danger btn-sm">Remover</a>
+                        </div>
+                    </div>
+                    <div class="d-flex d-md-block flex-row flex-md-column d-md-none image-container">
+                        <!-- Imagem para telas pequenas -->
+                        
+                        <div class="card-body d-md-none" style="width: 50%;">
+                            <h5 class="card-title">${bebida.nome}</h5>
+                            <h4  id="valor" value="${bebida.valor}">R$${bebida.valor},00</h4>
+                            <a onclick="del_pedido_bebida(${pb.id})" class="btn btn-outline-danger btn-sm">Remover</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                            
+        `;
+        
+        document.querySelector('#bebidas_list').innerHTML += str_bebida; 
     }
+
+
+    
+
+    document.querySelector('#valor_pedido').innerHTML="R$"+valor+",00"
+
+    const anchorElement = document.querySelector('#btn_avancar');
+
+    if (anchorElement) {
+        // Obter o href atual
+        let href = anchorElement.getAttribute('href');
+
+        // Adicionar o parâmetro desejado ao href
+        href += '?valor='+valor;
+
+        // Definir o novo href no elemento âncora
+        anchorElement.setAttribute('href', href);
+    }
+
 
 }
 
-async function add_user(user){
+async function add_user(userr){
     
     console.log("Função add_user");
     
+    let user={
+        "nome": userr.nome,
+        "telefone": userr.telefone,
+        "email": userr.email,
+        "senha": userr.senha,
+        "cep": userr.cep,
+        "rua": userr.rua,
+        "numero": userr.numero,
+        "bairro": userr.bairro,
+        "complemento": userr.complemento
+    }
+
 
     try {
         const response = await fetch('http://localhost:3000/usuarios', {
@@ -1174,6 +1458,16 @@ async function add_user(user){
         if (!response.ok) {
             throw new Error('Erro ao enviar dados!');
         }
+        const data = await response.json(); // Supondo que o servidor responde com JSON contendo o ID
+
+        // Atualizar o objeto user com o ID recebido do servidor
+        user.id = data.dados.id; // Supondo que o ID retornado pelo servidor está em responseData.id
+
+        console.log('Dados enviados com sucesso:', user);
+        console.log('Dados enviados com sucesso:', data.dados);
+        
+        return user; // Retornar o objeto user atualizado com o ID 
+
 
     } catch (error) {
         console.error('Erro ao enviar dados:', error);
@@ -1197,7 +1491,7 @@ async function read_user(user) {
         const usuario = data.usuario;
         console.log(usuario);
         if (usuario) {
-            
+
             return usuario;
         } else {
             console.log("Nenhum usuário existente encontrado!");

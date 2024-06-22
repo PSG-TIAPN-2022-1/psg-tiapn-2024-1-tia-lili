@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         primaryKey: true // Definir como chave primária
     },
-    bebidas_id: {
+    Bebidas_id: {
         type: DataTypes.INTEGER,
         primaryKey: true // Definir como chave primária
     },

@@ -253,7 +253,23 @@
                         
                         
                         
-                    add_user(user);
+                    add_user(user)
+                    .then(usuario => {
+                        // Verifica se há um usuário retornado
+                        if (usuario) {
+                            // Salva o usuário no localStorage
+                            localStorage.setItem('usuario', JSON.stringify(usuario));
+                            
+                            // Exemplo: redirecionamento para outra página
+                            window.location.href = '../index.html';
+                        } else {
+                            alert('Usuário não criado!');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Erro ao criar conta:', error);
+                        alert('Erro ao criar conta. Por favor, tente novamente mais tarde.');
+                    });
                     // Outras validações específicas podem ser adicionadas conforme necessário
                 });
             });

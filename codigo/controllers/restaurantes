@@ -1,0 +1,111 @@
+// Incluir as bibliotecas
+// Gerencia as requisições, rotas e URLs, entre outra funcionalidades
+const express = require("express");
+// Chamar a função express
+const router = express.Router();
+// Incluir o arquivo que possui a conexão com banco de dados
+const db = require('./../db/models');
+
+// Criar a rota listar 
+// Endereço para acessar através da aplicação externa: http://localhost:8080/restaurantes?page=3
+router.get("/restaurantes", async (req, res) => {
+
+    //console.log((page * limit) - limit); // 3 * 10 - 10 = 20
+    // Recuperar todos os restaurante do banco de dados
+    const restaurantes = await db.RESTAURANTES.findAll({
+
+        // Indicar quais colunas recuperar
+        attributes: ['id', 'nome','status'],
+
+        // Ordenar os registros pela coluna id na forma decrescente
+        order: [['id', 'ASC']],
+
+        // Calcular a partir de qual registro deve retornar e o limite de registros
+       
+    });
+
+    // Acessa o IF se encontrar o registro no banco de dados
+    if (restaurantes) {
+        // Criar objeto com as informações para paginação
+        
+        console.log("teste")
+        // Pausar o processamento e retornar os dados em formato de objeto
+        return res.json({
+            restaurantes
+        });
+    } else {
+        // Pausar o processamento e retornar a mensagem de erro
+        return res.status(400).json({
+            mensagem: "Erro: Nenhum restaurante encontrado!"
+        });
+    }
+});
+
+// router.post("/restaurantes", async (req, res) => {
+
+//     // Receber os dados enviados no corpo da requisição
+//     var dados = req.body;
+//     //console.log(dados);
+
+//     // Salvar no banco de dados
+//     await db.RESTAURANTES.create(dados).then((dadosRestaurante) => {
+//         // Pausar o processamento e retornar os dados em formato de objeto
+//         return res.json({
+//             mensagem: "Restaurante cadastrado com sucesso!",
+//             dadosRestaurante
+//         });
+//     }).catch(() => {
+//         // Pausar o processamento e retornar a mensagem de erro
+//         return res.json({
+//             mensagem: "Erro: Restaurante não cadastrado com sucesso!"
+//         });
+//     });
+// });
+
+
+router.put("/restaurantes", async (req, res) => {
+
+    // Receber os dados enviados no corpo da requisição
+    var dados = req.body;
+    const  id = 1;
+    // Editar no banco de dados
+    await db.RESTAURANTES.update(dados, { where: { id: id } })
+        .then(() => {
+            // Pausar o processamento e retornar a mensagem
+            return res.json({
+                mensagem: "Restaurante editado com sucesso!"
+            });
+        }).catch(() => {
+            // Pausar o processamento e retornar a mensagem
+            return res.status(400).json({
+                mensagem: "Erro: Restaurante não editado com sucesso!"
+            });
+        });
+});
+
+// Criar a rota apagar e receber o parâmentro id enviado na URL 
+// Endereço para acessar através da aplicação externa: http://localhost:8080/restaurantes/3
+router.delete("/restaurantes/:id", async (req, res) => {
+
+    // Receber o parâmetro enviado na URL
+    const { id } = req.params;
+    console.log(req.params)
+    // Apagar restaurante no banco de dados utilizando a MODELS restaurantes
+    await db.RESTAURANTES.destroy({
+        // Acrescentar o WHERE na instrução SQL indicando qual registro excluir no BD
+        where: {id} 
+    }).then(() => {
+        // Pausar o processamento e retornar a mensagem
+        return res.json({
+            mensagem: "Restaurante apagado com sucesso!"
+        });
+    }).catch(() => {
+        // Pausar o processamento e retornar a mensagem
+        return res.status(400).json({
+            mensagem: "Erro: Restaurante não apagado com sucesso!"
+        });
+    });
+});
+
+// Exportar a instrução que está dentro da constante router 
+module.exports = router;

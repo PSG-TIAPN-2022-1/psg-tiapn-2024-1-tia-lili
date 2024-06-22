@@ -41,7 +41,7 @@ router.get("/pedidos", async (req, res) => {
     const pedidos = await db.PEDIDOS.findAll({
 
         // Indicar quais colunas recuperar
-        attributes: ['id', 'clientes_id', 'data','total', 'status','pagamento','entrega','taxa_entrega'],
+        attributes: ['id', 'usuarios_id', 'data','total', 'status','pagamento','entrega','taxa_entrega'],
 
         // Ordenar os registros pela coluna id na forma decrescente
         order: [['id', 'ASC']],
@@ -92,10 +92,10 @@ router.get("/pedidos/:id", async (req, res) => {
         // Recuperar todos os registros do banco de dados que correspondem ao clientes_id
         const pedidos = await db.PEDIDOS.findAll({
             // Indicar quais colunas recuperar
-            attributes: ['id', 'clientes_id', 'data', 'total', 'status', 'pagamento', 'entrega', 'taxa_entrega'],
+            attributes: ['id', 'usuarios_id', 'data', 'total', 'status', 'pagamento', 'entrega', 'taxa_entrega'],
 
             // Condição para indicar quais registros devem ser retornados do banco de dados
-            where: { clientes_id: id },
+            where: { usuarios_id: id },
             // Não há necessidade de definir limit ou offset aqui
         });
 
@@ -128,11 +128,11 @@ router.get("/pedidos/:id/:status", async (req, res) => {
         // Recuperar todos os registros do banco de dados que correspondem aos critérios
         const pedidos = await db.PEDIDOS.findAll({
             // Indicar quais colunas recuperar
-            attributes: ['id', 'clientes_id', 'data', 'total', 'status', 'pagamento', 'entrega', 'taxa_entrega'],
+            attributes: ['id', 'Usuarios_id', 'data', 'total', 'status', 'pagamento', 'entrega', 'taxa_entrega'],
 
             // Condição para indicar quais registros devem ser retornados do banco de dados
             where: {
-                clientes_id: id,
+                usuarios_id: id,
                 status: status // Adiciona o critério de status
             },
         });
@@ -163,7 +163,8 @@ router.post("/pedidos", async (req, res) => {
 
     // Receber os dados enviados no corpo da requisição
     var dados = req.body;
-    //console.log(dados);
+    console.log("BACKEND dados pedidos post ---------------------------------#######################")
+    console.log(dados);
 
     // Salvar no banco de dados
     await db.PEDIDOS.create(dados).then((dados) => {
@@ -204,7 +205,8 @@ router.put("/pedidos", async (req, res) => {
 // Criar a rota apagar e receber o parâmentro id enviado na URL 
 // Endereço para acessar através da aplicação externa: http://localhost:8080/pedidos/3
 router.delete("/pedidos/:id", async (req, res) => {
-
+    
+   
     // Receber o parâmetro enviado na URL
     const { id } = req.params;
     console.log(req.params)
@@ -217,9 +219,10 @@ router.delete("/pedidos/:id", async (req, res) => {
         return res.json({
             mensagem: "Pedido apagado com sucesso!"
         });
-    }).catch(() => {
+    }).catch((erro) => {
         // Pausar o processamento e retornar a mensagem
         return res.status(400).json({
+            erro:erro.message,
             mensagem: "Erro: Pedido não apagado com sucesso!"
         });
     });

@@ -43,7 +43,8 @@ app.use('/', pedido_marmitas);
 const usuarios = require("./controllers/usuarios");
 app.use('/', usuarios);
 
-
+const restaurantes = require("./controllers/restaurantes");
+app.use('/', restaurantes);
 
 // Iniciar o servidor na porta 8080, criar a função utilizando modelo Arrow function para retornar a mensagem de sucesso
 app.listen(3000, () => {

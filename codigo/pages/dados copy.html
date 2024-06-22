@@ -17,7 +17,7 @@
 <body onload="verif_login()">
 
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-success text-white">
+        <nav  class="navbar navbar-expand-lg navbar-light bg-success text-white">
             <div class="container" id="navbar">
 
                 <a class="navbar-brand text-white" href="../index.html"><img src="../assets/img/tia lili.jpg" style="width: 120px;"></a>
@@ -35,7 +35,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#section_bebidas">Bebidas</a>
+                            <a class="nav-link  text-white" href="#section_bebidas">Bebidas</a>
                         </li>
 
                         <li class="nav-item dropdown" style="display: none;">
@@ -51,12 +51,12 @@
                         </li>
 
                         <li class="nav-item">
-                        <a class="nav-link disabled text-white" href="#section_especiais">Especiais</a>
+                        <a class="nav-link disabled  text-white" href="#section_especiais">Especiais</a>
                         </li>
 
                     </ul>
                     <div class="nav-item">
-                        <a id="login_verif" class="nav-link text-white" href="pages/login.html">login</a>
+                        <a id="login_verif" class="nav-link  text-white" href="pages/login.html">login</a>
                     </div>
                 </div>
             </div>
@@ -64,21 +64,25 @@
     </header>
 
     <main class="container">
-        <div>
+        
+        
+        <div> 
             <hr class="sep-2" />
             <h4 class="display-5 text-center" id="section_especiais">Dados</h4>
             <hr class="sep-2" />
         </div>
         
+        
         <div class="container-fluid px-1 py-5 mx-auto">
             <div class="row d-flex justify-content-center">
                 <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+                    
                     <div class="card">
                         <h5 class="text-center mb-4">Preencha os dados para entrega</h5>
                         <form class="form-card" onsubmit="event.preventDefault()">
                             
                             <hr class="sep-2" />
-    
+
                             <section id="entrega" class="mb-3 justify-content-between text-left">
                                 <div class=" radio-list2 row d-flex flex-row justify-content-space-between">
                                     <div class="radio-item2 col-sm-6 flex-row d-flex">
@@ -88,74 +92,74 @@
                                         </label>
                                     </div>
                                     <div class="radio-item2 col-sm-6 flex-row d-flex">
-                                        <input class="mx-4" name="entrega" id="radio2" type="radio" checked>
+                                        <input class="mx-4" name="entrega" id="radio2" type="radio">
                                         <label class="d-flex flex-row justify-content-space-between mx-4" for="radio2">
                                             <h6>Retirada</h6> 
                                         </label>
                                     </div>
                                 </div>
                             </section>
-    
+
                             <hr class="sep-2" />
-    
+
                             <section id="pagamento" class="mb-3 justify-content-between text-left">
                                 <div class=" radio-list2 row d-flex flex-row justify-content-space-between">
                                     <div class="radio-item2 col-sm-6 flex-row d-flex">
-                                        <input class="mx-4" name="pagamento" id="radio3" type="radio">
-                                        <label class="d-flex flex-row justify-content-space-between mx-4" for="radio3">
+                                        <input class="mx-4" name="pagamento" id="radio1" type="radio">
+                                        <label class="d-flex flex-row justify-content-space-between mx-4" for="radio1">
                                             <h6>Pix</h6> 
                                         </label>
                                     </div>
                                     <div class="radio-item2 col-sm-6 flex-row d-flex">
-                                        <input class="mx-4" name="pagamento" id="radio4" type="radio">
-                                        <label class="d-flex flex-row justify-content-space-between mx-4" for="radio4">
+                                        <input class="mx-4" name="pagamento" id="radio2" type="radio">
+                                        <label class="d-flex flex-row justify-content-space-between mx-4" for="radio2">
                                             <h6>Cartão</h6> 
                                         </label>
                                     </div>
                                     <div class="radio-item2 col-sm-12 flex-row d-flex">
-                                        <input class="mx-4" name="pagamento" id="radio5" type="radio">
-                                        <label class="row d-flex flex-row justify-content-space-between mx-4" for="radio5">
+                                        <input class="mx-4" name="pagamento" id="radio2" type="radio">
+                                        <label class="row d-flex flex-row justify-content-space-between mx-4" for="radio2">
                                             <h6 id="h6_pagamento" class="col-md-6">Dinheiro(Troco)</h6> 
-                                            <input class="col-md-6" id="input_valor" type="number" placeholder=" R$0,00">
+                                            <input class="col-md-6"id="input_valor" type="number" placeholder=" R$0,00">
                                         </label>
+
                                     </div>
                                 </div>
                             </section>
-    
+
                             <hr class="sep-2" />
-    
-                            <div id="address-fields">
-                                <div class="form-row">
-                                    <div class="form-group col-md-4">
-                                        <label for="cep">CEP</label>
-                                        <input type="text" class="form-control" id="cep" name="cep" maxlength="9">
-                                        <div id="cepError" class="error-message"></div>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="rua">Rua</label>
-                                        <input type="text" class="form-control" id="rua" name="rua">
-                                    </div>
-                                    <div class="form-group col-md-2">
-                                        <label for="numero">Número</label>
-                                        <input type="number" class="form-control" id="numero" name="numero">
-                                    </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <label for="cep">CEP</label>
+                                    <input type="text" class="form-control" id="cep" name="cep" maxlength="9">
+                                    <div id="cepError" class="error-message"></div>
                                 </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="bairro">Bairro</label>
-                                        <input type="text" class="form-control" id="bairro" name="bairro">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="complemento">Complemento</label>
-                                        <input type="text" class="form-control" id="complemento" name="complemento">
-                                    </div>
+                                <div class="form-group col-md-6">
+                                    <label for="rua">Rua</label>
+                                    <input type="text" class="form-control" id="rua" name="rua">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="numero">Número</label>
+                                    <input type="number" class="form-control" id="numero" name="numero">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="bairro">Bairro</label>
+                                    <input type="text" class="form-control" id="bairro" name="bairro">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="complemento">Complemento</label>
+                                    <input type="text" class="form-control" id="complemento" name="complemento">
                                 </div>
                             </div>
                             
                             <div class="row justify-content-end">
                                 <a href="dados.html" class="col-12 primary avancar flex-row " style="--bg-color: #1095F3; --bg-color-hover: #33B7FE; --bg-color-active: #1581E0; --border-color: #1095F3; --border-color-hover: #33B7FE; --border-color-active: #1581E0; --text-color: #FFFFFF; --text-color-hover: #FFFFFF; --text-color-active: #FFFFFF;">
                                     <p>Avançar</p>
-                                    <div data-v-0947ae0f="" class="btndata">
+                                    <div data-v-0947ae0f="" class="btndata">R$16,00
+                        
                                     </div>
                                 </a>
                             </div>
@@ -164,24 +168,31 @@
                 </div>
             </div>
         </div>
-    </main>
-    
-    
+        
 
-    <footer class="container-fluid justify-content-center text-light bg-dark">
+
+        
+            
+        
+
+    </main>
+
+    <footer class="container-fluid  justify-content-center text-light bg-dark">
+            
         <div class="row my-5 justify-content-center py-5">
             <div class="col-11">
                 <div class="row ">
-                    <div class="col-xl-8 col-md-4 col-sm-4 col-12 my-auto mx-auto a"><h3 class="text-muted mb-md-0 mb-5 bold-text">Tia Lili Marmitex.</h3></div>
+                    <div class="col-xl-8 col-md-4 col-sm-4 col-12   my-auto mx-auto a"><h3 class="text-muted mb-md-0 mb-5 bold-text">Tia Lili Marmitex.</h3></div>
                     <div class="col-xl-2 col-md-4 col-sm-4 col-12"><h6 class="mb-3 mb-lg-4 bold-text "><b>MENU</b></h6><ul class="list-unstyled"><li>Marmitas</li><li>Bebidas</li><li>Especiais</li><li>Carrinho</li><li>Pedidos</li><li>Login</li></ul></div>
-                    <div class="col-xl-2 col-md-4 col-sm-4 col-12"><h6 class="mb-3 mb-lg-4 text-muted bold-text mt-sm-0 mt-5"><b>Endereço</b></h6><p class="mb-1">Rua Anori 175, São Gabriel</p><p>Belo Horizonte - MG</p></div>
+                    <div class="col-xl-2 col-md-4 col-sm-4 col-12"><h6 class="mb-3 mb-lg-4 text-muted bold-text mt-sm-0 mt-5"><b>Endereço</b></h6><p class="mb-1">Rua Anori 175, São Gabriel</p><p>Belo Horizonte - MG</p> </div>
                 </div>
                 <div class="row ">
-                    <div class="col-xl-8 col-md-4 col-sm-4 col-auto my-md-0 mt-5 order-sm-1 order-3 align-self-end"><p class="social text-muted mb-0 pb-0 bold-text"> <span class="mx-2"><i class="fa fa-facebook" aria-hidden="true"></i></span> <span class="mx-2"><i class="fa fa-linkedin-square" aria-hidden="true"></i></span> <span class="mx-2"><i class="fa fa-twitter" aria-hidden="true"></i></span> <span class="mx-2"><i class="fa fa-instagram" aria-hidden="true"></i></span></p><small class="rights"><span>&#174;</span> Tia Lili Marmitex All Rights Reserved.</small></div>
+                    <div class="col-xl-8 col-md-4 col-sm-4 col-auto  my-md-0 mt-5 order-sm-1 order-3 align-self-end"><p class="social text-muted mb-0 pb-0 bold-text"> <span  class="mx-2"><i class="fa fa-facebook" aria-hidden="true"></i></span> <span class="mx-2"><i class="fa fa-linkedin-square" aria-hidden="true"></i></span> <span class="mx-2"><i class="fa fa-twitter" aria-hidden="true"></i></span> <span class="mx-2"><i class="fa fa-instagram" aria-hidden="true"></i></span> </p><small class="rights"><span>&#174;</span> Tia Lili Marmitex All Rights Reserved.</small></div>
                     <div class="col-xl-2 col-md-4 col-sm-4 col-auto order-1 align-self-end "><h6 class="mt-55 mt-2 text-muted bold-text"><b>Contato</b></h6><small> <span><i class="fa fa-envelope" aria-hidden="true"></i></span> <a href="https://api.whatsapp.com/send/?phone=%2B5531971141408&text&type=phone_number&app_absent=0" class="text-light bold-text" target="_blank">+55 31 97114-1408</a></small></div>
-                </div>
+                    </div>
             </div>
         </div>
+            
     </footer>    
 
     <!-- Incluindo jQuery e script para consulta de CEP -->
@@ -190,17 +201,18 @@
 
     <script>
         $(document).ready(function() {
-    
+            
             // Função para consultar o CEP via API e preencher os campos de endereço
             function consultaCEP(cep) {
                 // Remover caracteres não numéricos
+                console.log("CEP");
                 cep = cep.replace(/\D/g, '');
-    
+
                 // Verificar se o CEP possui 8 dígitos numéricos
                 if (cep.length === 8) {
                     // URL da API ViaCEP para consulta
                     var url = 'https://viacep.com.br/ws/' + cep + '/json/';
-    
+
                     // Fazer requisição GET para a API
                     $.ajax({
                         url: url,
@@ -210,6 +222,7 @@
                                 // Preencher os campos de endereço
                                 $('#rua').val(data.logradouro);
                                 $('#bairro').val(data.bairro);
+                                console.log(data);
                                 // Pode-se adicionar outros campos como cidade e estado se necessário
                             } else {
                                 // Caso ocorra algum erro na consulta
@@ -227,48 +240,17 @@
                     });
                 }
             }
-    
+
             // Evento para acionar a consulta de CEP ao perder o foco do campo
             $('#cep').blur(function() {
                 var cep = $(this).val();
                 consultaCEP(cep);
             });
-    
-            // Função para preencher os campos de endereço com dados do localStorage
-            function populateAddressFields() {
-                if(localStorage.getItem('usuario')) {
-                const usuario = JSON.parse(localStorage.getItem('usuario'));
-                
-                // Preenche os campos do formulário com os dados do localStorage
-                document.getElementById('cep').value = usuario.cep || '';
-                document.getElementById('rua').value = usuario.rua || '';
-                document.getElementById('numero').value = usuario.numero || '';
-                document.getElementById('bairro').value = usuario.bairro || '';
-                document.getElementById('complemento').value = usuario.complemento || '';
-            }
-            }
-    
-            // Evento para mudança na opção de entrega
-            $('input[name="entrega"]').change(function() {
-                if ($('#radio1').is(':checked')) {
-                    $('#address-fields').show();
-                    populateAddressFields(); // Preencher os campos ao selecionar "Entrega"
-                } else {
-                    $('#address-fields').hide(); // Esconder os campos ao selecionar "Retirada"
-                }
-            });
-    
-            // Inicialização dos campos se a opção inicial for "Entrega"
-            if ($('#radio1').is(':checked')) {
-                $('#address-fields').show();
-                populateAddressFields(); // Preencher os campos ao carregar a página se a opção for "Entrega"
-            } else {
-                $('#address-fields').hide(); // Esconder os campos se a opção não for "Entrega"
-            }
+
+            // Evento de submit do formulário
+            
         });
     </script>
-    
-    
 
 </body>
 </html>
