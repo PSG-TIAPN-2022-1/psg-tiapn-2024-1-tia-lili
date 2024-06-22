@@ -128,9 +128,10 @@ router.post("/marmitas", async (req, res) => {
             mensagem: "Marmita cadastrado com sucesso!",
             dados
         });
-    }).catch(() => {
+    }).catch((erro) => {
         // Pausar o processamento e retornar a mensagem de erro
         return res.json({
+            erro:erro.message,
             mensagem: "Erro: Marmita não cadastrado com sucesso!"
         });
     });

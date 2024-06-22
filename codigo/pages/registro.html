@@ -72,28 +72,168 @@
                         <div class="form-group">
                             <label for="nome">Nome</label>
                             <input type="text" class="form-control" id="nome" name="nome" required>
+                            <div id="nomeError" class="error-message"></div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="cep">CEP</label>
+                                <input type="text" class="form-control" id="cep" name="cep" maxlength="9">
+                                <div id="cepError" class="error-message"></div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="rua">Rua</label>
+                                <input type="text" class="form-control" id="rua" name="rua">
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label for="numero">Número</label>
+                                <input type="number" class="form-control" id="numero" name="numero">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="bairro">Bairro</label>
+                                <input type="text" class="form-control" id="bairro" name="bairro">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="complemento">Complemento</label>
+                                <input type="text" class="form-control" id="complemento" name="complemento">
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label for="senha">Endereço</label>
+                            <label for="telefone">Telefone</label>
+                            <input type="text" class="form-control" id="telefone" name="telefone" placeholder="(XX) XXXXX-XXXX" required>
+                            <div id="telefoneError" class="error-message"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                            <div id="emailError" class="error-message"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="senha">Senha</label>
                             <input type="password" class="form-control" id="senha" name="senha" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="senha">Telefone</label>
-                            <input type="password" class="form-control" id="senha" name="senha" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="senha">Email</label>
-                            <input type="password" class="form-control" id="senha" name="senha" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="telefone">senha</label>
-                            <input type="text" class="form-control" id="telefone" name="telefone" required>
+                            <div id="senhaError" class="error-message"></div>
                         </div>
                         <button type="submit" class="btn btn-success btn-block">Registrar</button>
                     </form>
                 </div>
             </div>
         </div>
+    
+        <!-- Incluindo jQuery e script para consulta de CEP -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+
+            
+
+            $(document).ready(function() {
+                // Função para consultar o CEP via API e preencher os campos de endereço
+                function consultaCEP(cep) {
+                    // Remover caracteres não numéricos
+                    cep = cep.replace(/\D/g, '');
+    
+                    // Verificar se o CEP possui 8 dígitos numéricos
+                    if (cep.length === 8) {
+                        // URL da API ViaCEP para consulta
+                        var url = 'https://viacep.com.br/ws/' + cep + '/json/';
+    
+                        // Fazer requisição GET para a API
+                        $.ajax({
+                            url: url,
+                            dataType: 'json',
+                            success: function(data) {
+                                if (!data.erro) {
+                                    // Preencher os campos de endereço
+                                    $('#rua').val(data.logradouro);
+                                    $('#bairro').val(data.bairro);
+                                    
+                                    // Pode-se adicionar outros campos como cidade e estado se necessário
+                                } else {
+                                    // Caso ocorra algum erro na consulta
+                                    $('#rua').val('');
+                                    $('#bairro').val('');
+                                    alert('CEP não encontrado.');
+                                }
+                            },
+                            error: function() {
+                                // Em caso de falha na requisição
+                                $('#rua').val('');
+                                $('#bairro').val('');
+                                alert('Erro ao consultar o CEP. Por favor, tente novamente.');
+                            }
+                        });
+                    }
+                }
+    
+                // Evento para acionar a consulta de CEP ao perder o foco do campo
+                $('#cep').blur(function() {
+                    var cep = $(this).val();
+                    consultaCEP(cep);
+                });
+    
+                // Evento de submit do formulário
+                $('#registerForm').submit(function(event) {
+                    var nome = $('#nome').val().trim();
+                    var telefone = $('#telefone').val().trim().replace(/\D/g, ''); // Remove não dígitos
+                    var email = $('#email').val().trim();
+                    var senha = $('#senha').val().trim();
+                    var cep = $('#cep').val().trim();
+                    var rua = $('#rua').val().trim();
+                    var numero = $('#numero').val().trim();
+                    var bairro = $('#bairro').val().trim();
+                    var complemento = $('#complemento').val().trim();
+    
+                    var nomeError = $('#nomeError');
+                    var telefoneError = $('#telefoneError');
+                    var emailError = $('#emailError');
+                    var senhaError = $('#senhaError');
+                    var cepError = $('#cepError');
+    
+                    // Validar nome (pelo menos 3 caracteres)
+                    if (nome.length < 3) {
+                        nomeError.text('Nome deve conter pelo menos 3 caracteres.');
+                        event.preventDefault();
+                    } else {
+                        nomeError.text('');
+                    }
+    
+                    // Validar telefone
+                    if (telefone.length !== 11) {
+                        telefoneError.text('Telefone inválido.');
+                        event.preventDefault();
+                    } else {
+                        telefoneError.text('');
+                    }
+    
+                    // Validar email (formato básico de verificação)
+                    if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
+                        emailError.text('Email inválido.');
+                        event.preventDefault();
+                    } else {
+                        emailError.text('');
+                    }
+    
+                    // Validar senha (pelo menos 6 caracteres)
+                    if (senha.length < 6) {
+                        senhaError.text('Senha deve conter pelo menos 6 caracteres.');
+                        event.preventDefault();
+                    } else {
+                        senhaError.text('');
+                    }
+    
+                    // Validar CEP (formato básico de verificação)
+                    if (cep.length !== 9) {
+                        cepError.text('CEP inválido.');
+                        event.preventDefault();
+                    } else {
+                        cepError.text('');
+                    }
+    
+                    // Outras validações específicas podem ser adicionadas conforme necessário
+                });
+            });
+        </script>
+
     </main>
 
     <footer class="container-fluid  justify-content-center text-light bg-dark">
@@ -113,6 +253,12 @@
         </div>
             
     </footer>    
+
+
+
+    
+    
+
 
 </body>
 </html>
