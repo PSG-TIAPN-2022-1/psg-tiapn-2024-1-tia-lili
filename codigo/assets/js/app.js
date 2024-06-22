@@ -1157,57 +1157,54 @@ async function exibe_carrinho() {
 
 }
 
-//autocomplete de endereço pelo cep
-
-$(document).ready(function() {
-
-    function limpa_formulário_cep() {
-        // Limpa valores do formulário de cep.
-        $("#rua").val("");
-        $("#bairro").val("");
-        $("#cidade").val("");
-        $("#uf").val("");
-    }
+async function add_user(user){
     
-    //Quando o campo cep perde o foco.
-    $("#cep").blur(function() {
+    console.log("Função add_user");
+    
 
-        var cep = $(this).val().replace(/\D/g, '');
-
-        if (cep != "") {
-
-            var validacep = /^[0-9]{8}$/;
-            //Valida o formato do CEP.
-            if(validacep.test(cep)) {
-
-                $("#rua").val("...");
-                $("#bairro").val("...");
-                $("#cidade").val("...");
-                $("#uf").val("...");
-
-                //Consulta o webservice viacep.com.br/
-                $.getJSON("https://viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
-
-                    if (!("erro" in dados)) {
-                        //Atualiza os campos 
-                        $("#rua").val(dados.logradouro);
-                        $("#bairro").val(dados.bairro);
-                        $("#cidade").val(dados.localidade);
-                        $("#uf").val(dados.uf);
-                    } //end if.
-                    else {                       
-                        limpa_formulário_cep();
-                        alert("CEP não encontrado.");
-                    }
-                });
-            } //end if.
-            else {                
-                limpa_formulário_cep();
-                alert("Formato de CEP inválido.");
-            }
-        } //end if.
-        else {            
-            limpa_formulário_cep();
+    try {
+        const response = await fetch('http://localhost:3000/usuarios', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(user),
+        });
+        console.log('Dados enviados com sucesso:', response);
+        if (!response.ok) {
+            throw new Error('Erro ao enviar dados!');
         }
-    });
-});
+
+    } catch (error) {
+        console.error('Erro ao enviar dados:', error);
+        throw error;
+    }
+
+
+}
+
+
+
+async function read_user(user) {
+    console.log("FUNÇÃO read_user");
+
+    
+
+    try {
+        const response = await fetch(`http://localhost:3000/login?email=${encodeURIComponent(user.email)}&senha=${encodeURIComponent(user.senha)}`);
+        const data = await response.json();
+
+        const usuario = data.usuario;
+        console.log(usuario);
+        if (usuario) {
+            
+            return usuario;
+        } else {
+            console.log("Nenhum usuário existente encontrado!");
+        }
+    } catch (error) {
+        console.error('Erro ao enviar dados:', error);
+    }
+}
+
+

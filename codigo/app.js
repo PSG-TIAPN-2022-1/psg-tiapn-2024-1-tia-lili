@@ -28,9 +28,6 @@ app.use('/', bebidas);
 const marmitas = require("./controllers/marmitas");
 app.use('/', marmitas);
 
-const clientes = require("./controllers/clientes");
-app.use('/', clientes);
-
 const marmita_acompanhamentos = require("./controllers/marmita_acompanhamentos");
 app.use('/', marmita_acompanhamentos);
 

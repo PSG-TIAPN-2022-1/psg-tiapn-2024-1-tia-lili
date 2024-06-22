@@ -15,10 +15,14 @@ module.exports = (sequelize, DataTypes) => {
   }
   USUARIOS.init({
     nome: DataTypes.STRING(45),
-    endereco: DataTypes.STRING(150),
     telefone: DataTypes.STRING(20),
     email: DataTypes.STRING(255),
     senha: DataTypes.STRING(255),
+    cep: DataTypes.INTEGER,
+    bairro: DataTypes.STRING(45),
+    rua: DataTypes.STRING(45),
+    numero: DataTypes.INTEGER,
+    complemento: DataTypes.STRING(45),
     
   }, {
     sequelize,

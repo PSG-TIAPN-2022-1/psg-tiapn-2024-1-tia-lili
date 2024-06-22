@@ -41,7 +41,8 @@ router.get("/usuarios", async (req, res) => {
     const usuarios = await db.USUARIOS.findAll({
 
         // Indicar quais colunas recuperar
-        attributes: ['id', 'nome','endereco','telefone','email','senha'],
+        attributes: ['id', 'nome','telefone','email','senha','cep','bairro','rua','numero','complemento','createdAt', 'updatedAt'],
+
 
         // Ordenar os registros pela coluna id na forma decrescente
         order: [['nome', 'ASC']],
@@ -93,7 +94,7 @@ router.get("/usuarios/:id", async (req, res) => {
     // Recuperar o registro do banco de dados
     const usuario = await db.USUARIOS.findOne({
         // Indicar quais colunas recuperar
-        attributes: ['id', 'nome','endereco','telefone','email','senha','createdAt', 'updatedAt'],
+        attributes: ['id', 'nome','telefone','email','senha','cep','bairro','rua','numero','complemento','createdAt', 'updatedAt'],
 
         // Acrescentado condição para indicar qual registro deve ser retornado do banco de dados
         where: { id },
@@ -138,6 +139,35 @@ router.post("/usuarios", async (req, res) => {
 });
 
 
+router.get('/login', async (req, res) => {
+    const { email, senha } = req.query;
+
+    if (!email || !senha) {
+        return res.status(400).json({ mensagem: "Erro: Email e senha são obrigatórios!" });
+    }
+
+    try {
+        const usuario = await db.USUARIOS.findOne({
+            attributes: ['id', 'nome', 'telefone', 'email', 'senha', 'cep', 'bairro', 'rua', 'numero', 'complemento', 'createdAt', 'updatedAt'],
+            where: { email, senha },
+        });
+
+        if (usuario) {
+            return res.json({
+                usuario: usuario.dataValues
+            });
+        } else {
+            return res.status(400).json({
+                mensagem: "Erro: Usuário não encontrado!"
+            });
+        }
+    } catch (error) {
+        console.error('Erro ao buscar usuário:', error);
+        return res.status(500).json({ mensagem: "Erro interno ao buscar usuário" });
+    }
+});
+
+
 router.put("/usuarios", async (req, res) => {
 
     // Receber os dados enviados no corpo da requisição
@@ -159,27 +189,27 @@ router.put("/usuarios", async (req, res) => {
 
 // Criar a rota apagar e receber o parâmentro id enviado na URL 
 // Endereço para acessar através da aplicação externa: http://localhost:8080/usuarios/3
-router.delete("/usuarios/:id", async (req, res) => {
+// router.delete("/usuarios/:id", async (req, res) => {
 
-    // Receber o parâmetro enviado na URL
-    const { id } = req.params;
-    console.log(req.params)
-    // Apagar usuario no banco de dados utilizando a MODELS usuarios
-    await db.USUARIOS.destroy({
-        // Acrescentar o WHERE na instrução SQL indicando qual registro excluir no BD
-        where: {id} 
-    }).then(() => {
-        // Pausar o processamento e retornar a mensagem
-        return res.json({
-            mensagem: "Usuario apagado com sucesso!"
-        });
-    }).catch(() => {
-        // Pausar o processamento e retornar a mensagem
-        return res.status(400).json({
-            mensagem: "Erro: Usuario não apagado com sucesso!"
-        });
-    });
-});
+//     // Receber o parâmetro enviado na URL
+//     const { id } = req.params;
+//     console.log(req.params)
+//     // Apagar usuario no banco de dados utilizando a MODELS usuarios
+//     await db.USUARIOS.destroy({
+//         // Acrescentar o WHERE na instrução SQL indicando qual registro excluir no BD
+//         where: {id} 
+//     }).then(() => {
+//         // Pausar o processamento e retornar a mensagem
+//         return res.json({
+//             mensagem: "Usuario apagado com sucesso!"
+//         });
+//     }).catch(() => {
+//         // Pausar o processamento e retornar a mensagem
+//         return res.status(400).json({
+//             mensagem: "Erro: Usuario não apagado com sucesso!"
+//         });
+//     });
+// });
 
 // Exportar a instrução que está dentro da constante router 
 module.exports = router;
