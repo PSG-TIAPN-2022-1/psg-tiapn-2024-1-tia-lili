@@ -358,7 +358,7 @@ Notificações: atualizações
 > 
 > **Exemplo do diagrama de Arquitetura**:
 > 
-> ![Exemplo de Arquitetura](images/arquitetura-exemplo.png)
+> ![Exemplo de Arquitetura](images/800c1722-4e5e-4c91-bed1-3c293c65a787.jpeg)
 
 
 # Avaliação da Aplicação
