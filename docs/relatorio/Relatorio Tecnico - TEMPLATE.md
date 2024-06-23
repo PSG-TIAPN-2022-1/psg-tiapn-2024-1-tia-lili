@@ -326,16 +326,19 @@ Linguagens:
 HTML: A base da estrutura da página, definindo o conteúdo e organização do que se vê, desde o menu até o pagamento.
 CSS: O responsável pelo visual, moldando a aparência e dando uma experiência atraente e intuitiva, para que você encontre o que procura com facilidade.
 JavaScript: A alma do bagulho, plataforma com menus dinâmicos, filtros, validação de pedidos.
-Ferramenta:
+React: Uma poderosa biblioteca para construção de interfaces visuais em JavaScript.
+
+> Ferramenta:
 Visual Studio Code: ideal para  desenvolvimento, oferecendo um ambiente completo com recursos avançados.
-Back-end: O Motor 
+
+> Back-end: O Motor 
 Linguagem:
 Node.js: A lógica do servidor, garantindo a comunicação eficiente entre o front-end e o banco de dados, orquestrando o fluxo de pedidos, personalizações e acompanhamento do status.
 Banco de dados:
 MySQL: Onde são guardados, armazenados e organizados de forma confiável e segura todas as informações sobre pratos, pedidos, clientes e restaurantes, garantindo a precisão e a confiabilidade do sistema.
-Criação: criativo
 
-> Figma e Canva: As ferramentas de design que transformaram ideias em protótipos visuais impressionantes, guiando o desenvolvimento com clareza e precisão, desde a interface amigável.
+> Criação: criativo
+Figma e Canva: As ferramentas de design que transformaram ideias em protótipos visuais impressionantes, guiando o desenvolvimento com clareza e precisão, desde a interface amigável.
 Notificações: atualizações
 
 > Plataforma Wapp: A comunicação, garantindo que se receba notificações relevantes e oportunas, informando sobre o status do pedido, promoções e novidades.
