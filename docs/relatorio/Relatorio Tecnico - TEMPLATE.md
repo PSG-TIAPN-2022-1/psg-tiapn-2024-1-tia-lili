@@ -335,12 +335,10 @@ Banco de dados:
 MySQL: Onde são guardados, armazenados e organizados de forma confiável e segura todas as informações sobre pratos, pedidos, clientes e restaurantes, garantindo a precisão e a confiabilidade do sistema.
 Criação: criativo
 
-
-Figma e Canva: As ferramentas de design que transformaram ideias em protótipos visuais impressionantes, guiando o desenvolvimento com clareza e precisão, desde a interface amigável.
+> Figma e Canva: As ferramentas de design que transformaram ideias em protótipos visuais impressionantes, guiando o desenvolvimento com clareza e precisão, desde a interface amigável.
 Notificações: atualizações
 
-
-Plataforma Wapp: A comunicação, garantindo que se receba notificações relevantes e oportunas, informando sobre o status do pedido, promoções e novidades.
+> Plataforma Wapp: A comunicação, garantindo que se receba notificações relevantes e oportunas, informando sobre o status do pedido, promoções e novidades.
 
 > 
 > Inclua os diagramas de User Flow, esboços criados pelo grupo
@@ -362,20 +360,34 @@ Plataforma Wapp: A comunicação, garantindo que se receba notificações releva
 
 # Avaliação da Aplicação
 
-......  COLOQUE AQUI O SEU TEXTO ......
-
-> Apresente os cenários de testes utilizados na realização dos testes da
-> sua aplicação. Escolha cenários de testes que demonstrem os requisitos
-> sendo satisfeitos.
+> O objetivo deste projeto é desenvolver um sistema de pedidos de marmitas que ofereça uma experiência ágil e personalizada tanto para os clientes quanto para o restaurante. A seguir, descrevo os passos realizados e os cenários de teste aplicados.
 
 ## Plano de Testes
 
 ......  COLOQUE AQUI O SEU TEXTO ......
 
-> Enumere quais cenários de testes foram selecionados para teste. Neste
-> tópico o grupo deve detalhar quais funcionalidades avaliadas, o grupo
-> de usuários que foi escolhido para participar do teste e as
-> ferramentas utilizadas.
+> Cadastro e Login:
+Cenário: Um “novo” cliente cria uma conta.
+Teste: Verificamos se o cadastro é bem-sucedido e se o cliente pode fazer login.
+Exploração do Cardápio:
+Cenário: O cliente acessa o cardápio.
+Teste: Verificamos se os pratos estão listados corretamente e se as informações são exibidas corretamente.
+Personalização do Pedido:
+Cenário: O cliente escolhe um prato e personaliza com ingredientes extras.
+Teste: Verificamos se as opções de personalização funcionam corretamente.
+Acompanhamento do Pedido:
+Cenário: O cliente faz um pedido e deseja acompanhar o status.
+Teste: Verificamos se o cliente pode ver o status do pedido em tempo real.
+Pagamento:
+Cenário: O cliente finaliza e vai para o pagamento.
+Teste: Verificamos se o processo de pagamento é que o usuário solicitou e se a quantia está correta .
+Gerenciamento pelo Restaurante:
+Cenário: O restaurante acessa o painel de controle.
+Teste: Verificamos se o restaurante pode gerenciar pedidos e atualizar o cardápio.
+conclusion
+Os testes “caseiros” nos ajudaram a validar a aplicação e a garantir que os requisitos estejam sendo atendidos. Continuaremos refinando e melhorando o sistema com base nos feedbacks dos usuários. 
+Nesta plataforma, você desfruta de uma experiência gastronômica online deliciosa e confiável, testada rigorosamente com o Jasmine.
+
 > 
 > **Links Úteis**:
 > - [IBM - Criação e Geração de Planos de Teste](https://www.ibm.com/developerworks/br/local/rational/criacao_geracao_planos_testes_software/index.html)
@@ -384,9 +396,12 @@ Plataforma Wapp: A comunicação, garantindo que se receba notificações releva
 
 ## Ferramentas de Testes (Opcional)
 
-......  COLOQUE AQUI O SEU TEXTO ......
+> Utilizamos o Jasmine para garantir que:
+A plataforma funcione perfeitamente em qualquer dispositivo.
+Seus pedidos sejam processados com rapidez e precisão.
+Seus dados estejam sempre seguros.
+Sua experiência seja sempre impecável e satisfatória
 
-> Comente sobre as ferramentas de testes utilizadas.
 > 
 > **Links Úteis**:
 > - [Ferramentas de Test para Java Script](https://geekflare.com/javascript-unit-testing/)
@@ -394,12 +409,21 @@ Plataforma Wapp: A comunicação, garantindo que se receba notificações releva
 
 ## Registros de Testes
 
-......  COLOQUE AQUI O SEU TEXTO ......
-
-> Discorra sobre os resultados do teste. Ressaltando pontos fortes e
-> fracos identificados na solução. Comente como o grupo pretende atacar
-> esses pontos nas próximas iterações. Apresente as falhas detectadas e
-> as melhorias geradas a partir dos resultados obtidos nos testes.
+> Testes como usuários da Tia Lili:
+Realizamos testes como um grupo de usuários da Tia Lili que já fizeram pedidos na plataforma. A seguir, um resumo dos resultados:
+Pontos fortes:
+Intuitividade: Interface fácil de usar, navegação simples pelo cardápio e personalização de pedidos.
+Acompanhamento em tempo real: Status do pedido atualizado em tempo real, proporcionando transparência aos clientes.
+Autenticação e segurança: Sistema de login e cadastro funcionando bem, garantindo a segurança dos dados dos usuários.
+Áreas de melhoria:
+Performance: As vezes tem alguma lentidão no carregamento do cardápio e finalização de pedidos em alguns casos. 
+Feedback visual: Muita informação visual.
+Próximos passos:
+Otimização de desempenho: Revisão do código e otimização de consultas ao banco de dados para melhorar a velocidade de carregamento.
+Testes de usabilidade: Realização de novos testes de usabilidade com mais usuários para identificar outras áreas de melhoria.
+Feedback visual aprimorado: Implementação de confirmações visuais após cada ação do usuário para tornar a experiência mais satisfatória.
+Conclusão:
+Os testes realizados foram valiosos para identificar pontos fortes e áreas de melhoria na plataforma. As próximas etapas visam otimizar o desempenho, aprimorar o design responsivo, melhorar o feedback visual e corrigir as falhas detectadas. Acreditamos que, com essas melhorias, a plataforma oferecerá uma experiência ainda mais satisfatória para os clientes da Tia Lili.
 
 
 # Referências
