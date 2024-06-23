@@ -411,18 +411,22 @@ Sua experiência seja sempre impecável e satisfatória
 
 > Testes como usuários da Tia Lili:
 Realizamos testes como um grupo de usuários da Tia Lili que já fizeram pedidos na plataforma. A seguir, um resumo dos resultados:
-Pontos fortes:
+
+> Pontos fortes:
 Intuitividade: Interface fácil de usar, navegação simples pelo cardápio e personalização de pedidos.
 Acompanhamento em tempo real: Status do pedido atualizado em tempo real, proporcionando transparência aos clientes.
 Autenticação e segurança: Sistema de login e cadastro funcionando bem, garantindo a segurança dos dados dos usuários.
-Áreas de melhoria:
+
+> Áreas de melhoria:
 Performance: As vezes tem alguma lentidão no carregamento do cardápio e finalização de pedidos em alguns casos. 
 Feedback visual: Muita informação visual.
-Próximos passos:
+
+> Próximos passos:
 Otimização de desempenho: Revisão do código e otimização de consultas ao banco de dados para melhorar a velocidade de carregamento.
 Testes de usabilidade: Realização de novos testes de usabilidade com mais usuários para identificar outras áreas de melhoria.
 Feedback visual aprimorado: Implementação de confirmações visuais após cada ação do usuário para tornar a experiência mais satisfatória.
-Conclusão:
+
+> Conclusão:
 Os testes realizados foram valiosos para identificar pontos fortes e áreas de melhoria na plataforma. As próximas etapas visam otimizar o desempenho, aprimorar o design responsivo, melhorar o feedback visual e corrigir as falhas detectadas. Acreditamos que, com essas melhorias, a plataforma oferecerá uma experiência ainda mais satisfatória para os clientes da Tia Lili.
 
 
