@@ -312,19 +312,36 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 
 # Projeto da Solução
 
-......  COLOQUE AQUI O SEU TEXTO ......
+> Uma plataforma web intuitiva com interface amigável permite que os clientes explorem o cardápio e personalizem seus pedidos. Essa plataforma é responsiva, funcionando bem em dispositivos móveis e desktops.
+Além disso, implementamos um sistema de cadastro e autenticação para clientes e restaurantes. Os clientes podem criar contas, salvar suas preferências e histórico de pedidos. Enquanto isso, os restaurantes têm acesso a um painel de controle para gerenciar pedidos e atualizar o cardápio.
+O cardápio é dinâmico, com um banco de dados que armazena informações sobre os pratos disponíveis. Isso permite que os restaurantes adicionem, editem ou removam itens facilmente.
+Para personalização de pedidos, os clientes podem escolher ingredientes, tamanhos e acompanhamentos para suas marmitas. Validamos essas escolhas para garantir combinações viáveis.
+Por fim, oferecemos aos clientes a possibilidade de acompanhar o status do pedido pelo WhatsApp
+
 
 ## Tecnologias Utilizadas
 
-......  COLOQUE AQUI O SEU TEXTO ......
+> Front-end: Porta de Entrada
+Linguagens:
+HTML: A base da estrutura da página, definindo o conteúdo e organização do que se vê, desde o menu até o pagamento.
+CSS: O responsável pelo visual, moldando a aparência e dando uma experiência atraente e intuitiva, para que você encontre o que procura com facilidade.
+JavaScript: A alma do bagulho, plataforma com menus dinâmicos, filtros, validação de pedidos.
+Ferramenta:
+Visual Studio Code: ideal para  desenvolvimento, oferecendo um ambiente completo com recursos avançados.
+Back-end: O Motor 
+Linguagem:
+Node.js: A lógica do servidor, garantindo a comunicação eficiente entre o front-end e o banco de dados, orquestrando o fluxo de pedidos, personalizações e acompanhamento do status.
+Banco de dados:
+MySQL: Onde são guardados, armazenados e organizados de forma confiável e segura todas as informações sobre pratos, pedidos, clientes e restaurantes, garantindo a precisão e a confiabilidade do sistema.
+Criação: criativo
 
-> Descreva aqui qual(is) tecnologias você vai usar para resolver o seu
-> problema, ou seja, implementar a sua solução. Liste todas as
-> tecnologias envolvidas, linguagens a serem utilizadas, serviços web,
-> frameworks, bibliotecas, IDEs de desenvolvimento, e ferramentas.
-> Apresente também uma figura explicando como as tecnologias estão
-> relacionadas ou como uma interação do usuário com o sistema vai ser
-> conduzida, por onde ela passa até retornar uma resposta ao usuário.
+
+Figma e Canva: As ferramentas de design que transformaram ideias em protótipos visuais impressionantes, guiando o desenvolvimento com clareza e precisão, desde a interface amigável.
+Notificações: atualizações
+
+
+Plataforma Wapp: A comunicação, garantindo que se receba notificações relevantes e oportunas, informando sobre o status do pedido, promoções e novidades.
+
 > 
 > Inclua os diagramas de User Flow, esboços criados pelo grupo
 > (stoyboards), além dos protótipos de telas (wireframes). Descreva cada
