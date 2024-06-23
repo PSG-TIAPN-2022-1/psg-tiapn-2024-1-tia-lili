@@ -353,8 +353,7 @@ Notificações: atualizações
 
 ......  COLOQUE AQUI O SEU TEXTO E O DIAGRAMA DE ARQUITETURA .......
 
-> Inclua um diagrama da solução e descreva os módulos e as tecnologias
-> que fazem parte da solução. Discorra sobre o diagrama.
+> Um navegador (representando o cliente) que utiliza HTML, CSS e JavaScript para exibir páginas web. Essas páginas interagem com o banco de dados, onde dados podem ser armazenados. Além disso, há um componente de pedidos e a conexão com a Internet. A solução é hospedada no Google.
 > 
 > **Exemplo do diagrama de Arquitetura**:
 > 
