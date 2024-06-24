@@ -41,7 +41,7 @@ router.get("/bebidas", async (req, res) => {
     const bebidas = await db.BEBIDAS.findAll({
 
         // Indicar quais colunas recuperar
-        attributes: ['id', 'nome','valor','disponivel'],
+        attributes: ['id', 'nome','img','valor','disponivel'],
 
         // Ordenar os registros pela coluna id na forma decrescente
         order: [['id', 'ASC']],
@@ -93,7 +93,7 @@ router.get("/bebidas/:id", async (req, res) => {
     // Recuperar o registro do banco de dados
     const bebida = await db.BEBIDAS.findOne({
         // Indicar quais colunas recuperar
-        attributes: ['id', 'nome','valor','disponivel','createdAt', 'updatedAt'],
+        attributes: ['id', 'nome','img','valor','disponivel','createdAt', 'updatedAt'],
 
         // Acrescentado condição para indicar qual registro deve ser retornado do banco de dados
         where: { id },

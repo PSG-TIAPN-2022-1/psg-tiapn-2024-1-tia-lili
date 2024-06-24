@@ -156,7 +156,7 @@ function exibe_tipo_carnes(){
                                     <div class="card" >
                                         <div class="d-none d-md-block">
                                             <!-- Imagem para telas grandes -->
-                                            <img src="db/imagens/tipo_carnes/${carne.id}.jpg" alt="" class="card-img-top ">
+                                            <img src="${carne.img}" alt="" class="card-img-top ">
                                             
                                             <div class="card-body ">
                                                 <h5 class="card-title">${carne.nome}</h5>
@@ -167,7 +167,7 @@ function exibe_tipo_carnes(){
                                         </div>
                                         <div class=" d-flex d-md-block flex-row flex-md-column d-md-none image-container">
                                             <!-- Imagem para telas pequenas -->
-                                            <img src="db/imagens/tipo_carnes/${carne.id}.jpg" alt="" class="card-img-top d-md-none" style="width: 50%;">
+                                            <img src="${carne.img}" alt="" class="card-img-top d-md-none" style="width: 50%;">
                                 
                                             <div class="card-body d-md-none" style="width: 50%;">
                                                 <h5 class="card-title">${carne.nome}</h5>
@@ -212,7 +212,7 @@ function exibe_bebidas(){
                         <div class="card">
                             <div class="d-none d-md-block">
                                 <!-- Imagem para telas grandes -->
-                                <img src="db/imagens/bebidas/${bebida.id}.jpg" alt="" class="card-img-top ">
+                                <img src="${bebida.img}" alt="" class="card-img-top ">
                                 
                                 <div class="card-body ">
                                     <h5 class="card-title">${bebida.nome}</h5>
@@ -223,7 +223,7 @@ function exibe_bebidas(){
                             </div>
                             <div class=" d-flex d-md-block flex-row flex-md-column d-md-none">
                                 <!-- Imagem para telas pequenas -->
-                                <img src="db/imagens/bebidas/${bebida.id}.jpg" alt="" class="card-img-top d-md-none" style="width: 50%;">
+                                <img src="${bebida.img}" alt="" class="card-img-top d-md-none" style="width: 50%;">
                     
                                 <div class="card-body d-md-none" style="width: 50%;">
                                     <h5 class="card-title">${bebida.nome}</h5>
@@ -263,7 +263,7 @@ function exibe_uma_bebida(id){
                     <div class="card">
                         <div class="d-none d-md-block">
                             <!-- Imagem para telas grandes -->
-                            <img src="db/imagens/bebidas/${bebida.id}.jpg" alt="" class="card-img-top ">
+                            <img src="${bebida.img}" alt="" class="card-img-top ">
                             
                             <div class="card-body ">
                                 <h5 class="card-title">${bebida.nome}</h5>
@@ -274,7 +274,7 @@ function exibe_uma_bebida(id){
                         </div>
                         <div class=" d-flex d-md-block flex-row flex-md-column d-md-none">
                             <!-- Imagem para telas pequenas -->
-                            <img src="db/imagens/bebidas/${bebida.id}.jpg" alt="" class="card-img-top d-md-none" style="width: 50%;">
+                            <img src="${bebida.img}" alt="" class="card-img-top d-md-none" style="width: 50%;">
                 
                             <div class="card-body d-md-none" style="width: 50%;">
                                 <h5 class="card-title">${bebida.nome}</h5>
@@ -524,6 +524,8 @@ async function create_tipo_carnes() {
     const valorP = document.getElementById('valorP').value;
     const valorG = document.getElementById('valorG').value;
 
+    const imageUrl = await uploadImageToImgBB(foto, "tipo_carne_"+nome);
+
     // Validate form fields
     if (nome === '') {
         alert('Preencha "Nome"!');
@@ -548,6 +550,7 @@ async function create_tipo_carnes() {
     // Prepare form data
     let tipo_carne = {
         "nome": nome,
+        "img": imageUrl,
         "valor_p": valorP,
         "valor_g": valorG,
     }
@@ -584,6 +587,7 @@ async function att_tipo_carnes(id) {
     const valorP = document.getElementById('valor_p').value;
     const valorG = document.getElementById('valor_g').value;
 
+    const imageUrl = await uploadImageToImgBB(foto, "tipo_carne_"+nome);
     // Validate form fields
     if (nome === '') {
         alert('Preencha "Nome"!');
@@ -608,6 +612,7 @@ async function att_tipo_carnes(id) {
     // Prepare form data
     let tipo_carne = {
         "nome": nome,
+        "img": imageUrl,
         "valor_p": valorP,
         "valor_g": valorG,
     }
@@ -811,13 +816,15 @@ async function read_acompanhamento(id){
 // CRUD BEBIDAS
 
 async function create_bebida() {
-    console.log("Função add_bebida");
+    console.log("Função create_bebida");
 
     // Get form elements
     const nome = document.getElementById('nome').value;
     const foto = document.getElementById('foto').files[0];
     const valor = document.getElementById('valor').value;
 
+    const imageUrl = await uploadImageToImgBB(foto, "bebida_"+nome);
+    
     // Validate form fields
     if (nome == '') {
         alert('Preencha "Nome"!');
@@ -833,17 +840,23 @@ async function create_bebida() {
         alert('Preencha "Valor"!');
         return;
     }
-
+    console.log(imageUrl);
     // Prepare form data
-    const formData = new FormData();
-    formData.append('nome', nome);
-    formData.append('foto', foto);
-    formData.append('valor', valor);
 
+    bebida = {
+        "nome": nome,
+        "img": imageUrl,
+        "valor": valor
+    }
+
+    
     try {
         const response = await fetch('http://localhost:3000/bebidas', {
             method: 'POST',
-            body: formData
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(bebida),
         });
 
         if (response.ok) {
@@ -882,11 +895,12 @@ async function read_bebidas(id){
 async function att_bebidas(id) {
     console.log("Função att_bebidas");
 
-    alert("Bebida ID: " + id)
+    //alert("Bebida ID: " + id)
 
     nome = document.getElementById('nome').value
     valor = document.getElementById('valor').value
-
+    const foto = document.getElementById('foto').files[0];
+    const imageUrl = await uploadImageToImgBB(foto, "bebida_"+nome);
     if (nome == ''){
         alert('Preencha "Nome"!');
         return
@@ -899,6 +913,7 @@ async function att_bebidas(id) {
 
     let bebida = {
         "nome": nome,
+        "img": imageUrl,
         "valor": valor
     }
 
@@ -959,6 +974,29 @@ async function del_bebidas(bebida_id) {
 
 }
   
+async function uploadImageToImgBB(imageFile, imageName) {
+    const apiKey = '7623a1b4817a6d9cb405ee9436537b56'; // Substitua com sua chave de API
+    const formData = new FormData();
+    formData.append('image', imageFile, imageName); // Inclui o nome da imagem aqui
+
+    try {
+        const response = await fetch(`https://api.imgbb.com/1/upload?key=${apiKey}`, {
+            method: 'POST',
+            body: formData
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            return data.data.url;
+        } else {
+            console.error('Erro ao fazer upload da imagem:', response.statusText);
+            return null;
+        }
+    } catch (error) {
+        console.error('Erro ao fazer upload da imagem:', error);
+        return null;
+    }
+}
 
 
 
@@ -1644,7 +1682,7 @@ async function exibe_carrinho(user_id) {
                 <div class="card">
                     <div class="d-none d-md-block">
                         <!-- Imagem para telas grandes -->
-                        <img src="../db/imagens/tipo_carnes/${tipo_carne.id}.jpg" alt="" class="card-img-top">
+                        <img src="${tipo_carne.img}" alt="" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title">${tipo_carne.nome}</h5>
                             
@@ -1704,7 +1742,7 @@ async function exibe_carrinho(user_id) {
                 <div class="card">
                     <div class="d-none d-md-block">
                         <!-- Imagem para telas grandes -->
-                        <img src="../db/imagens/bebidas/${bebida.id}.jpg" alt="" class="card-img-top">
+                        <img src="${bebida.img}" alt="" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title">${bebida.nome}</h5>
                             <h4  id="valor" value="${bebida.valor}">R$${bebida.valor},00</h4>
