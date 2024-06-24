@@ -7,8 +7,8 @@ const router = express.Router();
 const db = require('./../db/models');
 
 // Criar a rota listar 
-// Endereço para acessar através da aplicação externa: http://localhost:8080/usuarios?page=3
-router.get("/usuarios", async (req, res) => {
+// Endereço para acessar através da aplicação externa: http://localhost:8080/usuarios_adms?page=3
+router.get("/usuarios_adms", async (req, res) => {
 
     // Receber o número da página, quando não é enviado o número da página é atribuido página 1
     const { page = 1 } = req.query;
@@ -21,7 +21,7 @@ router.get("/usuarios", async (req, res) => {
     var lastPage = 1;
 
     // Contar a quantidade de registro no banco de dados
-    const countUsuario = await db.USUARIOS.count();
+    const countUsuario = await db.USUARIOS_ADMS.count();
     //console.log(countUsuario);
 
     // Acessa o IF quando encontrar registro no banco de dados
@@ -38,7 +38,7 @@ router.get("/usuarios", async (req, res) => {
 
     //console.log((page * limit) - limit); // 3 * 10 - 10 = 20
     // Recuperar todos os usuario do banco de dados
-    const usuarios = await db.USUARIOS.findAll({
+    const usuarios_adms = await db.USUARIOS_ADMS.findAll({
 
         // Indicar quais colunas recuperar
         attributes: ['id', 'nome','telefone','email','senha','cep','bairro','rua','numero','complemento','createdAt', 'updatedAt'],
@@ -53,11 +53,11 @@ router.get("/usuarios", async (req, res) => {
     });
 
     // Acessa o IF se encontrar o registro no banco de dados
-    if (usuarios) {
+    if (usuarios_adms) {
         // Criar objeto com as informações para paginação
         var pagination = {
             // Caminho
-            path: '/usuarios',
+            path: '/usuarios_adms',
             // Página atual
             page,
             // URL da página anterior
@@ -72,7 +72,7 @@ router.get("/usuarios", async (req, res) => {
 
         // Pausar o processamento e retornar os dados em formato de objeto
         return res.json({
-            usuarios,
+            usuarios_adms,
             pagination
         });
     } else {
@@ -85,17 +85,17 @@ router.get("/usuarios", async (req, res) => {
 
 
 // Criar a rota visualizar e receber o parâmentro id enviado na URL 
-// Endereço para acessar através da aplicação externa: http://localhost:8080/usuarios/7
-router.get("/usuarios/:id", async (req, res) => {
+// Endereço para acessar através da aplicação externa: http://localhost:8080/usuarios_adms/7
+router.get("/usuarios_adms/:id", async (req, res) => {
 
     // Receber o parâmetro enviado na URL
     const { id } = req.params;
     //console.log(id);
 
     // Recuperar o registro do banco de dados
-    const usuario = await db.USUARIOS.findOne({
+    const usuario = await db.USUARIOS_ADMS.findOne({
         // Indicar quais colunas recuperar
-        attributes: ['id', 'nome','telefone','cargo','email','senha','cep','bairro','rua','numero','complemento','createdAt', 'updatedAt'],
+        attributes: ['id', 'nome','telefone','email','senha','cep','bairro','rua','numero','complemento','createdAt', 'updatedAt'],
 
         // Acrescentado condição para indicar qual registro deve ser retornado do banco de dados
         where: { id },
@@ -116,14 +116,14 @@ router.get("/usuarios/:id", async (req, res) => {
     }
 });
 
-router.get("/usuarios2/:id", async (req, res) => {
+router.get("/usuarios_adms2/:id", async (req, res) => {
 
     // Receber o parâmetro enviado na URL
     const { id } = req.params;
     //console.log(id);
 
     // Recuperar o registro do banco de dados
-    const usuario = await db.USUARIOS.findOne({
+    const usuario = await db.USUARIOS_ADMS.findOne({
         // Indicar quais colunas recuperar
         attributes: ['id', 'nome','telefone'],
 
@@ -146,14 +146,14 @@ router.get("/usuarios2/:id", async (req, res) => {
     }
 });
 
-router.post("/usuarios", async (req, res) => {
+router.post("/usuarios_adms", async (req, res) => {
 
     // Receber os dados enviados no corpo da requisição
     var dados = req.body;
     //console.log(dados);
 
     // Salvar no banco de dados
-    await db.USUARIOS.create(dados).then((dados) => {
+    await db.USUARIOS_ADMS.create(dados).then((dados) => {
         // Pausar o processamento e retornar os dados em formato de objeto
         return res.json({
             mensagem: "Usuario cadastrado com sucesso!",
@@ -169,7 +169,7 @@ router.post("/usuarios", async (req, res) => {
 });
 
 
-router.get('/login', async (req, res) => {
+router.get('/login_adm', async (req, res) => {
     const { email, senha } = req.query;
 
     if (!email || !senha) {
@@ -177,8 +177,8 @@ router.get('/login', async (req, res) => {
     }
 
     try {
-        const usuario = await db.USUARIOS.findOne({
-            attributes: ['id', 'nome', 'telefone','cargo', 'email', 'senha', 'cep', 'bairro', 'rua', 'numero', 'complemento', 'createdAt', 'updatedAt'],
+        const usuario = await db.USUARIOS_ADMS.findOne({
+            attributes: ['id', 'nome', 'email', 'senha','cargo'],
             where: { email, senha },
         });
 
@@ -198,12 +198,12 @@ router.get('/login', async (req, res) => {
 });
 
 
-router.put("/usuarios", async (req, res) => {
+router.put("/usuarios_adms", async (req, res) => {
 
     // Receber os dados enviados no corpo da requisição
     var dados = req.body;
     // Editar no banco de dados
-    await db.USUARIOS.update(dados, { where: { id: dados.id } })
+    await db.USUARIOS_ADMS.update(dados, { where: { id: dados.id } })
         .then(() => {
             // Pausar o processamento e retornar a mensagem
             return res.json({
@@ -218,14 +218,14 @@ router.put("/usuarios", async (req, res) => {
 });
 
 // Criar a rota apagar e receber o parâmentro id enviado na URL 
-// Endereço para acessar através da aplicação externa: http://localhost:8080/usuarios/3
-// router.delete("/usuarios/:id", async (req, res) => {
+// Endereço para acessar através da aplicação externa: http://localhost:8080/usuarios_adms/3
+// router.delete("/usuarios_adms/:id", async (req, res) => {
 
 //     // Receber o parâmetro enviado na URL
 //     const { id } = req.params;
 //     console.log(req.params)
-//     // Apagar usuario no banco de dados utilizando a MODELS usuarios
-//     await db.USUARIOS.destroy({
+//     // Apagar usuario no banco de dados utilizando a MODELS usuarios_adms
+//     await db.USUARIOS_ADMS.destroy({
 //         // Acrescentar o WHERE na instrução SQL indicando qual registro excluir no BD
 //         where: {id} 
 //     }).then(() => {

@@ -9,41 +9,36 @@
     <script src="../assets/js/app.js" >  </script>
 
 </head>
-<body>
+<body  onload="verif_login()">
+
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-success text-white">
             <div class="container" id="navbar">
-                <a class="navbar-brand text-white" href="../index.html"><img src="../assets/img/tia lili.jpg" style="width: 120px;"></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação"><span class="navbar-toggler-icon"></span></button>
-            
+    
+                <a class="navbar-brand text-white" href="menu_dia.html"><img src="../assets/img/tia lili.jpg" style="width: 120px;"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+    
                 <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
-                    <form class="form-inline my-2 my-lg-0 d-none">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
-                        <button class="btn btn-outline my-2 my-sm-0" type="submit">Pesquisar</button>
-                    </form>
-                    
+                        
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#section_marmitas">Marmitas</a>
+                            <a class="nav-link text-white" href="menu_dia.html">Cardápio</a>
                         </li>
+    
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#section_bebidas">Bebidas</a>
+                            <a class="nav-link text-white" href="pedidos.html">Pedidos</a>
                         </li>
-                        <li class="nav-item dropdown" style="display: none;">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                ADM
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Ação</a>
-                                <a class="dropdown-item" href="#">Outra ação</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Algo mais aqui</a>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link disabled text-white" href="#section_especiais">Especiais</a>
-                        </li>
+    
+    
+                        
                     </ul>
+    
+                    <div class="nav-item">
+                        <a id="login_verif" class="nav-link  text-white" href="pages/login.html">login</a>
+                    </div>
+    
                 </div>
             </div>
         </nav>

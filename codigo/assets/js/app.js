@@ -1249,6 +1249,7 @@ async function del_pedido_bebida(bebida_id) {
 }
 
 
+
 // FUNÇÕES PARA EDITAR CARDAPIO DO DIA
 
 function show_menu_dia(){
@@ -1766,6 +1767,12 @@ async function exibe_carrinho(user_id) {
         document.querySelector('#bebidas_list').innerHTML += str_bebida; 
     }
 
+    if(pedido_marmitas_existentes.length + pedido_bebidas_existentes.length == 0){
+        alert("Faça o pedido de uma marmita ou uma bebida!");
+        //document.querySelector('#bebidas_list').innerHTML = "Faça o pedido de uma marmita ou uma bebida!"; 
+        window.location.href = '../index.html';
+    } 
+
     document.querySelector('#valor_pedido').innerHTML="R$"+valor+",00"
 
     const anchorElement = document.querySelector('#btn_avancar');
@@ -1836,33 +1843,45 @@ async function add_user(userr){
 
 
 async function read_user(user) {
-    console.log("FUNÇÃO read_user");
-
-    
-
     try {
         const response = await fetch(`http://localhost:3000/login?email=${encodeURIComponent(user.email)}&senha=${encodeURIComponent(user.senha)}`);
         const data = await response.json();
 
         const usuario = data.usuario;
-        console.log(usuario);
         if (usuario) {
-
-            return usuario;
+            return usuario; // Retorna o usuário encontrado
         } else {
-            console.log("Nenhum usuário existente encontrado!");
+
+            const response = await fetch(`http://localhost:3000/login_adm?email=${encodeURIComponent(user.email)}&senha=${encodeURIComponent(user.senha)}`);
+            const data = await response.json();
+
+            const usuario = data.usuario;
+            if (usuario) {
+                return usuario; // Retorna o usuário encontrado
+            } else {
+
+                console.log("Nenhum usuário encontrado!");
+                return null;
+            }
         }
     } catch (error) {
         console.error('Erro ao enviar dados:', error);
+        throw error; // Lança o erro para ser tratado no código que chama read_user
     }
 }
+
 
 function enviar_pedido(valorMinimo, trocoValor,pedido_id){
 
     let endereco={};
     let entrega = document.getElementById('radio1').checked;
-
     let pagamento = document.getElementById('radio3').checked;
+    let troco = trocoValor-valorMinimo;
+
+    if(troco<0){
+        troco=0;
+    }
+
     if(!pagamento){
         pagamento = document.getElementById('radio4').checked;
 
@@ -1876,38 +1895,38 @@ function enviar_pedido(valorMinimo, trocoValor,pedido_id){
     }
     
     if(entrega){
-        entrega = 'entrega';
-    } else {
-        entrega = 'retirada';
-    }
-
-    if(entrega){
-        entrega = 'entrega';
-
         endereco.cep = document.getElementById('cep').value ;
         endereco.rua = document.getElementById('rua').value;
         endereco.numero = document.getElementById('numero').value;
         endereco.bairro = document.getElementById('bairro').value;
         endereco.complemento = document.getElementById('complemento').value;
-        
-        console.log(entrega);
-        console.log(endereco);
-    } else {
-        entrega = 'retirada';
-    }
-    
+        entrega = 'entrega';
 
-    let updateData = {
-        'total': valorMinimo,
-        'status': 'aguardando',
-        'pagamento': pagamento,
-        'entrega': entrega,
-        'cep': parseInt(endereco.cep),
-        'bairro':endereco.bairro,
-        'rua': endereco.rua,
-        'numero':endereco.numero,
-        'complemento':endereco.complemento
+        updateData = {
+            'total': valorMinimo,
+            'status': 'aguardando',
+            'pagamento': pagamento,
+            'entrega': entrega,
+            'cep': parseInt(endereco.cep),
+            'bairro':endereco.bairro,
+            'rua': endereco.rua,
+            'numero':endereco.numero,
+            'complemento':endereco.complemento,
+            'troco':troco
+        }
+        
+    } else {
+        
+        entrega = 'retirada';
+        updateData = {
+            'total': valorMinimo,
+            'status': 'aguardando',
+            'pagamento': pagamento,
+            'entrega': entrega,
+            'troco':troco
+        }
     }
+
 
     fetch('http://localhost:3000/pedidos/'+pedido_id, {
         method: 'PUT',
@@ -1925,6 +1944,170 @@ function enviar_pedido(valorMinimo, trocoValor,pedido_id){
         console.error('Erro ao enviar dados:', error);
     });
 
+    window.location.href = '../index.html';
+}
+
+async function exibir_pedidos(status){
+    
+    let usuario = []; 
+
+    console.log("Função exibir_pedidos");
+
+    fetch('http://localhost:3000/pedidos_all/'+status)
+            .then(response => response.json())
+            .then(async data => {      
+
+                const pedidoss = Object.values(data)
+                
+                
+
+
+                let pedidos = pedidoss[0];
+                let str_pedido = '';
+                //console.log(pedidoss[0]);
+                
+                if(pedidoss[0] == 'Erro ao buscar pedidos.'){
+                    document.querySelector('#aguardando').innerHTML ="";
+                    document.querySelector('#entrega').innerHTML ="";                    
+                    document.querySelector('#preparando').innerHTML ="";
+                } else {
+                    
+                    for(const ped of pedidos){
+
+                        if(ped.id){
+
+                            const user = await fetch('http://localhost:3000/usuarios2/'+ped.Usuarios_id)
+                            .then(response => response.json())
+                            .then(data => {      
+                                usuario = Object.values(data)[0]
+                            }).catch(error => {
+                                console.error('Erro ao enviar dados:', error);
+                            });
+        
+                            if(ped.entrega=='retirada'){
+                                endereco=''
+                                ped.bairro=''
+                            } else {
+                                endereco=`Rua ${ped.rua} ${ped.numero}, ${ped.complemento}`
+                            }
+        
+        
+                            str_pedido+=`<div class="container mt-3">
+                            <div class="card">
+                                <div class="card-header p-0">
+                                    <div class="row px-3">
+                                        <div class="col-lg-1 col-md-12 p-0" >${ped.id}</div>
+                                        <div class="col-lg-9 col-md-12 d-flex flex flex-row p-0">
+                                            
+                                            <div class="col-lg-3 p-0" >${usuario.nome}</div>
+                                            <div class="col-lg-3 p-0" >${ped.entrega}</div>
+                                            <div class="col-lg-3 p-0" >${ped.bairro}</div>
+                                            <div class="col-lg-3 p-0" >R$ ${ped.total},00</div>
+                                        </div>
+                                        <div class="col-lg-1 col-md-6 col-6 p-0" >
+                                            <button class="p-0 btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#collapseDetails${ped.id}" aria-expanded="false" aria-controls="collapseDetails">
+                                            Detalhes
+                                            </button>
+                                        </div>
+                                        `
+                                        
+                                        if(status=='aguardando'){
+                                            str_pedido+=`<div class="col-lg-1 col-md-6 col-6 p-0" >
+                                                            <button onclick="show_pedido(${ped.id})" class="p-0 btn btn-outline-success" type="button" >
+                                                            Aprovar
+                                                            </button>
+                                                        </div>`
+                                        } else if (status == 'preparando'){
+                                            str_pedido+=`<div class="col-lg-1 col-md-6 col-6 p-0" >
+                                                        <button onclick="show_pedido(${ped.id})" class="p-0 btn btn-outline-success" type="button" >
+                                                        Entregar
+                                                        </button>
+                                                    </div>`
+                                        }
+                                        
+                                        
+                                        
+                                        
+                                        str_pedido+=`
+                                        
+                                    </div>
+                                </div>
+                        
+                                <div class="collapse" id="collapseDetails${ped.id}">
+                                    <div class="card-body row">
+            
+                                        <div class="col-lg-4 col-md-6 " ><strong>Endereço:</strong>
+                                            <div >${endereco}</div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-6 " ><strong>Pagamento:</strong>  ${ped.pagamento}</div>
+                                        <div class="col-lg-4 col-md-6 " ><strong>Entrega:</strong>  ${ped.entrega}</div>
+                                    </div>
+                                    <div style="width: 70%; margin-left: 15% ;  margin-bot: 12px;" >
+                                        <div  onclick="cancelar_pedido(${ped.id})" class="col-12 p-0 btn btn-outline-danger" type="button" >
+                                        Cancelar pedido
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>`
+        
+                        document.querySelector('#aguardando').innerHTML = str_pedido;
+                    }
+                }
+                
+
+                
+            }
+
+                
+
+                
+            }).catch(error => {
+                //console.error('Erro ao enviar dados:', error);
+            });
 
 }
 
+function show_pedido(id){
+
+
+
+}
+
+async function cancelar_pedido(id){
+    console.log("FUnção cancelar_pedido");
+    let cancelar = confirm("Cancelar pedido");
+
+    if(!cancelar){
+        return 
+    } 
+
+    let pedido = {
+        'status': 'cancelado'
+    }
+
+    try {
+        const response = await fetch('http://localhost:3000/pedidos/' + id, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(pedido),
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            console.log(data);
+            // Optionally handle successful response (e.g., alert or redirect)
+            window.location.href = 'menu_dia.html';
+        } else {
+            alert('Erro ao salvar os dados.');
+            console.error('Erro:', response.statusText);
+        }
+    } catch (error) {
+        alert('Erro ao salvar os dados.');
+        console.error('Erro:', error);
+    }
+
+
+}

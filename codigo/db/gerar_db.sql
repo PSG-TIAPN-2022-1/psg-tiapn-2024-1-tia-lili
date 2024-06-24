@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `tia_lili`.`Bebidas` (
   `nome` VARCHAR(45) NOT NULL,
   `valor` DECIMAL NOT NULL,
   `disponivel` TINYINT NULL DEFAULT 1,
-  `img` VARCHAR(100) NULL,
+  `img` VARCHAR(255) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -121,6 +121,7 @@ CREATE TABLE IF NOT EXISTS `tia_lili`.`pedidos` (
   `rua` VARCHAR(45) NULL,
   `numero` INT NULL,
   `complemento` VARCHAR(45) NULL,
+  `cargo` VARCHAR(20) NOT NULL DEFAULT 'cliente',
   `troco` DECIMAL(2) NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_pedidos_Usuarios1_idx` (`Usuarios_id` ASC) VISIBLE,

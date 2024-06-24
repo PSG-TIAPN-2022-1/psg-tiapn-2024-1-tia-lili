@@ -43,6 +43,9 @@ app.use('/', pedido_marmitas);
 const usuarios = require("./controllers/usuarios");
 app.use('/', usuarios);
 
+const usuarios_adms = require("./controllers/usuarios_adms");
+app.use('/', usuarios_adms);
+
 const restaurantes = require("./controllers/restaurantes");
 app.use('/', restaurantes);
 

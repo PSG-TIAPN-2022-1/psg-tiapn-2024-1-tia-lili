@@ -158,6 +158,45 @@ router.get("/pedidos/:id/:status", async (req, res) => {
     }
 });
 
+router.get("/pedidos_all/:status", async (req, res) => {
+    // Receber parâmetros enviados na URL
+    const { status } = req.params;
+
+    try {
+        // Recuperar todos os registros do banco de dados que correspondem aos critérios
+        const pedidos = await db.PEDIDOS.findAll({
+            // Indicar quais colunas recuperar
+            attributes: ['id', 'Usuarios_id', 'total', 'status', 'pagamento', 'entrega', 'taxa_entrega', 'cep', 'bairro','rua','numero','complemento','troco'],
+            
+            // Condição para indicar quais registros devem ser retornados do banco de dados
+            where: {
+                status: status // Adiciona o critério de status
+            },
+            order: [
+                ['id', 'DESC'] // Ordena por id de forma decrescente
+            ]
+        });
+
+        // Verifica se há pedidos encontrados
+        if (pedidos.length > 0) {
+            // Retorna os dados dos pedidos encontrados
+            return res.json({
+                pedidos: pedidos
+            });
+        } else {
+            // Retorna uma mensagem se nenhum pedido foi encontrado
+            return res.status(404).json({
+                mensagem: `Nenhum pedido encontrado para o cliente ${id} com o status ${status}.`
+            });
+        }
+    } catch (error) {
+        // Captura erros de consulta ao banco de dados
+        console.error("Erro ao consultar pedidos:", error);
+        return res.status(500).json({
+            mensagem: "Erro ao buscar pedidos."
+        });
+    }
+});
 
 router.post("/pedidos", async (req, res) => {
 

@@ -86,39 +86,18 @@
                                         </label>
                                     </div>
                                     <div class="radio-item2 col-sm-6 flex-row d-flex">
-                                        <input class="mx-4" name="retirada" id="radio2" type="radio" checked>
+                                        <input class="mx-4" name="entrega" id="radio2" type="radio" checked>
                                         <label class="d-flex flex-row justify-content-space-between mx-4" for="radio2">
                                             <h6>Retirada</h6> 
                                         </label>
                                     </div>
                                 </div>
                             </section>
-                            <hr class="sep-2" />
-                            <section id="pagamento" class="mb-3 justify-content-between text-left">
-                                <div class=" radio-list2 row d-flex flex-row justify-content-space-between">
-                                    <div class="radio-item2 col-sm-6 flex-row d-flex">
-                                        <input class="mx-4" name="pagamento" id="radio3" type="radio">
-                                        <label class="d-flex flex-row justify-content-space-between mx-4" for="radio3">
-                                            <h6>Pix</h6> 
-                                        </label>
-                                    </div>
-                                    <div class="radio-item2 col-sm-6 flex-row d-flex">
-                                        <input class="mx-4" name="pagamento" id="radio4" type="radio">
-                                        <label class="d-flex flex-row justify-content-space-between mx-4" for="radio4">
-                                            <h6>Cartão</h6> 
-                                        </label>
-                                    </div>
-                                    <div class="radio-item2 col-sm-12 flex-row d-flex">
-                                        <input class="mx-4" name="pagamento" id="radio5" type="radio">
-                                        <label class="row d-flex flex-row justify-content-space-between mx-4" for="radio5">
-                                            <h6 id="h6_pagamento" class="col-md-6">Dinheiro(Troco)</h6> 
-                                            <input class="col-md-6" id="input_valor" type="number" placeholder=" R$0,00">
-                                        </label>
-                                    </div>
-                                </div>
-                            </section>
-                            <hr class="sep-2" />
+                            
+                            
+                            
                             <div id="address-fields">
+                                <hr class="sep-2" />
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
                                         <label for="cep">CEP</label>
@@ -145,6 +124,30 @@
                                     </div>
                                 </div>
                             </div>
+                            <hr class="sep-2" />
+                            <section id="pagamento" class="mb-3 justify-content-between text-left">
+                                <div class=" radio-list2 row d-flex flex-row justify-content-space-between">
+                                    <div class="radio-item2 col-sm-6 flex-row d-flex">
+                                        <input class="mx-4" name="pagamento" id="radio3" type="radio">
+                                        <label class="d-flex flex-row justify-content-space-between mx-4" for="radio3">
+                                            <h6>Pix</h6> 
+                                        </label>
+                                    </div>
+                                    <div class="radio-item2 col-sm-6 flex-row d-flex">
+                                        <input class="mx-4" name="pagamento" id="radio4" type="radio">
+                                        <label class="d-flex flex-row justify-content-space-between mx-4" for="radio4">
+                                            <h6>Cartão</h6> 
+                                        </label>
+                                    </div>
+                                    <div class="radio-item2 col-sm-12 flex-row d-flex">
+                                        <input class="mx-4" name="pagamento" id="radio5" type="radio">
+                                        <label class="row d-flex flex-row justify-content-space-between mx-4" for="radio5">
+                                            <h6 id="h6_pagamento" class="col-md-6">Dinheiro(Troco)</h6> 
+                                            <input class="col-md-6" id="input_valor" type="number" placeholder=" R$0,00">
+                                        </label>
+                                    </div>
+                                </div>
+                            </section>
                             <div class="row justify-content-end">
                                 <button type="submit" class="col-12 primary avancar flex-row" style="--bg-color: #1095F3; --bg-color-hover: #33B7FE; --bg-color-active: #1581E0; --border-color: #1095F3; --border-color-hover: #33B7FE; --border-color-active: #1581E0; --text-color: #FFFFFF; --text-color-hover: #FFFFFF; --text-color-active: #FFFFFF;">
                                     <p>Avançar</p>
@@ -183,17 +186,16 @@
 
     <script>
         $(document).ready(function() {
-    
             // Função para consultar o CEP via API e preencher os campos de endereço
             function consultaCEP(cep) {
                 // Remover caracteres não numéricos
                 cep = cep.replace(/\D/g, '');
-    
+
                 // Verificar se o CEP possui 8 dígitos numéricos
                 if (cep.length === 8) {
                     // URL da API ViaCEP para consulta
                     var url = 'https://viacep.com.br/ws/' + cep + '/json/';
-    
+
                     // Fazer requisição GET para a API
                     $.ajax({
                         url: url,
@@ -220,27 +222,27 @@
                     });
                 }
             }
-    
+
             // Evento para acionar a consulta de CEP ao perder o foco do campo
             $('#cep').blur(function() {
                 var cep = $(this).val();
                 consultaCEP(cep);
             });
-    
+
             // Função para preencher os campos de endereço com dados do localStorage
             function populateAddressFields() {
                 if(localStorage.getItem('usuario')) {
-                const usuario = JSON.parse(localStorage.getItem('usuario'));
-                
-                // Preenche os campos do formulário com os dados do localStorage
-                document.getElementById('cep').value = usuario.cep || '';
-                document.getElementById('rua').value = usuario.rua || '';
-                document.getElementById('numero').value = usuario.numero || '';
-                document.getElementById('bairro').value = usuario.bairro || '';
-                document.getElementById('complemento').value = usuario.complemento || '';
+                    const usuario = JSON.parse(localStorage.getItem('usuario'));
+
+                    // Preenche os campos do formulário com os dados do localStorage
+                    document.getElementById('cep').value = usuario.cep || '';
+                    document.getElementById('rua').value = usuario.rua || '';
+                    document.getElementById('numero').value = usuario.numero || '';
+                    document.getElementById('bairro').value = usuario.bairro || '';
+                    document.getElementById('complemento').value = usuario.complemento || '';
+                }
             }
-            }
-    
+
             // Evento para mudança na opção de entrega
             $('input[name="entrega"]').change(function() {
                 if ($('#radio1').is(':checked')) {
@@ -250,7 +252,7 @@
                     $('#address-fields').hide(); // Esconder os campos ao selecionar "Retirada"
                 }
             });
-    
+
             // Inicialização dos campos se a opção inicial for "Entrega"
             if ($('#radio1').is(':checked')) {
                 $('#address-fields').show();
