@@ -41,7 +41,7 @@ router.get("/tipo_carnes", async (req, res) => {
     const tipo_carnes = await db.TIPO_CARNES.findAll({
 
         // Indicar quais colunas recuperar
-        attributes: ['id', 'nome', 'disponivel'],
+        attributes: ['id', 'nome', 'disponivel','valor_p','valor_g','createdAt', 'updatedAt'],
 
         // Ordenar os registros pela coluna id na forma decrescente
         order: [['id', 'ASC']],

@@ -515,7 +515,126 @@ async function del_pedido_marmita(marmita_id) {
 
 
 // CRUD TIPO_CARNES
+async function create_tipo_carnes() {
+    console.log("Função create_tipo_carnes");
 
+    // Get form elements
+    const nome = document.getElementById('nome').value;
+    const foto = document.getElementById('foto').files[0];
+    const valorP = document.getElementById('valorP').value;
+    const valorG = document.getElementById('valorG').value;
+
+    // Validate form fields
+    if (nome === '') {
+        alert('Preencha "Nome"!');
+        return;
+    }
+
+    if (!foto) {
+        alert('Escolha uma imagem!');
+        return;
+    }
+
+    if (valorP === '') {
+        alert('Preencha "Valor P"!');
+        return;
+    }
+
+    if (valorG === '') {
+        alert('Preencha "Valor G"!');
+        return;
+    }
+
+    // Prepare form data
+    let tipo_carne = {
+        "nome": nome,
+        "valor_p": valorP,
+        "valor_g": valorG,
+    }
+
+    try {
+        const response = await fetch('http://localhost:3000/tipo_carnes', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(tipo_carne),
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            console.log(data);
+            // Optionally handle successful response (e.g., alert or redirect)
+        } else {
+            alert('Erro ao salvar os dados.');
+            console.error('Erro:', response.statusText);
+        }
+    } catch (error) {
+        alert('Erro ao salvar os dados.');
+        console.error('Erro:', error);
+    }
+}
+
+async function att_tipo_carnes(id) {
+    console.log("Função att_tipo_carnes");
+
+    // Get form elements
+    const nome = document.getElementById('nome').value;
+    const foto = document.getElementById('foto').files[0];
+    const valorP = document.getElementById('valor_p').value;
+    const valorG = document.getElementById('valor_g').value;
+
+    // Validate form fields
+    if (nome === '') {
+        alert('Preencha "Nome"!');
+        return;
+    }
+
+    if (!foto) {
+        alert('Escolha uma imagem!');
+        return;
+    }
+
+    if (valorP === '') {
+        alert('Preencha "Valor P"!');
+        return;
+    }
+
+    if (valorG === '') {
+        alert('Preencha "Valor G"!');
+        return;
+    }
+
+    // Prepare form data
+    let tipo_carne = {
+        "nome": nome,
+        "valor_p": valorP,
+        "valor_g": valorG,
+    }
+
+    try {
+        const response = await fetch('http://localhost:3000/tipo_carnes/' + id, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(tipo_carne),
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            console.log(data);
+            // Optionally handle successful response (e.g., alert or redirect)
+            window.location.href = 'menu_dia.html';
+        } else {
+            alert('Erro ao salvar os dados.');
+            console.error('Erro:', response.statusText);
+        }
+    } catch (error) {
+        alert('Erro ao salvar os dados.');
+        console.error('Erro:', error);
+    }
+}
 
 async function read_tipo_carnes(id){
     //console.log("Função read_tipo_carnes");
@@ -535,9 +654,143 @@ async function read_tipo_carnes(id){
     }
 }
 
+async function del_tipo_carnes(acomp_id) {
+    console.log("Função del_tipo_carnes");
+
+    if(confirm("Confirmar exclusão de tipo_carne?")){
+
+        try {
+            const response = await fetch(`http://localhost:3000/tipo_carnes/${acomp_id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+    
+            if (!response.ok) {
+                throw new Error('Erro ao deletar dados!');
+            }
+    
+            const data = await response.json();
+            console.log('Marmita deletada com sucesso:', data);
+            window.location.reload();
+            return data.mensagem;
+        } catch (error) {
+            console.error('Erro ao deletar dados:', error);
+            throw error;
+        }
+    }
+
+
+}
 
 
 // CRUD ACOMPANHAMENTOS
+async function add_acompanhamentos() {
+    
+    console.log("Função add_acompanhamentos");
+    nome = document.getElementById('nome').value
+
+    if (nome == ''){
+        alert('Preencha "Nome"!');
+    } else {
+        let acomps = {
+            "nome": nome
+        }
+    
+        
+        try {
+            const response = await fetch('http://localhost:3000/acompanhamentos', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(acomps),
+            });
+    
+            if (response.ok) {
+                const data = await response.json();
+                //alert('Dados salvos com sucesso!');
+                console.log(data);
+            } else {
+                alert('Erro ao salvar os dados.');
+                console.error('Erro:', response.statusText);
+            }
+        } catch (error) {
+            alert('Erro ao salvar os dados.');
+            console.error('Erro:', error);
+        }
+    }
+}
+
+async function att_acompanhamentos(id) {
+    console.log("Função add_acompanhamentos");
+    nome = document.getElementById('nome').value
+
+    if (nome == ''){
+        alert('Preencha "Nome"!');
+    } else {
+        let acomps = {
+            "nome": nome
+        }
+    
+        
+        //console.log(acomps);
+        try {
+            const response = await fetch('http://localhost:3000/acompanhamentos/'+id, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(acomps),
+            });
+    
+            if (response.ok) {
+                const data = await response.json();
+                //alert('Dados salvos com sucesso!');
+                //console.log(data);
+                window.location.href = 'menu_dia.html';
+            } else {
+                alert('Erro ao salvar os dados.');
+                console.error('Erro:', response.statusText);
+            }
+        } catch (error) {
+            alert('Erro ao salvar os dados.');
+            console.error('Erro:', error);
+        }
+    }
+}
+
+async function del_acompanhamentos(acomp_id) {
+    console.log("Função del_acompanhamentos");
+
+    if(confirm("Confirmar exclusão de acompanhamento?")){
+
+        try {
+            const response = await fetch(`http://localhost:3000/acompanhamentos/${acomp_id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+    
+            if (!response.ok) {
+                throw new Error('Erro ao deletar dados!');
+            }
+    
+            const data = await response.json();
+            console.log('Marmita deletada com sucesso:', data);
+            window.location.reload();
+            return data.mensagem;
+        } catch (error) {
+            console.error('Erro ao deletar dados:', error);
+            throw error;
+        }
+    }
+
+
+}
+    
 
 async function read_acompanhamento(id){
     //console.log("Função read_acompanhamento");
@@ -556,6 +809,56 @@ async function read_acompanhamento(id){
 }
 
 // CRUD BEBIDAS
+
+async function create_bebida() {
+    console.log("Função add_bebida");
+
+    // Get form elements
+    const nome = document.getElementById('nome').value;
+    const foto = document.getElementById('foto').files[0];
+    const valor = document.getElementById('valor').value;
+
+    // Validate form fields
+    if (nome == '') {
+        alert('Preencha "Nome"!');
+        return;
+    }
+
+    if (!foto) {
+        alert('Escolha uma imagem!');
+        return;
+    }
+
+    if (valor == '') {
+        alert('Preencha "Valor"!');
+        return;
+    }
+
+    // Prepare form data
+    const formData = new FormData();
+    formData.append('nome', nome);
+    formData.append('foto', foto);
+    formData.append('valor', valor);
+
+    try {
+        const response = await fetch('http://localhost:3000/bebidas', {
+            method: 'POST',
+            body: formData
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            console.log(data);
+            // Optionally handle successful response (e.g., alert or redirect)
+        } else {
+            alert('Erro ao salvar os dados.');
+            console.error('Erro:', response.statusText);
+        }
+    } catch (error) {
+        alert('Erro ao salvar os dados.');
+        console.error('Erro:', error);
+    }
+}
 
 async function read_bebidas(id){
     //console.log("Função read_tipo_carnes");
@@ -576,7 +879,86 @@ async function read_bebidas(id){
     }
 }
 
+async function att_bebidas(id) {
+    console.log("Função att_bebidas");
 
+    alert("Bebida ID: " + id)
+
+    nome = document.getElementById('nome').value
+    valor = document.getElementById('valor').value
+
+    if (nome == ''){
+        alert('Preencha "Nome"!');
+        return
+    } 
+    if (valor == '') {
+        alert('Preencha "Valor"!');
+        return;
+    }
+
+
+    let bebida = {
+        "nome": nome,
+        "valor": valor
+    }
+
+    
+    console.log(bebida);
+    try {
+        const response = await fetch('http://localhost:3000/bebidas/'+id, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(bebida),
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            //alert('Dados salvos com sucesso!');
+            //console.log(data);
+            window.location.href = 'menu_dia.html';
+        } else {
+            alert('Erro ao salvar os dados.');
+            console.error('Erro:', response.statusText);
+        }
+    } catch (error) {
+        alert('Erro ao salvar os dados.');
+        console.error('Erro:', error);
+    }
+    
+}
+
+async function del_bebidas(bebida_id) {
+    console.log("Função del_bebidas");
+
+    if(confirm("Confirmar exclusão de bebida?")){
+
+        try {
+            const response = await fetch(`http://localhost:3000/bebidas/${bebida_id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+    
+            if (!response.ok) {
+                throw new Error('Erro ao deletar dados!');
+            }
+    
+            const data = await response.json();
+            console.log('Marmita deletada com sucesso:', data);
+            window.location.reload();
+            return data.mensagem;
+        } catch (error) {
+            console.error('Erro ao deletar dados:', error);
+            throw error;
+        }
+    }
+
+
+}
+  
 
 
 
@@ -683,7 +1065,7 @@ async function read_pedido(user_id) {
             // Aqui pode ser tratado o caso onde há mais de um pedido, se necessário
             console.log("Nenhum pedido existente encontrado, criando um novo pedido...");
             const novoPedidoId = await create_pedido(user_id);
-            alert("Novo pedido ID " + novoPedidoId);
+            //alert("Novo pedido ID " + novoPedidoId);
             return novoPedidoId;
         }
     } catch (error) {
@@ -939,7 +1321,7 @@ function show_menu_dia_carnes(){
             //console.log(carnes);
             for (let i = 0; i < carnes[0].length; i++) {
                 let carne = carnes[0][i];
-                //console.log(carne);
+                // console.log(carne);
                 
                 // tamanho das imagens 287x190
                 if(carne.disponivel==1){
@@ -954,8 +1336,8 @@ function show_menu_dia_carnes(){
                                             ...
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                            <a class="dropdown-item" href="EditavelCarne.html?id=${carne.id}">Editar</a>
-                                            <a class="dropdown-item" href="#">Deletar</a>
+                                            <a class="dropdown-item" href="EditavelCarne.html?id=${carne.id}&nome=${carne.nome}&valor_p=${carne.valor_p}&valor_g=${carne.valor_g}">Editar</a>
+                                            <a onclick="del_tipo_carnes(${carne.id})" class="dropdown-item" href="#">Deletar</a>
                                         </div>
                                     </div>
                                 </label>
@@ -974,8 +1356,8 @@ function show_menu_dia_carnes(){
                                             ...
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                            <a class="dropdown-item" href="EditavelCarne.html?id=${carne.id}">Editar</a>
-                                            <a class="dropdown-item" href="#">Deletar</a>
+                                            <a class="dropdown-item" href="EditavelCarne.html?id=${carne.id}&nome=${carne.nome}&valor_p=${carne.valor_p}&valor_g=${carne.valor_g}">Editar</a>
+                                            <a onclick="del_tipo_carnes(${carne.id})" class="dropdown-item" href="#">Deletar</a>
                                         </div>
                                     </div>
                                 </label>
@@ -1053,8 +1435,8 @@ function show_menu_dia_acompanhamentos(){
                                             ...
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                            <a class="dropdown-item" href="EditavelAcompan.html?id=${acompanhamento.id}">Editar</a>
-                                            <a class="dropdown-item" href="#">Deletar</a>
+                                            <a class="dropdown-item" href="EditavelAcomp.html?id=${acompanhamento.id}&nome=${acompanhamento.nome}">Editar</a>
+                                            <a onclick="del_acompanhamentos(${acompanhamento.id})" class="dropdown-item" href="#">Deletar</a>
                                         </div>
                                     </div>
                                 </label>
@@ -1073,8 +1455,8 @@ function show_menu_dia_acompanhamentos(){
                                             ...
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                            <a class="dropdown-item" href="EditavelAcompan.html?id=${acompanhamento.id}">Editar</a>
-                                            <a class="dropdown-item" href="#">Deletar</a>
+                                            <a class="dropdown-item" href="EditavelAcomp.html?id=${acompanhamento.id}&nome=${acompanhamento.nome}">Editar</a>
+                                            <a onclick="del_acompanhamentos(${acompanhamento.id})" class="dropdown-item" href="#">Deletar</a>
                                         </div>
                                     </div>
                                 </label>
@@ -1151,8 +1533,8 @@ function show_menu_dia_bebidas(){
                                             ...
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                            <a class="dropdown-item" href="EditavelBebi.html?id=${bebida.id}">Editar</a>
-                                            <a class="dropdown-item" href="#">Deletar</a>
+                                            <a class="dropdown-item" href="EditavelBebi.html?id=${bebida.id}&nome=${bebida.nome}&valor=${bebida.valor}">Editar</a>
+                                            <a onclick="del_bebidas(${bebida.id})" class="dropdown-item" href="#">Deletar</a>
                                         </div>
                                     </div>
                                 </label>
@@ -1171,8 +1553,8 @@ function show_menu_dia_bebidas(){
                                             ...
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                            <a class="dropdown-item" href="EditavelBebi.html?id=${bebida.id}">Editar</a>
-                                            <a class="dropdown-item" href="#">Deletar</a>
+                                            <a class="dropdown-item" href="EditavelBebi.html?id=${bebida.id}&nome=${bebida.nome}&valor=${bebida.valor}">Editar</a>
+                                            <a onclick="del_bebidas(${bebida.id})" class="dropdown-item" href="#">Deletar</a>
                                         </div>
                                     </div>
                                 </label>
@@ -1229,80 +1611,18 @@ function marcar_bebida_disponivel(id, disponivel) {
 
 // FUNÇÕES PARA EXIBIR ITENS DE CARRINHO
 
-async function exibe_carrinho2(){
-    console.log("Função exibe_carrinho");
-    pedidos_id = await read_pedido();
-    console.log(pedidos_id);
 
-    pedido_marmitas_existentes = await read_pedido_marmitas(pedidos_id);
-    
-    pedido_marmitas_existentes.forEach( async pm => {
-        marmita = await read_marmitas(pm.marmita_id);
-        console.log("marmita:")
-        console.log(marmita);
-    
-        str_marmita='';
-
-        tipo_carne = await read_tipo_carnes(marmita.tipo_carnes_id1);
-        
-        console.log("Marmita_id: "+marmita.id);
-        acompanhamento_marmitas_existentes = await read_acompanhamento_marmitas(marmita.id);
-
-        str_marmita += `
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card" >
-                        <div class="d-none d-md-block">
-                            <!-- Imagem para telas grandes -->
-                            <img src="../db/imagens/tipo_carnes/${tipo_carne.id}.jpg" alt="" class="card-img-top ">
-                            
-                            <div class="card-body ">
-                                <h5 class="card-title">${tipo_carne.nome}</h5>
-                                <p class="card-text">Acompanhamentos:</p>
-                                `
-        
-
-        await acompanhamento_marmitas_existentes.forEach(async am =>{
-
-            console.log(am.acompanhamentos_id);
-            acompanhamento = await read_acompanhamento(am.acompanhamentos_id);  
-            str_marmita += `<p class="card-text">${acompanhamento.nome}</p>`
-        }).then( async resp => {
-        
-            str_marmita +=`     </div>
-
-                            </div>
-                            <div class=" d-flex d-md-block flex-row flex-md-column d-md-none image-container">
-                                <!-- Imagem para telas pequenas -->
-                                <img src="../db/imagens/tipo_carnes/${tipo_carne.id}.jpg" alt="" class="card-img-top d-md-none" style="width: 50%;">
-                    
-                                <div class="card-body d-md-none" style="width: 50%;">
-                                    <h5 class="card-title">${tipo_carne.nome}</h5>
-                                    <p class="card-text">Acompanhamentos:</p>
-                                    <a href="pages/marmita.html?id=${tipo_carne.id}" class="btn btn-outline-success btn-sm">Adicionar</a>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    `
-                    
-                    
-
-            document.querySelector('#marmitas_list').innerHTML=str_marmita; 
-        })
-    });
-
-
-}
 
 
 async function exibe_carrinho(user_id) {
+
+    verif_login();
+    
     console.log("Função exibe_carrinho");
 
     let valor = 0;
     pedidos_id = await read_pedido(user_id);
-    console.log(pedidos_id);
-
+    
     pedido_marmitas_existentes = await read_pedido_marmitas(pedidos_id);
     
     for (const pm of pedido_marmitas_existentes) {
@@ -1370,8 +1690,8 @@ async function exibe_carrinho(user_id) {
     }
 
     pedido_bebidas_existentes = await read_pedido_bebidas(pedidos_id);
-    console.log("Pedido_bebidas_existentes")
-    console.log(pedido_bebidas_existentes);
+    // console.log("Pedido_bebidas_existentes")
+    // console.log(pedido_bebidas_existentes);
     for (const pb of pedido_bebidas_existentes){
         let str_bebida = '';
         
@@ -1408,9 +1728,6 @@ async function exibe_carrinho(user_id) {
         document.querySelector('#bebidas_list').innerHTML += str_bebida; 
     }
 
-
-    
-
     document.querySelector('#valor_pedido').innerHTML="R$"+valor+",00"
 
     const anchorElement = document.querySelector('#btn_avancar');
@@ -1421,8 +1738,9 @@ async function exibe_carrinho(user_id) {
 
         // Adicionar o parâmetro desejado ao href
         href += '?valor='+valor;
-
+        href += '&pedido='+pedidos_id;
         // Definir o novo href no elemento âncora
+
         anchorElement.setAttribute('href', href);
     }
 
@@ -1501,4 +1819,74 @@ async function read_user(user) {
     }
 }
 
+function enviar_pedido(valorMinimo, trocoValor,pedido_id){
+
+    let endereco={};
+    let entrega = document.getElementById('radio1').checked;
+
+    let pagamento = document.getElementById('radio3').checked;
+    if(!pagamento){
+        pagamento = document.getElementById('radio4').checked;
+
+        if(!pagamento){
+            pagamento = 'dinheiro';
+        } else {
+            pagamento = 'cartao';
+        }
+    } else {
+        pagamento = 'pix';
+    }
+    
+    if(entrega){
+        entrega = 'entrega';
+    } else {
+        entrega = 'retirada';
+    }
+
+    if(entrega){
+        entrega = 'entrega';
+
+        endereco.cep = document.getElementById('cep').value ;
+        endereco.rua = document.getElementById('rua').value;
+        endereco.numero = document.getElementById('numero').value;
+        endereco.bairro = document.getElementById('bairro').value;
+        endereco.complemento = document.getElementById('complemento').value;
+        
+        console.log(entrega);
+        console.log(endereco);
+    } else {
+        entrega = 'retirada';
+    }
+    
+
+    let updateData = {
+        'total': valorMinimo,
+        'status': 'aguardando',
+        'pagamento': pagamento,
+        'entrega': entrega,
+        'cep': parseInt(endereco.cep),
+        'bairro':endereco.bairro,
+        'rua': endereco.rua,
+        'numero':endereco.numero,
+        'complemento':endereco.complemento
+    }
+
+    fetch('http://localhost:3000/pedidos/'+pedido_id, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updateData),
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Status do restaurante alterado com sucesso:');
+        console.log(data);
+    })
+    .catch(error => {
+        console.error('Erro ao enviar dados:', error);
+    });
+
+
+}
 

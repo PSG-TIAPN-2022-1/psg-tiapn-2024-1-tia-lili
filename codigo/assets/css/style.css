@@ -8,6 +8,7 @@ a {
 }
 ul {
 	list-style-type: none;
+    font-weight:bold;
 }
 body {
 	font-family: "Averia Serif Libre", cursive;
@@ -22,7 +23,9 @@ hr.sep-2 {
 }
 
 
-
+#login_verif{
+    font-weight:bold;
+}
 
 
 

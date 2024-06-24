@@ -128,7 +128,7 @@ router.get("/pedidos/:id/:status", async (req, res) => {
         // Recuperar todos os registros do banco de dados que correspondem aos critérios
         const pedidos = await db.PEDIDOS.findAll({
             // Indicar quais colunas recuperar
-            attributes: ['id', 'Usuarios_id', 'data', 'total', 'status', 'pagamento', 'entrega', 'taxa_entrega'],
+            attributes: ['id', 'Usuarios_id', 'total', 'status', 'pagamento', 'entrega', 'taxa_entrega', 'cep', 'bairro','rua','numero','complemento','troco'],
 
             // Condição para indicar quais registros devem ser retornados do banco de dados
             where: {
@@ -163,9 +163,6 @@ router.post("/pedidos", async (req, res) => {
 
     // Receber os dados enviados no corpo da requisição
     var dados = req.body;
-    console.log("BACKEND dados pedidos post ---------------------------------#######################")
-    console.log(dados);
-
     // Salvar no banco de dados
     await db.PEDIDOS.create(dados).then((dados) => {
         // Pausar o processamento e retornar os dados em formato de objeto
@@ -183,12 +180,12 @@ router.post("/pedidos", async (req, res) => {
 });
 
 
-router.put("/pedidos", async (req, res) => {
-
+router.put("/pedidos/:id", async (req, res) => {
+    const { id } = req.params;
     // Receber os dados enviados no corpo da requisição
     var dados = req.body;
     // Editar no banco de dados
-    await db.PEDIDOS.update(dados, { where: { id: dados.id } })
+    await db.PEDIDOS.update(dados, { where: { id: id } })
         .then(() => {
             // Pausar o processamento e retornar a mensagem
             return res.json({

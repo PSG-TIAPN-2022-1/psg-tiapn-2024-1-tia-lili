@@ -119,7 +119,7 @@ router.post("/acompanhamentos", async (req, res) => {
 
     // Receber os dados enviados no corpo da requisição
     var dados = req.body;
-    //console.log(dados);
+    console.log(dados);
 
     // Salvar no banco de dados
     await db.ACOMPANHAMENTOS.create(dados).then((dadosUsuario) => {
@@ -131,7 +131,7 @@ router.post("/acompanhamentos", async (req, res) => {
     }).catch(() => {
         // Pausar o processamento e retornar a mensagem de erro
         return res.json({
-            mensagem: "Erro: Acompanhamento não cadastrado com sucesso!"
+            mensagem: "Erro: Acompanhamento não cadastrado!"
         });
     });
 });

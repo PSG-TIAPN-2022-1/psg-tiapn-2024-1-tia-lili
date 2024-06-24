@@ -15,12 +15,17 @@ module.exports = (sequelize, DataTypes) => {
   }
   PEDIDOS.init({
     Usuarios_id:DataTypes.INTEGER,
-    data:DataTypes.DATE,
     total:DataTypes.DECIMAL,
     status:DataTypes.STRING(15),
     pagamento:DataTypes.STRING(15),
     entrega:DataTypes.STRING(15),
     taxa_entrega:DataTypes.DECIMAL,
+    cep: DataTypes.INTEGER,
+    bairro: DataTypes.STRING(45),
+    rua: DataTypes.STRING(45),
+    numero: DataTypes.INTEGER,
+    complemento: DataTypes.STRING(45),
+    troco: DataTypes.DECIMAL,
     
   }, {
     sequelize,

@@ -75,10 +75,8 @@
                 <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
                     <div class="card">
                         <h5 class="text-center mb-4">Preencha os dados para entrega</h5>
-                        <form class="form-card" onsubmit="event.preventDefault()">
-                            
+                        <form class="form-card" id="deliveryForm" action="dados.html">
                             <hr class="sep-2" />
-    
                             <section id="entrega" class="mb-3 justify-content-between text-left">
                                 <div class=" radio-list2 row d-flex flex-row justify-content-space-between">
                                     <div class="radio-item2 col-sm-6 flex-row d-flex">
@@ -88,16 +86,14 @@
                                         </label>
                                     </div>
                                     <div class="radio-item2 col-sm-6 flex-row d-flex">
-                                        <input class="mx-4" name="entrega" id="radio2" type="radio" checked>
+                                        <input class="mx-4" name="retirada" id="radio2" type="radio" checked>
                                         <label class="d-flex flex-row justify-content-space-between mx-4" for="radio2">
                                             <h6>Retirada</h6> 
                                         </label>
                                     </div>
                                 </div>
                             </section>
-    
                             <hr class="sep-2" />
-    
                             <section id="pagamento" class="mb-3 justify-content-between text-left">
                                 <div class=" radio-list2 row d-flex flex-row justify-content-space-between">
                                     <div class="radio-item2 col-sm-6 flex-row d-flex">
@@ -121,9 +117,7 @@
                                     </div>
                                 </div>
                             </section>
-    
                             <hr class="sep-2" />
-    
                             <div id="address-fields">
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
@@ -151,19 +145,18 @@
                                     </div>
                                 </div>
                             </div>
-                            
                             <div class="row justify-content-end">
-                                <a href="dados.html" class="col-12 primary avancar flex-row " style="--bg-color: #1095F3; --bg-color-hover: #33B7FE; --bg-color-active: #1581E0; --border-color: #1095F3; --border-color-hover: #33B7FE; --border-color-active: #1581E0; --text-color: #FFFFFF; --text-color-hover: #FFFFFF; --text-color-active: #FFFFFF;">
+                                <button type="submit" class="col-12 primary avancar flex-row" style="--bg-color: #1095F3; --bg-color-hover: #33B7FE; --bg-color-active: #1581E0; --border-color: #1095F3; --border-color-hover: #33B7FE; --border-color-active: #1581E0; --text-color: #FFFFFF; --text-color-hover: #FFFFFF; --text-color-active: #FFFFFF;">
                                     <p>Avançar</p>
-                                    <div data-v-0947ae0f="" class="btndata">
-                                    </div>
-                                </a>
+                                    <div data-v-0947ae0f="" class="btndata"></div>
+                                </button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
+        
     </main>
     
     
@@ -265,6 +258,38 @@
             } else {
                 $('#address-fields').hide(); // Esconder os campos se a opção não for "Entrega"
             }
+        });
+    </script>
+    
+    <script>
+        document.getElementById('deliveryForm').addEventListener('submit', function(event) {
+            const pagamentoDinheiro = document.getElementById('radio5').checked;
+            const trocoInput = document.getElementById('input_valor');
+            const trocoValor = parseFloat(trocoInput.value) || 0;
+            const valorMinimo = new URLSearchParams(window.location.search).get('valor');
+            const pedido_id = new URLSearchParams(window.location.search).get('pedido');
+            
+
+            const pagamentoPix = document.getElementById('radio3').checked;
+            const pagamentoCartao = document.getElementById('radio4').checked;
+            
+            if (pagamentoDinheiro && trocoValor < valorMinimo) {
+                event.preventDefault();
+                
+                alert('Por favor, preencha o campo Troco com um valor igual ou maior do que R$'+valorMinimo+',00.');
+                trocoInput.focus();
+            } else if(pagamentoPix || pagamentoCartao || pagamentoDinheiro){
+                event.preventDefault();
+                
+                enviar_pedido(valorMinimo, trocoValor, pedido_id);
+            } else {
+                const pagamento = document.getElementById('pagamento');
+                event.preventDefault();
+                alert('Selecione algum meio de pagamento!');
+                pagamento.focus();
+            }
+
+
         });
     </script>
     
