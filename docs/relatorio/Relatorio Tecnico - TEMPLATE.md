@@ -295,13 +295,6 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 > 
 > O editor de código foi escolhido porque ele possui uma boa integração com o sistema de versão. As ferramentas de comunicação utilizadas são versáteis. O Whatsapp sendo usado para comunicação durante a semana, tanto para dúvidas e sugestões, enquanto o Discord é utilizado para reuniões, possibilitando fácil compartilhamento de tela, chat de texto e voz. 
 
-
-> **Links Úteis - Hospedagem**:
-> - [Getting Started with Heroku](https://devcenter.heroku.com/start)
-> - [Crie seu Site com o HostGator](https://www.hostgator.com.br/como-publicar-seu-site)
-> - [GoDady](https://br.godaddy.com/how-to)
-> - [GitHub Pages](https://pages.github.com/)
-
 ## Controle de Versão
 
 > Para versionamento do projeto, os membros do grupo optaram por fazer commits organizados na plataforma GitHub.
@@ -342,12 +335,6 @@ Figma e Canva: As ferramentas de design que transformaram ideias em protótipos 
 Notificações: atualizações
 
 > Plataforma Wapp: A comunicação, garantindo que se receba notificações relevantes e oportunas, informando sobre o status do pedido, promoções e novidades.
-
-> 
-> Inclua os diagramas de User Flow, esboços criados pelo grupo
-> (stoyboards), além dos protótipos de telas (wireframes). Descreva cada
-> item textualmente comentando e complementando o que está apresentado
-> nas imagens.
 
 ## Arquitetura da solução
 
@@ -390,12 +377,6 @@ conclusion
 Os testes “caseiros” nos ajudaram a validar a aplicação e a garantir que os requisitos estejam sendo atendidos. Continuaremos refinando e melhorando o sistema com base nos feedbacks dos usuários. 
 Nesta plataforma, você desfruta de uma experiência gastronômica online deliciosa e confiável, testada rigorosamente com o Jasmine.
 
-> 
-> **Links Úteis**:
-> - [IBM - Criação e Geração de Planos de Teste](https://www.ibm.com/developerworks/br/local/rational/criacao_geracao_planos_testes_software/index.html)
-> - [Práticas e Técnicas de Testes Ágeis](http://assiste.serpro.gov.br/serproagil/Apresenta/slides.pdf)
-> -  [Teste de Software: Conceitos e tipos de testes](https://blog.onedaytesting.com.br/teste-de-software/)
-
 ## Ferramentas de Testes (Opcional)
 
 > Utilizamos o Jasmine para garantir que:
@@ -403,11 +384,6 @@ A plataforma funcione perfeitamente em qualquer dispositivo.
 Seus pedidos sejam processados com rapidez e precisão.
 Seus dados estejam sempre seguros.
 Sua experiência seja sempre impecável e satisfatória
-
-> 
-> **Links Úteis**:
-> - [Ferramentas de Test para Java Script](https://geekflare.com/javascript-unit-testing/)
-> - [UX Tools](https://uxdesign.cc/ux-user-research-and-user-testing-tools-2d339d379dc7)
 
 ## Registros de Testes
 
@@ -436,9 +412,11 @@ Os testes realizados foram valiosos para identificar pontos fortes e áreas de m
 
 ......  COLOQUE AQUI O SEU TEXTO ......
 
-> Inclua todas as referências (livros, artigos, sites, etc) utilizados
-> no desenvolvimento do trabalho.
-> 
-> **Links Úteis**:
-> - [Formato ABNT](https://www.normastecnicas.com/abnt/trabalhos-academicos/referencias/)
-> - [Referências Bibliográficas da ABNT](https://comunidade.rockcontent.com/referencia-bibliografica-abnt/)
+> - Figma (https://www.figma.com/pt-br/)
+> - Canva (https://www.canva.com)
+> - Jasmine (https://jasmine.github.io)
+> - MySQL (https://www.mysql.com)
+> - VScode (https://code.visualstudio.com)
+> - React (https://react.dev)
+> - Copilot (https://copilot.microsoft.com)
+
