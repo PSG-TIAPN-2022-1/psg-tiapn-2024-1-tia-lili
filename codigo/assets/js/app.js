@@ -1878,6 +1878,7 @@ function enviar_pedido(valorMinimo, trocoValor,pedido_id){
     let pagamento = document.getElementById('radio3').checked;
     let troco = trocoValor-valorMinimo;
 
+
     if(troco<0){
         troco=0;
     }
@@ -1902,6 +1903,10 @@ function enviar_pedido(valorMinimo, trocoValor,pedido_id){
         endereco.complemento = document.getElementById('complemento').value;
         entrega = 'entrega';
 
+
+        taxa_entrega = calcular_frete(endereco.bairro);
+
+
         updateData = {
             'total': valorMinimo,
             'status': 'aguardando',
@@ -1912,7 +1917,9 @@ function enviar_pedido(valorMinimo, trocoValor,pedido_id){
             'rua': endereco.rua,
             'numero':endereco.numero,
             'complemento':endereco.complemento,
-            'troco':troco
+            'troco':troco,
+            'taxa_entrega': taxa_entrega
+
         }
         
     } else {
@@ -2110,4 +2117,36 @@ async function cancelar_pedido(id){
     }
 
 
+}
+
+function calcular_frete(bairro){
+    //console.log("Função calcular_frete");
+    const bairros= ['Ouro Minas',
+        'São Paulo',
+        'Jardim Belmonte',
+        'Dom Silvério',
+        'Primeiro de Maio',
+        'Providência',
+        'Aarão Reis',
+        'Guarani',
+        'Eyoard',
+        'Paulo VI',
+        'Vila da Luz',
+        'Maria Goretti',
+        'Jardim Vitória',]
+    
+    if(bairros.includes(bairro)){
+        return 5;
+    } else if (bairro == 'São Gabriel'){
+        return 1;
+    } else {
+        return 10;
+    }
+}
+
+function preencherTaxa(bairro){
+    //console.log("preencher taxa " +bairro )
+    
+    let taxa='R$'+calcular_frete(bairro)+',00';
+    document.querySelector('#taxa_entrega').innerHTML = taxa;
 }

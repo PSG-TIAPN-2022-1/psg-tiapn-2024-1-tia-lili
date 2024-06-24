@@ -116,14 +116,19 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="bairro">Bairro</label>
-                                        <input type="text" class="form-control" id="bairro" name="bairro">
+                                        <input oninput="preencherTaxa(document.getElementById('bairro').value)" type="text" class="form-control" id="bairro" name="bairro">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="complemento">Complemento</label>
                                         <input type="text" class="form-control" id="complemento" name="complemento">
                                     </div>
                                 </div>
+                                <hr class="sep-2" />
+                                <div class="taxa_entrega">
+                                    Taxa de entrega: <div style="display: inline;" id="taxa_entrega"></div>
+                                </div>
                             </div>
+
                             <hr class="sep-2" />
                             <section id="pagamento" class="mb-3 justify-content-between text-left">
                                 <div class=" radio-list2 row d-flex flex-row justify-content-space-between">
@@ -184,6 +189,8 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>
 
+    
+
     <script>
         $(document).ready(function() {
             // Função para consultar o CEP via API e preencher os campos de endereço
@@ -206,6 +213,7 @@
                                 $('#rua').val(data.logradouro);
                                 $('#bairro').val(data.bairro);
                                 // Pode-se adicionar outros campos como cidade e estado se necessário
+                                
                             } else {
                                 // Caso ocorra algum erro na consulta
                                 $('#rua').val('');
@@ -240,6 +248,9 @@
                     document.getElementById('numero').value = usuario.numero || '';
                     document.getElementById('bairro').value = usuario.bairro || '';
                     document.getElementById('complemento').value = usuario.complemento || '';
+                    preencherTaxa(document.getElementById('bairro').value)
+        
+                   
                 }
             }
 
@@ -247,6 +258,7 @@
             $('input[name="entrega"]').change(function() {
                 if ($('#radio1').is(':checked')) {
                     $('#address-fields').show();
+                    
                     populateAddressFields(); // Preencher os campos ao selecionar "Entrega"
                 } else {
                     $('#address-fields').hide(); // Esconder os campos ao selecionar "Retirada"

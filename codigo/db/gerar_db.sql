@@ -98,6 +98,7 @@ CREATE TABLE IF NOT EXISTS `tia_lili`.`Usuarios` (
   `rua` VARCHAR(45) NOT NULL,
   `numero` INT NOT NULL,
   `complemento` VARCHAR(45) NULL,
+  `cargo` VARCHAR(20) NOT NULL DEFAULT 'cliente',
   PRIMARY KEY (`id`),
   UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE)
 ENGINE = InnoDB;
@@ -121,7 +122,6 @@ CREATE TABLE IF NOT EXISTS `tia_lili`.`pedidos` (
   `rua` VARCHAR(45) NULL,
   `numero` INT NULL,
   `complemento` VARCHAR(45) NULL,
-  `cargo` VARCHAR(20) NOT NULL DEFAULT 'cliente',
   `troco` DECIMAL(2) NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_pedidos_Usuarios1_idx` (`Usuarios_id` ASC) VISIBLE,
@@ -210,9 +210,9 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `tia_lili`.`Usuarios_adm`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `tia_lili`.`Usuarios_adm` ;
+DROP TABLE IF EXISTS `tia_lili`.`Usuarios_adms` ;
 
-CREATE TABLE IF NOT EXISTS `tia_lili`.`Usuarios_adm` (
+CREATE TABLE IF NOT EXISTS `tia_lili`.`Usuarios_adms` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
   `cargo` VARCHAR(20) NOT NULL,
