@@ -118,7 +118,7 @@ function exibe_tipo_carnes(){
   
     str=''
 
-    str_status=''
+    let str_status2=''
 
     fetch('http://localhost:3000/tipo_carnes')
         .then(response => response.json())
@@ -127,29 +127,30 @@ function exibe_tipo_carnes(){
 
             fetch('http://localhost:3000/restaurantes')
             .then(response => response.json())
-            .then(data_restaurante => {      
+            .then(data_restaurante => {    
 
-                const rests = Object.values(data_restaurante)
+                const rests = Object.values(data_restaurante);
                 //console.log(rest);
                 
                 let rest = rests[0][0];
                 
                 // tamanho das imagens 287x190
                 
-                const carnes = Object.values(data)
+                const carnes = Object.values(data);
                 console.log(carnes);
                 for (let i = 0; i < carnes[0].length; i++) {
                     let carne = carnes[0][i];
-                    //console.log(carne);
-                    
+                    //console.log(carne.disponivel);
+                
                     // tamanho das imagens 287x190
 
                     if(carne.disponivel){
+                        console.log(carne.id);
                         if(rest.status==0){
                             //console.log(rest);
-                            str_status += `onclick="show_fechado()"`
+                            str_status2 = `onclick="show_fechado()"`
                         } else {
-                            str_status += `href="pages/marmita.html?id=${carne.id}"`
+                            str_status2 = `href="pages/marmita.html?id=${carne.id}"`
                         }
                         str += `
                                 <div class="col-lg-4 col-md-6 mb-4">
@@ -161,7 +162,7 @@ function exibe_tipo_carnes(){
                                             <div class="card-body ">
                                                 <h5 class="card-title">${carne.nome}</h5>
                                                 <p class="card-text">Selecione acompanhamentos</p>
-                                                <a ${str_status} class="btn btn-outline-success btn-sm">Adicionar</a>
+                                                <a ${str_status2} class="btn btn-outline-success btn-sm">Adicionar</a>
                                             </div>
 
                                         </div>
@@ -172,7 +173,7 @@ function exibe_tipo_carnes(){
                                             <div class="card-body d-md-none" style="width: 50%;">
                                                 <h5 class="card-title">${carne.nome}</h5>
                                                 <p class="card-text">Selecione acompanhamentos</p>
-                                                <a ${str_status} class="btn btn-outline-success btn-sm">Adicionar</a>
+                                                <a ${str_status2} class="btn btn-outline-success btn-sm">Adicionar</a>
                                             </div>
 
                                         </div>
@@ -180,6 +181,7 @@ function exibe_tipo_carnes(){
                                 </div>
                                 `
                                 document.querySelector('#marmitas_carnes').innerHTML=str
+                        
                     }
     
                 }
@@ -190,6 +192,7 @@ function exibe_tipo_carnes(){
             console.error('Erro ao enviar dados:', error);
         });
 }
+
 
 function exibe_bebidas(){
   
@@ -1905,8 +1908,8 @@ function enviar_pedido(valorMinimo, trocoValor,pedido_id){
 
 
         taxa_entrega = calcular_frete(endereco.bairro);
-
-
+        valorMinimo=parseFloat(valorMinimo)+parseFloat(taxa_entrega)
+        alert(valorMinimo)
         updateData = {
             'total': valorMinimo,
             'status': 'aguardando',
@@ -2020,13 +2023,13 @@ async function exibir_pedidos(status){
                                         
                                         if(status=='aguardando'){
                                             str_pedido+=`<div class="col-lg-1 col-md-6 col-6 p-0" >
-                                                            <button onclick="show_pedido(${ped.id})" class="p-0 btn btn-outline-success" type="button" >
+                                                            <button onclick="aprovar_pedido(${ped.id})" class="p-0 btn btn-outline-success" type="button" >
                                                             Aprovar
                                                             </button>
                                                         </div>`
                                         } else if (status == 'preparando'){
                                             str_pedido+=`<div class="col-lg-1 col-md-6 col-6 p-0" >
-                                                        <button onclick="show_pedido(${ped.id})" class="p-0 btn btn-outline-success" type="button" >
+                                                        <button onclick="entregar_pedido(${ped.id})" class="p-0 btn btn-outline-success" type="button" >
                                                         Entregar
                                                         </button>
                                                     </div>`
@@ -2106,7 +2109,7 @@ async function cancelar_pedido(id){
             const data = await response.json();
             console.log(data);
             // Optionally handle successful response (e.g., alert or redirect)
-            window.location.href = 'menu_dia.html';
+            window.location.reload();
         } else {
             alert('Erro ao salvar os dados.');
             console.error('Erro:', response.statusText);
@@ -2118,6 +2121,76 @@ async function cancelar_pedido(id){
 
 
 }
+
+async function aprovar_pedido(id){
+    console.log("FUnção aprovar_pedido");
+    
+
+    let pedido = {
+        'status': 'preparando'
+    }
+
+    try {
+        const response = await fetch('http://localhost:3000/pedidos/' + id, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(pedido),
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            console.log(data);
+            // Optionally handle successful response (e.g., alert or redirect)
+            window.location.reload();
+        } else {
+            alert('Erro ao salvar os dados.');
+            console.error('Erro:', response.statusText);
+        }
+    } catch (error) {
+        alert('Erro ao salvar os dados.');
+        console.error('Erro:', error);
+    }
+
+
+}
+
+async function entregar_pedido(id){
+    console.log("FUnção aprovar_pedido");
+    
+
+    let pedido = {
+        'status': 'entregando'
+    }
+
+    try {
+        const response = await fetch('http://localhost:3000/pedidos/' + id, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(pedido),
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            console.log(data);
+            // Optionally handle successful response (e.g., alert or redirect)
+            window.location.reload();
+        } else {
+            alert('Erro ao salvar os dados.');
+            console.error('Erro:', response.statusText);
+        }
+    } catch (error) {
+        alert('Erro ao salvar os dados.');
+        console.error('Erro:', error);
+    }
+
+
+}
+
+// TAXA DE ENTREGA
 
 function calcular_frete(bairro){
     //console.log("Função calcular_frete");
@@ -2150,3 +2223,4 @@ function preencherTaxa(bairro){
     let taxa='R$'+calcular_frete(bairro)+',00';
     document.querySelector('#taxa_entrega').innerHTML = taxa;
 }
+
