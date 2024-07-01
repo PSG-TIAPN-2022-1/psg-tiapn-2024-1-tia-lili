@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
 
-    <script src="../assets/js/app.js"></script>
+    <script src="assets/js/app.js"></script>
 
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -16,7 +16,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-success text-white">
             <div class="container" id="navbar">
     
-                <a class="navbar-brand text-white" href="../index.html"><img src="../assets/img/tia lili.jpg" style="width: 120px;"></a>
+                <a class="navbar-brand text-white" href="index.html"><img src="assets/img/tia lili.jpg" style="width: 120px;"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -25,7 +25,7 @@
                         
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="../index.html">Cardápio</a>
+                            <a class="nav-link text-white" href="index.html">Cardápio</a>
                         </li>
     
                         <li class="nav-item">
@@ -71,7 +71,7 @@
             </div>
         </div>
     </main>
-
+    
     <footer class="container-fluid justify-content-center text-light bg-dark">
         <div class="row my-5 justify-content-center py-5">
             <div class="col-11">
@@ -144,10 +144,10 @@
                             localStorage.setItem('usuario', JSON.stringify(usuario));
                             if (usuario.cargo === 'ADM') {
                                 // Redirecionar para página de administrador
-                                window.location.href = '../pages_adm/pedidos.html';
+                                window.location.href = 'pages_adm/pedidos.html';
                             } else {
                                 // Redirecionar para página de usuário normal
-                                window.location.href = '../index.html';
+                                window.location.href = 'index.html';
                             }
                         } else {
                             alert('Usuário não encontrado! Verifique suas credenciais.');

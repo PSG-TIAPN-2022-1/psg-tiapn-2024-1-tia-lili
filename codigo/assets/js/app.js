@@ -103,7 +103,7 @@ function deslogar() {
     // Aqui você pode limpar o localStorage, redirecionar para a página de login, etc.
     localStorage.removeItem('usuario');
     // Exemplo de redirecionamento para a página de login
-    window.location.href = 'pages/login.html';
+    window.location.href = '../login.html';
 }
     
 
@@ -145,7 +145,7 @@ function exibe_tipo_carnes(){
                     // tamanho das imagens 287x190
 
                     if(carne.disponivel){
-                        console.log(carne.id);
+                        //console.log(carne.id);
                         if(rest.status==0){
                             //console.log(rest);
                             str_status2 = `onclick="show_fechado()"`
@@ -1909,7 +1909,7 @@ function enviar_pedido(valorMinimo, trocoValor,pedido_id){
 
         taxa_entrega = calcular_frete(endereco.bairro);
         valorMinimo=parseFloat(valorMinimo)+parseFloat(taxa_entrega)
-        alert(valorMinimo)
+        //alert(valorMinimo)
         updateData = {
             'total': valorMinimo,
             'status': 'aguardando',
