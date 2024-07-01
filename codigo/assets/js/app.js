@@ -103,7 +103,7 @@ function deslogar() {
     // Aqui você pode limpar o localStorage, redirecionar para a página de login, etc.
     localStorage.removeItem('usuario');
     // Exemplo de redirecionamento para a página de login
-    window.location.href = '../login.html';
+    window.location.href = 'login.html';
 }
     
 

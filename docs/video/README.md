@@ -1,8 +1,7 @@
 # Vídeos do Projeto
 A relação abaixo lista os vídeos feitos para o projeto:
- - [Vídeo AAAAAAAA]()
- - [Vídeo BBBBBBBB]()
+ - [entrevista.mp4](Vídeo com entrevista para realizar o projeto.)
+ - [mostrando_projeto.mp4](Vídeo mostrando resultado do projeot.)
 
-> Nesta pasta inclua arquivos de vídeo produzidos para divulgação do 
-> projeto e seus resutados.
+> 
 
